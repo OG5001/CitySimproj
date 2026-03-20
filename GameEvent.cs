@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EsemenykezelesOOP
+namespace CitySimproj
 {
     // BLUEPRINT for the events
     internal abstract class GameEvent
