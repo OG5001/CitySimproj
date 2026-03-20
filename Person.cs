@@ -1,7 +1,7 @@
-﻿using EsemenykezelesOOP;
-using static EsemenykezelesOOP.Npclib;
+﻿using CitySimproj;
+using static CitySimproj.Npclib;
 
-namespace EsemenykezelesOOP
+namespace CitySimproj
 {
 	internal class Person
 	{
