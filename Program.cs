@@ -1,4 +1,6 @@
-﻿namespace CitySimproj
+﻿using EsemenykezelesOOP;
+
+namespace CitySimproj
 {
     internal class Program
     {

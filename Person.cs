@@ -24,28 +24,35 @@ namespace EsemenykezelesOOP
 
 		public int Health { get => health; set => health = value; }
 
-		public Person(int id, int age, bool sex, int health)
+		public Person(int id)
 		{
 			this.id = id;
-			this.age = age;
-			this.sex = sex;
-			this.health = health;
+			this.health = 100; //Health mindig 100-on indul.
 
 			Npclib lib = new Npclib();
 
-			string surname = lib.surnames[random.Next(lib.surnames.Length)];
+			this.sex = random.Next(2) == 0; //Random sex
+			this.age = random.Next(18, 80); //Random age
+
+			string surname = lib.surnames[random.Next(lib.surnames.Length)]; //Random surnames
 
 			string firstname = sex
-				? lib.male_fornames[random.Next(lib.male_fornames.Length)]
+				? lib.male_fornames[random.Next(lib.male_fornames.Length)] //Sex alapján férfi vagy női keresztnév
 				: lib.female_fornames[random.Next(lib.female_fornames.Length)];
 
 			this.name = firstname + " " + surname;
 
-			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length);
-			this.traits = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length);
-			Health = health;
+			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
+			this.traits = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length); //Random trait (egyenlőre 1)
 		}
-
+		public static void NPC()
+		{
+			for (int i = 0; i < 10; i++)
+			{
+				Person p = new Person(i);
+				Console.WriteLine(p);
+			}
+		}
 		public override string ToString()
 		{
 			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {this.traits}";
