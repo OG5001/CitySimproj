@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitySimproj
+namespace EsemenykezelesOOP
 {
 	internal class Npclib
 	{
@@ -522,4 +522,5 @@ namespace CitySimproj
 
 	}
 }
+
 
