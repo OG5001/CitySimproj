@@ -8,7 +8,7 @@ namespace CitySimproj
 {
 	internal class Database
 	{
-		private List<Person> people;
+		private List<NPCEvents> npcEvents;
 		private List<BuildingEvents> buildingEvents;
 		private List<EconomicEvents> economicEvents;
 		
@@ -16,19 +16,19 @@ namespace CitySimproj
 
 		public Database()
 		{
-			people = new List<Person>();
+			npcEvents = new List<NPCEvents>();
 			buildingEvents = new List<BuildingEvents>();
 			economicEvents = new List<EconomicEvents>();
 		}
 
-		internal List<Person> People { get => people; set => people = value; }
+		internal List<NPCEvents> NpcEvents { get => npcEvents; set => npcEvents = value; }
 		internal List<BuildingEvents> BuildingEvents { get => buildingEvents; set => buildingEvents = value; }
 		internal List<EconomicEvents> EconomicEvents { get => economicEvents; set => economicEvents = value; }
 
 		// Add 
-		public void NPCAdd(Person npc)
+		public void NPCAdd(NPCEvents npc)
 		{
-			people.Add(npc);
+			npcEvents.Add(npc);
 		}
 		public void BuildingAdd(BuildingEvents building)
 		{
@@ -41,9 +41,9 @@ namespace CitySimproj
 
 
 		// Delete
-		public void NPCRemove(Person npc)
+		public void NPCRemove(NPCEvents npc)
 		{
-			people.Remove(npc);
+			npcEvents.Remove(npc);
 		}
 		public void BuildingRemove(BuildingEvents building)
 		{
@@ -57,7 +57,7 @@ namespace CitySimproj
 
 		public void UpdateAllNPC()
 		{
-			foreach (var npcEv in people)
+			foreach (var npcEv in npcEvents)
 			{
 				npcEv.ApplyEffect();
 			}
@@ -66,7 +66,7 @@ namespace CitySimproj
 		// Kiiratas
 		public void Kiiratas()
 		{
-			foreach (var npc in people)
+			foreach (var npc in NpcEvents)
 			{
 				Console.WriteLine(npc);
 			}

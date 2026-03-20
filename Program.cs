@@ -7,6 +7,7 @@ namespace CitySimproj
         static void Main(string[] args)
         {
             Person.NPC();
+
 		}
     }
 }

@@ -12,7 +12,7 @@ namespace CitySimproj
 
 
 		// Constructor
-		public NPCEvents(Person p, string EventName, int eventDuration) : base(name, duration)
+		public NPCEvents(Person p, string EventName, int eventDuration) : base(EventName, eventDuration)
         {
 			this.p = p;
 
