@@ -41,7 +41,7 @@ namespace CitySimproj
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
 			this.traits = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length); //Random Trait
 		}
-		public void NPC()
+		public static void NPC()
 		{
 			for (int i = 0; i < 10; i++)
 			{
