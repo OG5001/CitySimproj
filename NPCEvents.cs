@@ -6,31 +6,35 @@ using System.Threading.Tasks;
 
 namespace CitySimproj
 {
-	internal class NPCEvents : Event
+	internal class NPCEvents
 	{
 		private Person p;
 
-
 		// Constructor
-		public NPCEvents(Person p, string EventName, int eventDuration) : base(EventName, eventDuration)
-        {
-			this.p = p;
-
-        }
-
-        public override void ApplyEffect()
+		public NPCEvents(Person p)
 		{
-			Deaths();
+			this.p = p;
 		}
 
+		public void ApplyEffect(List<Person> plista)
+		{
 
-		public override void RemoveEffect()
+			Console.WriteLine("Applied effect.");
+
+			// Death to all of the people in plista
+			foreach (var p in plista)
+			{
+				Deaths(p);
+			}
+		}
+
+		public void RemoveEffect()
         {
             Console.WriteLine("Removed effect.");
         }
 
-
-		public void Deaths()
+		// Death Event
+		public void Deaths(Person p)
 		{
 			if (p.Health == 0)
 			{
