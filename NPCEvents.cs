@@ -43,6 +43,11 @@ namespace CitySimproj
 
 		}
 
+		public void Lotto(Person p)
+		{
+			//Nincs NPC-nek pénze
+		}
+
 
 		/*public override string ToString()
 		{
