@@ -11,18 +11,20 @@ namespace CitySimproj
 		protected int id;
 		protected int age;
 		protected bool sex;
-		private Traits traits;
+		private List<Traits> traits;
 		private Race race;
 		protected int health;
+		private PersonalStats ps;
 
 		public string Name { get => name; set => name = value; }
 		public int Age { get => age; set => age = value; }
 		public bool Sex { get => sex; set => sex = value; }
 		public int Id { get => id; set => id = value; }
-		public Traits Traits { get => traits; set => traits = value; }
 		public Race Race { get => race; set => race = value; }
 
 		public int Health { get => health; set => health = value; }
+		internal List<Traits> Traits { get => traits; set => traits = value; }
+		internal PersonalStats Ps { get => ps; set => ps = value; }
 
 		public Person(int id)
 		{
@@ -43,8 +45,21 @@ namespace CitySimproj
 			this.name = firstname + " " + surname;
 
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
-			this.traits = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length); //Random trait (egyenlőre 1)
+			for (int i = 0; i < random.Next(1, 6); i++)
+			{
+				Npclib.Traits t = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length);
+				if (!(this.traits.Contains(t)))
+				{
+					this.traits.Add(t);
+				}
+			}
 		}
+
+		public Person(PersonalStats ps)
+		{
+			this.ps = ps;
+		}
+
 		public static void NPC()
 		{
 			for (int i = 0; i < 10; i++)
