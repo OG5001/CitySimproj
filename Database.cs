@@ -36,38 +36,7 @@ namespace CitySimproj
 				npcS.Add(i);
 			}
 		}
-		public void BuildingAdd(BuildingEvents building)
-		{
-			buildingEvents.Add(building);
-		}
-		public void EconomicAdd(EconomicEvents economic)
-		{
-			economicEvents.Add(economic);
-		}
 
-
-		// Delete
-		public void NPCRemove(NPCEvents npc)
-		{
-			npcEvents.Remove(npc);
-		}
-		public void BuildingRemove(BuildingEvents building)
-		{
-			buildingEvents.Remove(building);
-		}
-		public void EconomicRemove(EconomicEvents economic)
-		{
-			economicEvents.Remove(economic);
-		}
-
-
-		public void UpdateAllNPC()
-		{
-			foreach (var npcEv in npcEvents)
-			{
-				npcEv.ApplyEffect();
-			}
-		}
 
 		// Kiiratas
 		public void Kiiratas()
