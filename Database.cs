@@ -11,6 +11,7 @@ namespace CitySimproj
 		private List<NPCEvents> npcEvents;
 		private List<BuildingEvents> buildingEvents;
 		private List<EconomicEvents> economicEvents;
+		private List<Person> npcS;
 		
 		private Random random;
 
@@ -19,16 +20,21 @@ namespace CitySimproj
 			npcEvents = new List<NPCEvents>();
 			buildingEvents = new List<BuildingEvents>();
 			economicEvents = new List<EconomicEvents>();
+			npcS = new List<Person>();
 		}
 
 		internal List<NPCEvents> NpcEvents { get => npcEvents; set => npcEvents = value; }
 		internal List<BuildingEvents> BuildingEvents { get => buildingEvents; set => buildingEvents = value; }
 		internal List<EconomicEvents> EconomicEvents { get => economicEvents; set => economicEvents = value; }
+		internal List<Person> NpcS { get => npcS; set => npcS = value; }
 
 		// Add 
-		public void NPCAdd(NPCEvents npc)
+		public void NPCAdd(List<Person> p)
 		{
-			npcEvents.Add(npc);
+			foreach (var i in p)
+			{
+				npcS.Add(i);
+			}
 		}
 		public void BuildingAdd(BuildingEvents building)
 		{
