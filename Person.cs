@@ -23,7 +23,7 @@ namespace CitySimproj
 		public Race Race { get => race; set => race = value; }
 
 		public int Health { get => health; set => health = value; }
-		internal List<Traits> Traits { get => traits; set => traits = value; }
+		internal List<Traits> Traits { get => new List<Traits>(); set => traits = value; }
 		internal PersonalStats Ps { get => ps; set => ps = value; }
 
 		public Person(int id)
@@ -45,19 +45,8 @@ namespace CitySimproj
 			this.name = firstname + " " + surname;
 
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
-			for (int i = 0; i < random.Next(1, 6); i++)
-			{
-				Npclib.Traits t = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length);
-				if (!(this.traits.Contains(t)))
-				{
-					this.traits.Add(t);
-				}
-			}
-		}
-
-		public Person(PersonalStats ps)
-		{
-			this.ps = ps;
+			this.traits = new List<Traits>();
+			AddTraits();
 		}
 
 		public static List<Person> NPC()
@@ -71,9 +60,35 @@ namespace CitySimproj
 			}
 			return plist;
 		}
+
+		public void AddTraits()
+		{
+			for (int i = 0; i < random.Next(1, 6); i++)
+			{
+				Npclib.Traits t = (Traits)random.Next(Enum.GetValues(typeof(Traits)).Length);
+				if (!(this.traits.Contains(t)))
+				{
+					this.traits.Add(t);
+				}
+			}
+		}
+
+		public void StatsCalculator()
+		{
+			foreach (var t in this.traits)
+			{
+
+			}
+		}
+
 		public override string ToString()
 		{
-			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {this.traits}";
+			string t = "";
+			foreach (var item in this.traits)
+			{
+				t += Enum.GetName(item) + ", ";
+			}
+			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {t}";
 		}
 	}
 }
