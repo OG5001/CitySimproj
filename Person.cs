@@ -49,13 +49,16 @@ namespace CitySimproj
 			AddTraits();
 		}
 
-		public static void NPC()
+		public static List<Person> NPC()
 		{
+			List<Person> plist = new List<Person>();
 			for (int i = 0; i < 10; i++)
 			{
 				Person p = new Person(i);
 				Console.WriteLine(p);
+				plist.Add(p);
 			}
+			return plist;
 		}
 
 		public void AddTraits()
