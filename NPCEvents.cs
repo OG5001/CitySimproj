@@ -8,22 +8,22 @@ namespace CitySimproj
 {
 	internal class NPCEvents
 	{
-		private Person p;
+		private List<Person> people;
 
-		// Constructor
-		public NPCEvents(Person p)
+		public NPCEvents(List<Person> people)
 		{
-			this.p = p;
+			this.people = people;
 		}
 
-		public void ApplyEffect(List<Person> plista)
+		public void ApplyEffect()
 		{
 
 			Console.WriteLine("Applied effect.");
 
 			// Death to all of the people in plista
-			foreach (var p in plista)
+			foreach (var p in people)
 			{
+				p.Health =0;
 				Deaths(p);
 			}
 		}
