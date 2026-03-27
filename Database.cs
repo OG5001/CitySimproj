@@ -63,9 +63,10 @@ namespace CitySimproj
 
 		public void UpdateAllNPC()
 		{
-			foreach (var npcEv in npcEvents)
+
+			foreach (var npc in npcS)
 			{
-				npcEv.ApplyEffect();
+				// Update the npcs status
 			}
 		}
 

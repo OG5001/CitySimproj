@@ -7,7 +7,8 @@ namespace CitySimproj
         static void Main(string[] args)
         {
             Person.NPC();
-
+            Database database = new Database();
+            database.NPCAdd(Person.NPC());
 		}
     }
 }
