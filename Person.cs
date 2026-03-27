@@ -47,6 +47,7 @@ namespace CitySimproj
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
 			this.traits = new List<Traits>();
 			AddTraits();
+			StatsCalculator();
 		}
 
 		public static List<Person> NPC()
@@ -75,9 +76,94 @@ namespace CitySimproj
 
 		public void StatsCalculator()
 		{
-			foreach (var t in this.traits)
+			for (int i = 0;i < this.traits.Count();i++)
 			{
+				switch (this.traits[i])
+				{
+					// Productivity
+					case Npclib.Traits.Hardworking:
+						this.ps.Productivity += 10;
+						break;
+					case Npclib.Traits.Diligent:
+						this.ps.Productivity += 5;
+						break;
+					case Npclib.Traits.Sluggish:
+						this.ps.Productivity -= 5;
+						break;
+					case Npclib.Traits.Lazy:
+						this.ps.Productivity -= 10;
+						break;
 
+					// Happiness + Social
+					case Npclib.Traits.Optimistic:
+						this.ps.Happiness += 10;
+						this.ps.Social += 5;
+						break;
+					case Npclib.Traits.Positive:
+						this.ps.Happiness += 5;
+						this.ps.Social += 5;
+						break;
+					case Npclib.Traits.Pessimistic:
+						this.ps.Happiness -= 5;
+						this.ps.Social -= 5;
+						break;
+					case Npclib.Traits.Depressive:
+						this.ps.Happiness -= 10;
+						this.ps.Karma += 5;
+						break;
+
+					// Social
+					case Npclib.Traits.Extroverted:
+						this.ps.Social += 10;
+						break;
+					case Npclib.Traits.Friendly:
+						this.ps.Social += 5;
+						break;
+					case Npclib.Traits.Introverted:
+						this.ps.Social -= 5;
+						break;
+					case Npclib.Traits.Reserved:
+						this.ps.Social -= 10;
+						break;
+
+					// Health threshold
+					case Npclib.Traits.Immune:
+						this.ps.Health_th += 10;
+						break;
+					case Npclib.Traits.Sickly:
+						this.ps.Health_th -= 10;
+						break;
+
+					// Karma
+					case Npclib.Traits.Clumsy:
+					case Npclib.Traits.AccidentProne:
+						this.ps.Karma += 10;
+						break;
+
+					// Basic needs threshold
+					case Npclib.Traits.Ascetic:
+						this.ps.Basic_needs_th += 10;
+						break;
+					case Npclib.Traits.Lavish:
+						this.ps.Basic_needs_th -= 10;
+						break;
+
+					// Money gain
+					case Npclib.Traits.Greedy:
+						this.ps.Money_gain -= 5;
+						break;
+					case Npclib.Traits.Generous:
+						this.ps.Money_gain += 5;
+						break;
+
+					// Karma (behavior)
+					case Npclib.Traits.Hateful:
+						this.ps.Karma += 10;
+						break;
+					case Npclib.Traits.Peaceful:
+						this.ps.Karma -= 10;
+						break;
+				}
 			}
 		}
 

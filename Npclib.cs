@@ -10,7 +10,7 @@ namespace CitySimproj
 	{
 		public enum Traits
 		{
-			Hardworking,// productivity traits +10%
+			Hardworking = 0,// productivity traits +10% 
 			Diligent,   // productivity traits +5%
 			Sluggish,   // productivity traits -5%
 			Lazy,       // productivity traits -10%
@@ -18,7 +18,7 @@ namespace CitySimproj
 			Optimistic,   // happiness traits +10%, social traits +5%
 			Positive,     // happiness traits +5%, social traits +5%
 			Pessimistic,  // happiness traits -5%, decreases social traits -5%
-			Depressive,   // happiness traits -10%, also increases chance of illness or accidents.
+			Depressive,   // happiness traits -10%, karma +5%
 
 			Extroverted,  // social traits +10%
 			Friendly,     // social traits +5%
@@ -28,8 +28,8 @@ namespace CitySimproj
 			Immune,         // health treshold +10%
 			Sickly,         // health treshold -10%
 
-			Clumsy,         // increases chance of accidents
-			AccidentProne,  // slightly increases chance of accidents
+			Clumsy,         // karma +10%
+			AccidentProne,  // karma +10%
 
 			Ascetic,    // basic needs treshold +10%
 			Lavish,     // basic needs treshold -10%
@@ -37,8 +37,8 @@ namespace CitySimproj
 			Greedy,     // reduces money gain by 5%
 			Generous,   // increases money gain by 5%
 
-			Hateful,     // increases chance of conflicts
-			Peaceful,    // reduces chance of conflicts
+			Hateful,     // karma +10%
+			Peaceful,    // karma -10%
 
 
 		}
