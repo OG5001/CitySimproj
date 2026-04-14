@@ -35,7 +35,6 @@ namespace CitySimproj
 		public int Health_th { get => health_th; set => health_th = value; }
 		public int Basic_needs_th { get => basic_needs_th; set => basic_needs_th = value; }
 		public int Money_gain { get => money_gain; set => money_gain = value; }
-		public int Health { get => health; set => health = value; }
 		public int Karma { get => karma; set => karma = value; }
 	}
 }
