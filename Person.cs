@@ -46,6 +46,7 @@ namespace CitySimproj
 
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
 			this.traits = new List<Traits>();
+			this.ps = new PersonalStats();
 			AddTraits();
 			StatsCalculator();
 		}
