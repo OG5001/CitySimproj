@@ -78,6 +78,7 @@ namespace CitySimproj
 		{
 			for (int i = 0;i < this.traits.Count();i++)
 			{
+				/*
 				switch (this.traits[i])
 				{
 					// Productivity
@@ -88,7 +89,7 @@ namespace CitySimproj
 						this.ps.Productivity += 5;
 						break;
 					case Npclib.Traits.Sluggish:
-						this.ps.Productivity -= 5;
+						//this.ps.Productivity -= 5;
 						break;
 					case Npclib.Traits.Lazy:
 						this.ps.Productivity -= 10;
@@ -164,6 +165,7 @@ namespace CitySimproj
 						this.ps.Karma -= 10;
 						break;
 				}
+				*/
 			}
 		}
 
