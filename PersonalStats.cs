@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,10 +17,10 @@ namespace CitySimproj
 		private int money_gain;
 		private int health;
 		private int karma;
-		public Random random;
 
 		public PersonalStats()
 		{
+			Random random = new Random();
 			this.productivity = random.Next(40, 61);
 			this.happiness = random.Next(40, 61);
 			this.social = random.Next(40, 61);
