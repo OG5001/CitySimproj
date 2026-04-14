@@ -95,7 +95,7 @@
 
 			return false;
 		}
-
+		/*
 		public static void Draw()
 		{
 			// Meghatározzuk a pálya méretét
@@ -151,6 +151,6 @@
 			{
 				Console.WriteLine(buildings[i].name);
 			}
-		}
+		}*/
 	}
 }

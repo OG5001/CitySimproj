@@ -168,7 +168,7 @@
 				Console.WriteLine("Nem sikerült (foglalt hely)");
 			}
 		}
-
+		*/
 		public static void Draw()
 		{
 			List<Building> buildings = new List<Building>();
@@ -243,6 +243,6 @@
 				Console.Write($"{kvp.Key}: ");
 				Console.WriteLine(kvp.Value);
 			}
-		}*/
+		}
 	}
 }

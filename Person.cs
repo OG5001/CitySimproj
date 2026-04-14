@@ -79,7 +79,6 @@ namespace CitySimproj
 		{
 			for (int i = 0;i < this.traits.Count();i++)
 			{
-				/*
 				switch (this.traits[i])
 				{
 					// Productivity
@@ -166,7 +165,7 @@ namespace CitySimproj
 						this.ps.Karma -= 10;
 						break;
 				}
-				*/
+				
 			}
 		}
 
