@@ -15,7 +15,6 @@ namespace CitySimproj
 		private int health_th; //treshold
 		private int basic_needs_th;
 		private int money_gain;
-		private int health;
 		private int karma;
 
 		public PersonalStats()
@@ -27,7 +26,6 @@ namespace CitySimproj
 			this.health_th = random.Next(5, 16);
 			this.basic_needs_th = random.Next(5, 16);
 			this.money_gain = random.Next(40, 61);
-			this.health = random.Next(40, 61);
 			this.karma = random.Next(40, 61);
 		}
 

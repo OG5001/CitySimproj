@@ -137,6 +137,8 @@ namespace CitySimproj
 
 					// Karma
 					case Npclib.Traits.Clumsy:
+						this.ps.Karma -= 10;
+						break;
 					case Npclib.Traits.AccidentProne:
 						this.ps.Karma += 10;
 						break;
