@@ -10,11 +10,7 @@
 
 			while (running)
 			{
-				Console.WriteLine("\n==== CITY BUILDER ====");
-				Console.WriteLine("1. Épület építés");
-				Console.WriteLine("2. Térkép megjelenítés");
-				Console.WriteLine("3. Épületek listázása");
-				Console.WriteLine("4. Kilépés");
+				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés");
 				int choice = int.Parse(Console.ReadLine());
 
 				switch (choice)
