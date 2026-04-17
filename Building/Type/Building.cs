@@ -2,7 +2,7 @@
 {
 	public class Building
 	{
-		// ==== Private adattagok ====
+		//Private adattagok
 		private static List<Building> buildings = new List<Building>();
 		private BuildingType type;
 		private string name;
@@ -28,7 +28,7 @@
 		private int electricityConsumption;
 		private int waterConsumption;
 
-		// ==== Public property-k ====
+		//Public property-k
 
 		public BuildingType Type { get => type; protected set => type = value; }
 		public string Name { get => name; set => name = value; }
@@ -47,8 +47,8 @@
 		public int ElectricityConsumption { get => electricityConsumption; protected set => electricityConsumption = value; }
 		public int WaterConsumption { get => waterConsumption; protected set => waterConsumption = value; }
 
-		// ==== Konstruktor ====
-		protected Building(string name, int x, int y)
+        // Konstruktor
+        protected Building(string name, int x, int y)
 		{
 			this.Name = name;
 			this.X = x;
@@ -56,7 +56,8 @@
 			this.CurrentHealth = MaxHealth;
 		}
 
-        //public static readonly Building Hospital = new("FAIL", 1, 1); így léne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
+        //public static readonly Building Hospital = new("Hospital", 1, 1);
+		//így léne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
 
 
 
@@ -82,7 +83,7 @@
 			return true;
 		}
 
-		// ==== Remove metódus ====
+		// Remove metódus
 		public static bool Remove(Building building)
 		{
 			if (building == null)
