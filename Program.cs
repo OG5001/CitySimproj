@@ -1,8 +1,10 @@
-﻿namespace Buildings
+﻿using CitySimproj;
+
+namespace Buildings
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+        static void Main(string[] args)
 		{
 			BuildingManager manager = new BuildingManager();
 
@@ -71,5 +73,5 @@
             //BuildingManager manager = new BuildingManager();
             // manager.Menu();
         }*/
-	}
+    }
 }

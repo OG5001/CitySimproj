@@ -15,8 +15,9 @@ namespace CitySimproj
 		private Race race;
 		protected int health;
 		private PersonalStats ps;
+		private Job job;
 
-		public string Name { get => name; set => name = value; }
+        public string Name { get => name; set => name = value; }
 		public int Age { get => age; set => age = value; }
 		public bool Sex { get => sex; set => sex = value; }
 		public int Id { get => id; set => id = value; }
@@ -47,7 +48,8 @@ namespace CitySimproj
 			this.race = (Race)random.Next(Enum.GetValues(typeof(Race)).Length); //Random race
 			this.traits = new List<Traits>();
 			this.ps = new PersonalStats();
-			AddTraits();
+			this.job =lib.jobs[random.Next(lib.jobs.Length)]; //Random job
+            AddTraits();
 			StatsCalculator();
 		}
 
@@ -167,9 +169,18 @@ namespace CitySimproj
 						this.ps.Karma -= 10;
 						break;
 				}
-				
+
+            }
+            //Job stat calculator, ha a job special thresholdjai felett vannak a statok, akkor +1 productivity, happyness
+			for (int i=0; i<this.job.Special.Length; i++)
+			{
+				if (this.job.Special[i] <= this.ps.Special[i])
+				{
+					this.ps.Happiness += 1;
+					this.ps.Productivity += 1;
+				}
 			}
-		}
+        }
 
 		public override string ToString()
 		{

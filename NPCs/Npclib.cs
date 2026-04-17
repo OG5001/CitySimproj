@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CitySimproj;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,31 +52,26 @@ namespace CitySimproj
 			Judaism
 		}
 
-		public enum Jobs
-		{
-			Unemployed,
-			Police,
-			Firefighter,
-			Doctor,
-			FactoryWorker,
-			Teacher,
-			Engineer,
-			Builder,
-			OfficeWorker,
-			Nurse,
-			GarbageCollector,
-			Clerk,
-			Waiter,
-			Chef,
-			SecurityGuard,
-			TransportationWorker,
-			Artist,
-			Musician,
-			Cleaner,
-			StreetVendor,
-			Banker,
-			Manager
-		}
+		public Job[] jobs = {
+			new Job("Unemployed",new int[]{ 0, 0, 0, 0, 0, 0, 0 },0,0),
+			new Job("Police",new int[]{ 5, 5, 5, 0, 0, 0, 0 }),
+			new Job("Firefighter",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
+			new Job("Doctor",new int[]{ 10, 10, 5, 0, 0, 0, 0 }),
+			new Job("Nurse",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
+			new Job("Factory Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Teacher",new int[]{ 5, 5, 5, 0, 0, 0, 0 }),
+			new Job("Engineer",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
+			new Job("Construction Worker",new int[]{ 5, 0, 0, 0, 0, 0, 0 }),
+			new Job("Office Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Garbage Collector",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Clerk",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Waiter",new int[]{ 0, 0, 5, 0, 0, 0, 0 }),
+			new Job("Chef",new int[]{ 5, 0, 5, 0, 0, 0, 0 }),
+			new Job("Transportation Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Artist",new int[]{ 0, 5, 10, 0, 0, 0, 0 }),
+			new Job("Cleaner",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
+			new Job("Banker",new int[]{ 0, 0, 0, 0, 0, 5, 0 })
+		};
 
 		public enum Race
 		{
