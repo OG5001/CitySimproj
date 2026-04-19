@@ -111,5 +111,10 @@ namespace Buildings
                     break;
             }
         }
+
+        public override string ToString()
+        {
+            return $"Service Building: {Name}, Type: {Type}, Cost: {BuildingCost}, Maintenance: {MaintenanceCost}, Capacity: {Capacity}, Tax Income: {TaxIncome}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption}";
+        }
     }
 }
