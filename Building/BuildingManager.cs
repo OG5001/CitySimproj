@@ -80,22 +80,8 @@ namespace Buildings
 			}
 			else if (type == typeof(Service))
 			{
-				switch ((Service)(input - 1))
-				{
-					case Service.School: b = new SchoolBuilding(XPosition, YPosition); break;
-					case Service.University: b = new UniversityBuilding(XPosition, YPosition); break;
-					case Service.Hospital: b = new Hospital(XPosition, YPosition); break;
-					case Service.PoliceStation: b = new PoliceStationBuilding(XPosition, YPosition); break;
-					case Service.FireStation: b = new FireStationBuilding(XPosition, YPosition); break;
-					case Service.PostOffice: b = new PostOfficeBuilding(XPosition, YPosition); break;
-					case Service.Library: b = new LibraryBuilding(XPosition, YPosition); break;
-					case Service.CityHall: b = new CityHallBuilding(XPosition, YPosition); break;
-					case Service.Court: b = new CourtBuilding(XPosition, YPosition); break;
-					case Service.Uszoda: b = new UszodaBuilding(XPosition, YPosition); break;
-					default: b = new ServiceBuilding(Enum.GetName(type, input - 1), (Service)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition); break;
-				}
-				buildingsBuilt.Add(type.Name, b);
-			}
+				buildingsBuilt.Add($"Service_{buildingsBuilt.Count + 1}", new ServiceBuilding(Enum.GetName(type, input - 1), (Service)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
+            }
 
 			else if (type == typeof(Utility))
 			{
