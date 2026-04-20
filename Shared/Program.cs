@@ -7,6 +7,8 @@ namespace Buildings
         static void Main(string[] args)
 		{
 			BuildingManager manager = new BuildingManager();
+			Treasury treasury = new Treasury();
+            Production product = new Production(treasury);
             manager.DefaultSetUp();
 
             bool running = true;
@@ -38,6 +40,9 @@ namespace Buildings
 						Console.WriteLine("Hibás");
 						break;
 				}
+
+				product.Calculate();
+				treasury.Balance();
 			}
 		}
 		/*static void Main(string[] args)
