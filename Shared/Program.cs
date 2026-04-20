@@ -7,10 +7,11 @@ namespace Buildings
         static void Main(string[] args)
 		{
 			BuildingManager manager = new BuildingManager();
+            manager.DefaultSetUp();
 
-			bool running = true;
+            bool running = true;
 
-			while (running)
+            while (running)
 			{
 				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés");
 				int choice = int.Parse(Console.ReadLine());

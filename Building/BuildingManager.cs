@@ -178,6 +178,13 @@ namespace Buildings
 		{
 			buildingsBuilt.Add("CityHall", new ServiceBuilding("City Hall", Service.CityHall, 1, 1));
 			buildingsBuilt.Add("Court", new ServiceBuilding("Court", Service.Court, 1, 2));
+			buildingsBuilt.Add("FireStation", new ServiceBuilding("Fire Station", Service.FireStation, 1, 3));
+			buildingsBuilt.Add("Hospital", new ServiceBuilding("Hospital", Service.Hospital, 1, 4));
+			buildingsBuilt.Add("PoliceStation", new ServiceBuilding("Police Station", Service.PoliceStation, 1, 5));
+			buildingsBuilt.Add("School", new ServiceBuilding("School", Service.School, 1, 6));
+			buildingsBuilt.Add("Apartment 1", new ResidentialBuilding("Apartment 1", Residential.ApartmentBlock, 2, 1));
+            buildingsBuilt.Add("Apartment 2", new ResidentialBuilding("Apartment 2", Residential.ApartmentBlock, 2, 2));
+			buildingsBuilt.Add("Supermarket", new CommercialBuilding("Supermarket", Commercial.Supermarket, 2, 3));
         }
 
 
