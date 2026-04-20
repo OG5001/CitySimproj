@@ -56,9 +56,11 @@
 			this.CurrentHealth = MaxHealth;
 		}
 
-        //public static readonly Building Hospital = new("Hospital", 1, 1);
-        //így léne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
-        //akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
+        public static readonly Building Hospital = new("Hospital", 1, 1);
+        //így kéne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
+        
+		
+		//akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
 
 
 
