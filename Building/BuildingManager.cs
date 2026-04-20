@@ -68,12 +68,20 @@ namespace Buildings
 			Console.WriteLine($"Kiválasztottad a {Enum.GetName(type, input - 1)} épületet.");
 			do
 			{
-				Console.WriteLine("Add meg az X koordinátát:");
+				Console.WriteLine("Add meg az X koordinátát(1-10):");
 				XPosition = int.Parse(Console.ReadLine());
-				Console.WriteLine("Add meg az Y koordinátát:");
+				Console.WriteLine("Add meg az Y koordinátát(1-10):");
 				YPosition = int.Parse(Console.ReadLine());
-			}
-			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10); 
+				if (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10)
+				{
+					Console.WriteLine("Az értékeknek 1 és 10 között kell lenniük. Próbáld újra.");
+				}
+				else if (buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition))
+				{
+					Console.WriteLine("Ezen a helyen már van egy épület. Válassz másik helyet.");
+				}
+            }
+			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10 || buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition));
 			if (type == typeof(Residential))
 			{
 				buildingsBuilt.Add($"Residential_{buildingsBuilt.Count + 1}", new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
