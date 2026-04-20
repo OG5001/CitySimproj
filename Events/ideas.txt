@@ -1,0 +1,19 @@
+--- Event Types: ---
+- Natural Events
+Earthquake
+Tsunami
+Vulcanic Eruption
+Sinkhole
+Tornado
+Blizzard
+Dust Storm
+Thunderstorm
+Droughts
+WildFires
+Heat/Cold Waves
+Meteor Impact
+
+- Economic Events
+Insect Infestation
+
+- Person Events
