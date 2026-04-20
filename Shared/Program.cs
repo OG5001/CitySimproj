@@ -9,10 +9,11 @@ namespace Buildings
 			BuildingManager manager = new BuildingManager();
 			Treasury treasury = new Treasury();
             Production product = new Production(treasury);
+            manager.DefaultSetUp();
 
             bool running = true;
 
-			while (running)
+            while (running)
 			{
 				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés");
 				int choice = int.Parse(Console.ReadLine());
