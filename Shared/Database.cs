@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buildings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,9 @@ namespace CitySimproj
 		private List<BuildingEvents> buildingEvents;
 		private List<EconomicEvents> economicEvents;
 		private List<Person> npcS;
-		
-		private Random random;
+        private Dictionary<string, Building> buildingsBuilt;
+
+        private Random random;
 
 		public Database()
 		{
@@ -21,15 +23,18 @@ namespace CitySimproj
 			buildingEvents = new List<BuildingEvents>();
 			economicEvents = new List<EconomicEvents>();
 			npcS = new List<Person>();
+			buildingsBuilt = new Dictionary<string, Building>();
 		}
 
 		internal List<NPCEvents> NpcEvents { get => npcEvents; set => npcEvents = value; }
 		internal List<BuildingEvents> BuildingEvents { get => buildingEvents; set => buildingEvents = value; }
 		internal List<EconomicEvents> EconomicEvents { get => economicEvents; set => economicEvents = value; }
 		internal List<Person> NpcS { get => npcS; set => npcS = value; }
+        public Dictionary<string, Building> BuildingsBuilt { get => buildingsBuilt; set => buildingsBuilt = value; }
 
-		// Add 
-		public void NPCAdd(List<Person> p)
+
+        // Add 
+        public void NPCAdd(List<Person> p)
 		{
 			foreach (var i in p)
 			{

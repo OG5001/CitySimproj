@@ -1,5 +1,6 @@
 ﻿
 
+using CitySimproj;
 using System.Net.NetworkInformation;
 
 namespace Buildings
@@ -59,13 +60,20 @@ namespace Buildings
         public void zetenyMiatt(Type type)
 
 		{
-			Building b;
+            Building b;
 			Console.WriteLine("-------------------------------------------");
-			int input = int.Parse(Console.ReadLine());
+			int XPosition = 0;
+			int YPosition = 0;
+            int input = int.Parse(Console.ReadLine());
 			Console.WriteLine($"Kiválasztottad a {Enum.GetName(type, input - 1)} épületet.");
-			Console.WriteLine("Melyik X és Y értékre szeretnéd ülteti: ");
-			int XPosition = int.Parse(Console.ReadLine());
-			int YPosition = int.Parse(Console.ReadLine());
+			do
+			{
+				Console.WriteLine("Add meg az X koordinátát:");
+				XPosition = int.Parse(Console.ReadLine());
+				Console.WriteLine("Add meg az Y koordinátát:");
+				YPosition = int.Parse(Console.ReadLine());
+			}
+			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10); 
 			if (type == typeof(Residential))
 			{
 				buildingsBuilt.Add($"Residential_{buildingsBuilt.Count + 1}", new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
@@ -88,69 +96,9 @@ namespace Buildings
 				buildingsBuilt.Add($"Utility_{buildingsBuilt.Count + 1}", new UtilityBuilding(Enum.GetName(type, input - 1), (Utility)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
 			}
 			Console.WriteLine("Sikerült :D");
-		}/*
-	public void zetenyMiatt(Type type)
-		{
-			Console.WriteLine("-------------------------------------------");
-			int input = int.Parse(Console.ReadLine());
-
-			string name = Enum.GetName(type, input - 1); //Program
-
-			Console.WriteLine($"Kiválasztottad a {name} épületet.");
-			Console.WriteLine("Melyik X és Y értékre szeretnéd ülteti: ");
-
-			int x = int.Parse(Console.ReadLine());
-			int y = int.Parse(Console.ReadLine());
-
-			Building b;
-
-			if (type == typeof(Residential))
-				b = new ResidentialBuilding(name, x, y);
-
-			else if (type == typeof(Commercial))
-				b = new CommercialBuilding(name, x, y);
-
-			else if (type == typeof(Industrial))
-				b = new IndustrialBuilding(name, x, y);
-
-			else if (type == typeof(Utility))
-				b = new UtilityBuilding(name, x, y);
-
-			else if (type == typeof(Service))
-			{
-				switch ((Service)(input - 1))
-				{
-					case Service.School: b = new SchoolBuilding(x, y); break;
-					case Service.University: b = new UniversityBuilding(x, y); break;
-					case Service.Hospital: b = new Hospital(x, y); break;
-					case Service.PoliceStation: b = new PoliceStationBuilding(x, y); break;
-					case Service.FireStation: b = new FireStationBuilding(x, y); break;
-					case Service.PostOffice: b = new PostOfficeBuilding(x, y); break;
-					case Service.Library: b = new LibraryBuilding(x, y); break;
-					case Service.CityHall: b = new CityHallBuilding(x, y); break;
-					case Service.Court: b = new CourtBuilding(x, y); break;
-					case Service.Uszoda: b = new UszodaBuilding(x, y); break;
-
-					default: b = new ServiceBuilding(name, x, y); break;
-				}
-			}
-			else
-			{
-				throw new Exception("Ismeretlen típus");
-			}
-
-			// after successfully adding a building
-			if (Building.Add(b))
-			{
-				Console.WriteLine("Sikerült :D");
-				Building.Draw(); // <-- call Draw here to see the updated grid immediately
-			}
-			else
-			{
-				Console.WriteLine("Nem sikerült (foglalt hely)");
-			}
 		}
-		*/
+
+
 		public static void Draw()
 		{
 			List<Building> buildings = new List<Building>();
@@ -188,20 +136,19 @@ namespace Buildings
 				matrix[b.X, b.Y] = b;
 			}
 
-			// Kirajzolás
-			for (int y = 1; y <= maxY + 1; y++)
+			// Kirajzolás - 1-től kezd
+			for (int y = 1; y <= maxY; y++)
 			{
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
 					Console.Write($" |{"----------",10}| ");
 				}
 				Console.WriteLine();
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
-					if (matrix[x - 1, y - 1] != null)
+					if (matrix[x, y] != null)
 					{
-						Console.Write($" |{matrix[x - 1, y - 1].Name,10}| ");
-
+						Console.Write($" |{matrix[x, y].Name,10}| ");
 					}
 					else
 					{
@@ -209,7 +156,7 @@ namespace Buildings
 					}
 				}
 				Console.WriteLine();
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
 					Console.Write($" |{"----------",10}| ");
 				}
@@ -226,5 +173,17 @@ namespace Buildings
 				Console.WriteLine(kvp.Value);
 			}
 		}
-	}
+
+		public void DefaultSetUp()
+		{
+			buildingsBuilt.Add("CityHall", new ServiceBuilding("City Hall", Service.CityHall, 1, 1));
+			buildingsBuilt.Add("Court", new ServiceBuilding("Court", Service.Court, 1, 2));
+        }
+
+
+        public static List<Building> GetAllBuildings()
+        {
+            return new List<Building>(buildingsBuilt.Values);
+        }
+    }
 }
