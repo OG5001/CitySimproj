@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cityhall
+namespace CitySimproj
 {
     internal class Treasury
     {

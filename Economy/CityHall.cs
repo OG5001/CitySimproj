@@ -1,8 +1,8 @@
-﻿namespace Cityhall
+﻿namespace CitySimproj
 {
-    internal class Program
+    internal class CityHall
     {
-        static void Main(string[] args)
+        static void Hall()
         {
           Treasury tr = new Treasury(1000000, false);
             tr.EUMoney();
