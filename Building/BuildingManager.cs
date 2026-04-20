@@ -61,11 +61,18 @@ namespace Buildings
 		{
 			Building b;
 			Console.WriteLine("-------------------------------------------");
-			int input = int.Parse(Console.ReadLine());
+			int XPosition = 0;
+			int YPosition = 0;
+            int input = int.Parse(Console.ReadLine());
 			Console.WriteLine($"Kiválasztottad a {Enum.GetName(type, input - 1)} épületet.");
-			Console.WriteLine("Melyik X és Y értékre szeretnéd ülteti: ");
-			int XPosition = int.Parse(Console.ReadLine());
-			int YPosition = int.Parse(Console.ReadLine());
+			do
+			{
+				Console.WriteLine("Add meg az X koordinátát:");
+				XPosition = int.Parse(Console.ReadLine());
+				Console.WriteLine("Add meg az Y koordinátát:");
+				YPosition = int.Parse(Console.ReadLine());
+			}
+			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10); 
 			if (type == typeof(Residential))
 			{
 				buildingsBuilt.Add($"Residential_{buildingsBuilt.Count + 1}", new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
@@ -188,20 +195,19 @@ namespace Buildings
 				matrix[b.X, b.Y] = b;
 			}
 
-			// Kirajzolás
-			for (int y = 1; y <= maxY + 1; y++)
+			// Kirajzolás - 1-től kezd
+			for (int y = 1; y <= maxY; y++)
 			{
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
 					Console.Write($" |{"----------",10}| ");
 				}
 				Console.WriteLine();
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
-					if (matrix[x - 1, y - 1] != null)
+					if (matrix[x, y] != null)
 					{
-						Console.Write($" |{matrix[x - 1, y - 1].Name,10}| ");
-
+						Console.Write($" |{matrix[x, y].Name,10}| ");
 					}
 					else
 					{
@@ -209,7 +215,7 @@ namespace Buildings
 					}
 				}
 				Console.WriteLine();
-				for (int x = 1; x <= maxX + 1; x++)
+				for (int x = 1; x <= maxX; x++)
 				{
 					Console.Write($" |{"----------",10}| ");
 				}
