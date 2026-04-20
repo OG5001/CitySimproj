@@ -1,3 +1,4 @@
+using Buildings;
 using System.Globalization;
 
 namespace Varos_Gazdasag; 
@@ -33,5 +34,6 @@ internal class Program
             Console.WriteLine("\nNext turn...");
             Console.ReadLine();
         }
+        var buildings = BuildingManager.GetAllBuildings();
     }
 }

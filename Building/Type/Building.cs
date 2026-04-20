@@ -56,11 +56,21 @@
 			this.CurrentHealth = MaxHealth;
 		}
 
-        public static readonly Building Hospital = new("Hospital", 1, 1);
+        //public static readonly Building CityHall= new("City Hall", 1, 1);
+        //public static readonly Building Court= new("Court", 1, 1);
+        //public static readonly Building FireStation = new("Fire Station", 1, 1);
+        //public static readonly Building Hospital = new("Hospital", 1, 1);
+        //public static readonly Building Library = new("Library", 1, 1);
+        //public static readonly Building PoliceStation = new("Police Station", 1, 1);
+        //public static readonly Building PostOffice= new("PostOffice", 1, 1);
+        //public static readonly Building School = new("School", 1, 1);
+        //public static readonly Building University = new("University", 1, 1);
+        //public static readonly Building Uszoda = new("Uszoda", 1, 1);
+
         //így kéne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
-        
-		
-		//akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
+
+
+        //akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
 
 
 
@@ -104,62 +114,5 @@
 
 			return false;
 		}
-		/*
-		public static void Draw()
-		{
-			// Meghatározzuk a pálya méretét
-			int maxX = 0;
-			int maxY = 0;
-
-			for (int i = 0; i < buildings.Count; i++)
-			{
-				if (buildings[i].X > maxX)
-					maxX = buildings[i].X;
-
-				if (buildings[i].Y > maxY)
-					maxY = buildings[i].Y;
-			}
-
-			// Mátrix létrehozása
-			Building[,] matrix = new Building[maxX + 1, maxY + 1];
-
-			// Feltöltés
-			for (int i = 0; i < buildings.Count; i++)
-			{
-				Building b = buildings[i];
-				matrix[b.X, b.Y] = b;
-			}
-
-			// Kirajzolás
-			for (int y = 1; y <= maxY + 1; y++)
-			{
-
-				for (int x = 1; x <= maxX + 1; x++)
-				{
-					if (matrix[x - 1, y - 1] != null)
-					{
-						Console.Write($"|{"Ház ",10}|");
-					}
-					else
-					{
-						Console.Write($"{"  ",10}");
-					}
-				}
-				Console.WriteLine();
-				for (int x = 1; x <= maxX + 1; x++)
-				{
-					Console.Write($"{"--------",10}");
-				}
-			}
-			Console.WriteLine();
-		}
-
-		public static void Kiiratas()
-		{
-			for (int i = 0; i < buildings.Count; i++)
-			{
-				Console.WriteLine(buildings[i].name);
-			}
-		}*/
 	}
 }
