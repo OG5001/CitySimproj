@@ -1,4 +1,4 @@
-namespace Varos_Gazdasag;
+namespace CitySimproj;
 
 internal class EnergySystem
 {
