@@ -173,6 +173,22 @@ namespace Buildings
 				Console.WriteLine(kvp.Value);
 			}
 		}
+		public static void RemoveBuilding(Building building)
+		{
+			string keyToRemove = null;
+			foreach (KeyValuePair<string, Building> kvp in buildingsBuilt)
+			{
+				if (kvp.Value == building)
+				{
+					keyToRemove = kvp.Key;
+					break;
+				}
+			}
+			if (keyToRemove != null)
+			{
+				buildingsBuilt.Remove(keyToRemove);
+			}
+		}
 
 		public void DefaultSetUp()
 		{
