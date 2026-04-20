@@ -68,12 +68,20 @@ namespace Buildings
 			Console.WriteLine($"Kiválasztottad a {Enum.GetName(type, input - 1)} épületet.");
 			do
 			{
-				Console.WriteLine("Add meg az X koordinátát:");
+				Console.WriteLine("Add meg az X koordinátát(1-10):");
 				XPosition = int.Parse(Console.ReadLine());
-				Console.WriteLine("Add meg az Y koordinátát:");
+				Console.WriteLine("Add meg az Y koordinátát(1-10):");
 				YPosition = int.Parse(Console.ReadLine());
-			}
-			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10); 
+				if (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10)
+				{
+					Console.WriteLine("Az értékeknek 1 és 10 között kell lenniük. Próbáld újra.");
+				}
+				else if (buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition))
+				{
+					Console.WriteLine("Ezen a helyen már van egy épület. Válassz másik helyet.");
+				}
+            }
+			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10 || buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition));
 			if (type == typeof(Residential))
 			{
 				buildingsBuilt.Add($"Residential_{buildingsBuilt.Count + 1}", new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
@@ -194,6 +202,13 @@ namespace Buildings
 		{
 			buildingsBuilt.Add("CityHall", new ServiceBuilding("City Hall", Service.CityHall, 1, 1));
 			buildingsBuilt.Add("Court", new ServiceBuilding("Court", Service.Court, 1, 2));
+			buildingsBuilt.Add("FireStation", new ServiceBuilding("Fire Station", Service.FireStation, 1, 3));
+			buildingsBuilt.Add("Hospital", new ServiceBuilding("Hospital", Service.Hospital, 1, 4));
+			buildingsBuilt.Add("PoliceStation", new ServiceBuilding("Police Station", Service.PoliceStation, 1, 5));
+			buildingsBuilt.Add("School", new ServiceBuilding("School", Service.School, 1, 6));
+			buildingsBuilt.Add("Apartment 1", new ResidentialBuilding("Apartment 1", Residential.ApartmentBlock, 2, 1));
+            buildingsBuilt.Add("Apartment 2", new ResidentialBuilding("Apartment 2", Residential.ApartmentBlock, 2, 2));
+			buildingsBuilt.Add("Supermarket", new CommercialBuilding("Supermarket", Commercial.Supermarket, 2, 3));
         }
 
 

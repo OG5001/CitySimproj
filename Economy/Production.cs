@@ -1,34 +1,51 @@
 using Buildings;
 using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 namespace CitySimproj; 
 
 internal class Production
 {
-    static void Produce()
+    private int electricity = 0;
+    private int water = 0;
+    private Treasury treasury;
+
+    public Production(Treasury t)
     {
-        int cmd;
-        
-        while (true)
-        {
-            Console.WriteLine("--- NEW TURN ---");
-
-
-            Console.WriteLine("\n--- Production ---");
-
-            Console.WriteLine("\n--- Consumption ---");
-
-
-            Console.WriteLine("\nChange electric generator amount:");
-            cmd = int.Parse(Console.ReadLine()!);
-
-            Console.WriteLine("\nChange water silo amount:");
-            cmd = int.Parse(Console.ReadLine()!);
-
-
-            Console.WriteLine("\nNext turn...");
-            Console.ReadLine();
-        }
+        this.treasury = t;
+    }
+    public void Calculate()
+    {
         var buildings = BuildingManager.GetAllBuildings();
+        
+
+        foreach (var building in buildings)
+        {
+            electricity = electricity - building.ElectricityConsumption;
+            water = water - building.WaterConsumption;
+        }
+
+        Console.WriteLine($"Electricity: {electricity}");
+        Console.WriteLine($"Water: {water}");
+
+
+        if (electricity > 0)
+        {
+            int cmd = 0;
+            Console.WriteLine("\n(1) Sell excess electricity\t(2) Save excess electricity (for the next turn)");
+            do
+            {
+                cmd = int.Parse(Console.ReadLine()!);
+            }
+            while (cmd < 0 || cmd > 2);
+
+            if (cmd == 1)
+            {
+                treasury.AddMoney(electricity);
+                electricity = 0;
+            }
+        }
+
     }
 }

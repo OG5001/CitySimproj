@@ -8,10 +8,13 @@ namespace Buildings
 		{
 			BuildingManager manager = new BuildingManager();
 			EventManager eventManager = new EventManager();
+			Treasury treasury = new Treasury();
+            Production product = new Production(treasury);
+            manager.DefaultSetUp();
 
-			bool running = true;
+            bool running = true;
 
-			while (running)
+            while (running)
 			{
 				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés\n\t5. Következő nap");
 				int choice = int.Parse(Console.ReadLine());
@@ -41,6 +44,9 @@ namespace Buildings
 						Console.WriteLine("Hibás");
 						break;
 				}
+
+				product.Calculate();
+				treasury.Balance();
 			}
 		}
 		/*static void Main(string[] args)
