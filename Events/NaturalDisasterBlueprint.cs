@@ -11,9 +11,9 @@ namespace CitySimproj
     // The Blueprint class for Natural Disasters.
     abstract class NaturalDisasterBlueprint
     {
-        string name;
-        int chance;
-        int duration;
+        protected string name;
+        protected int chance;
+        protected int duration;
 
         public NaturalDisasterBlueprint(string name, int chance, int duration)
         {

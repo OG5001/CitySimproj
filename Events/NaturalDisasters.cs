@@ -8,21 +8,22 @@ using System.Threading.Tasks;
 namespace CitySimproj
 {
 
-    class NaturalDisasters : NaturalDisasterBlueprint
+// --- NATURAL DISASTERS ---
+
+    class Earthquake : NaturalDisasterBlueprint
     {
-        public NaturalDisasters(string name, int chance, int duration) : base(name, chance, duration)
-        {
-        }
+        public Earthquake() : base("Earthquake", 20, 5)  { }
 
         public override void StartEffect()
         {
-            // Implementation for starting the natural disaster effect
+            
         }
 
         public override void EndEffect()
         {
-            // Implementation for ending the natural disaster effect
+            
         }
     }
+    
 
 }
