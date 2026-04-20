@@ -7,6 +7,7 @@ namespace Buildings
         static void Main(string[] args)
 		{
 			BuildingManager manager = new BuildingManager();
+			EventManager eventManager = new EventManager();
 			Treasury treasury = new Treasury();
             Production product = new Production(treasury);
             manager.DefaultSetUp();
@@ -15,7 +16,7 @@ namespace Buildings
 
             while (running)
 			{
-				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés");
+				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés\n\t5. Következő nap");
 				int choice = int.Parse(Console.ReadLine());
 
 				switch (choice)
@@ -34,6 +35,9 @@ namespace Buildings
 
 					case 4:
 						running = false;
+						break;
+					case 5:
+						eventManager.Chance();
 						break;
 
 					default:

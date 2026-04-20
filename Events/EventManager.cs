@@ -8,8 +8,21 @@ namespace CitySimproj
 {
 	internal class EventManager
 	{
-
-		// List of active Events
-		private List<Event> activeEvents = new List<Event>();
+		public void Chance()
+		{
+			Random random = new Random();
+			
+			for (int i = 0; i < 10; i++)
+			{
+				int chanceToHappen = random.Next(0, 100);
+				// Happening the event
+				if (chanceToHappen < 5) 
+				{
+					Earthquake earthquake = new Earthquake();
+					earthquake.StartEffect();
+					break;
+				}
+			}
+		}
 	}
 }
