@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace CitySimproj
         public override void StartEffect()
         {
             // All building + random
-            List<Building> allBuildings = BuildingManager.GetAllBuildings();
+            var allBuildings = BuildingManager.GetAllBuildings();
             Random random = new Random();
 
             if (allBuildings.Count == 0)
@@ -42,17 +43,18 @@ namespace CitySimproj
                 for (int i = 0; i < randomBuildingNumber; i++)
                 {
                     // random indexed building gets damaged by random damage
-
+                    
                     int randomIndex = random.Next(allBuildings.Count);
-                    Building randomBuilding = allBuildings[randomIndex];
-                    randomBuilding.CurrentHealth -= randomDamageToBuilding;
-                    Console.WriteLine($"The {randomBuilding.Name} has been damaged by {randomDamageToBuilding} due to the earthquake!");
+                    allBuildings[randomIndex].CurrentHealth -= randomDamageToBuilding;
+
+                    Console.WriteLine($"The { allBuildings[randomIndex].Name} has been damaged by {randomDamageToBuilding} due to the earthquake!");
 
                     // If the building's health drops to 0 or below.
-                    if (randomBuilding.CurrentHealth <= 0)
+                    if (allBuildings[randomIndex].CurrentHealth <= 0)
                     {
-                        BuildingManager.RemoveBuilding(randomBuilding);
-                        Console.WriteLine($"The {randomBuilding.Name} has been destroyed by the earthquake!");
+                        BuildingManager.RemoveBuilding(allBuildings[randomIndex]);
+                        Console.WriteLine($"The {allBuildings[randomIndex].Name} has been destroyed by the earthquake!");
+                        break;
                     }
                 }
             } 

@@ -53,7 +53,7 @@
 			this.Name = name;
 			this.X = x;
 			this.Y = y;
-			this.CurrentHealth = MaxHealth;
+			this.CurrentHealth = 100;
 		}
 
         //public static readonly Building CityHall= new("City Hall", 1, 1);
