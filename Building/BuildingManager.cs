@@ -9,7 +9,8 @@ namespace Buildings
 	{
 
 		static Dictionary<string, Building> buildingsBuilt = new Dictionary<string, Building>();
-		public void Menu()
+	
+        public void Menu()
 		{
 			int x;
 			do
@@ -106,11 +107,12 @@ namespace Buildings
 			Console.WriteLine("Sikerült :D");
 		}
 
+		
 
 		public static void Draw()
 		{
 			List<Building> buildings = new List<Building>();
-			foreach (KeyValuePair<string, Building> kvp in buildingsBuilt)
+            foreach (KeyValuePair<string, Building> kvp in buildingsBuilt)
 			{
 				buildings.Add(kvp.Value);
 			}
@@ -156,7 +158,8 @@ namespace Buildings
 				{
 					if (matrix[x, y] != null)
 					{
-						Console.Write($" |{matrix[x, y].Name,10}| ");
+                        string elsoHat = matrix[x, y].Name.Length >= 6 ? matrix[x, y].Name.Substring(0, 6): matrix[x, y].Name;
+                        Console.Write($" |{elsoHat,10}| ");
 					}
 					else
 					{
