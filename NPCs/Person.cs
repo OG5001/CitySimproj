@@ -26,6 +26,7 @@ namespace CitySimproj
 		public int Health { get => health; set => health = value; }
 		internal List<Traits> Traits { get => new List<Traits>(); set => traits = value; }
 		internal PersonalStats Ps { get => ps; set => ps = value; }
+		internal Job Job { get => job; set => job = value; }
 
 		public Person(int id)
 		{

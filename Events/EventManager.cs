@@ -11,17 +11,11 @@ namespace CitySimproj
 		public void Chance()
 		{
 			Random random = new Random();
-			
-			for (int i = 0; i < 10; i++)
+			int randomChanceEarthquake = random.Next(1,5001);
+			if (randomChanceEarthquake == 1)
 			{
-				int chanceToHappen = random.Next(0, 100);
-				// Happening the event
-				if (chanceToHappen < 5) 
-				{
-					Earthquake earthquake = new Earthquake();
-					earthquake.StartEffect();
-					break;
-				}
+				Earthquake earthquake = new Earthquake();
+				earthquake.StartEffect();
 			}
 		}
 	}
