@@ -27,28 +27,35 @@ namespace CitySimproj
                 Console.WriteLine("The Earthquake shook the ground, but no buildings were there to be damaged.");
                 return;
             }
-            
-            int maxTargets = (int)Math.Ceiling((double)allBuildings.Count / 4);
-            int safeMax = Math.Max(2, maxTargets + 1);
-
-            int randomBuildingNumber = random.Next(1, safeMax);
-            int randomDamageToBuilding = random.Next(15, 45);
-
-            // Applying effect to x amount of random buildings
-            for (int i = 0; i < randomBuildingNumber; i++)
+            else if (allBuildings.Count == 1)
             {
-                int randomIndex = random.Next(allBuildings.Count);
-                Building randomBuilding = allBuildings[randomIndex];
-                randomBuilding.CurrentHealth -= randomDamageToBuilding;
-                Console.WriteLine($"The {randomBuilding.Name} has been damaged by {randomDamageToBuilding} due to the earthquake!");
-
-                // If the building's health drops to 0 or below.
-                if (randomBuilding.CurrentHealth <= 0)
-                {
-                    BuildingManager.RemoveBuilding(randomBuilding);
-                    Console.WriteLine($"The {randomBuilding.Name} has been destroyed by the earthquake!");
-                }
+                // Mercyful Earthquake
+                Console.WriteLine("The Earthquake shook the ground, but no buildings were damaged.");
+                return;
             }
+            else
+            {
+                int randomBuildingNumber = random.Next(1, allBuildings.Count); // Affected buildings
+                int randomDamageToBuilding = random.Next(15, 45); // Damage to all the affected buildings
+
+                // Applying effect to x amount of random buildings
+                for (int i = 0; i < randomBuildingNumber; i++)
+                {
+                    // random indexed building gets damaged by random damage
+
+                    int randomIndex = random.Next(allBuildings.Count);
+                    Building randomBuilding = allBuildings[randomIndex];
+                    randomBuilding.CurrentHealth -= randomDamageToBuilding;
+                    Console.WriteLine($"The {randomBuilding.Name} has been damaged by {randomDamageToBuilding} due to the earthquake!");
+
+                    // If the building's health drops to 0 or below.
+                    if (randomBuilding.CurrentHealth <= 0)
+                    {
+                        BuildingManager.RemoveBuilding(randomBuilding);
+                        Console.WriteLine($"The {randomBuilding.Name} has been destroyed by the earthquake!");
+                    }
+                }
+            } 
         }
     }
     

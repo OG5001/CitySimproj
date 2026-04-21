@@ -38,15 +38,14 @@ namespace Buildings
 						break;
 					case 5:
 						eventManager.Chance();
+						product.Calculate();
+						treasury.Balance();
 						break;
 
 					default:
 						Console.WriteLine("Hibás");
 						break;
 				}
-
-				product.Calculate();
-				treasury.Balance();
 			}
 		}
 		
