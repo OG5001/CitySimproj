@@ -11,7 +11,7 @@ namespace CitySimproj
 		public void Chance()
 		{
 			Random random = new Random();
-			int randomChanceEarthquake = random.Next(1,2);
+			int randomChanceEarthquake = random.Next(1,5001);
 			if (randomChanceEarthquake == 1)
 			{
 				Earthquake earthquake = new Earthquake();
