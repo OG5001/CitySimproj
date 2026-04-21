@@ -14,7 +14,7 @@ namespace Buildings
 			int x;
 			do
 			{
-				Console.WriteLine("Válassz az alábbiak közül\n\t1. Residential Building\n\t2. Commercial Building\n\t3. Industrial Building\n\t4. Service\n\t5. Utility\n\t6. Kilépés");
+				Console.WriteLine("\nChoose building type\n\t1. Residential Building\n\t2. Commercial Building\n\t3. Industrial Building\n\t4. Service\n\t5. Utility\n\t6. Exit");
 				x = int.Parse(Console.ReadLine());
 				Console.WriteLine("-------------------------------------------");
 
@@ -41,7 +41,6 @@ namespace Buildings
                         zetenyMiatt(typeof(Utility));
 						break;
 					case 6:
-						Console.WriteLine("Vissza a főmenüre");
 						break;
 				}
 			} while (x != 6);
@@ -55,8 +54,6 @@ namespace Buildings
             }
         }
         
-
-
         public void zetenyMiatt(Type type)
 
 		{
@@ -65,20 +62,20 @@ namespace Buildings
 			int XPosition = 0;
 			int YPosition = 0;
             int input = int.Parse(Console.ReadLine());
-			Console.WriteLine($"Kiválasztottad a {Enum.GetName(type, input - 1)} épületet.");
+			Console.WriteLine($"\nYou chose the {Enum.GetName(type, input - 1)} building.");
 			do
 			{
-				Console.WriteLine("Add meg az X koordinátát(1-10):");
+				Console.WriteLine("X coordinate (1-10):");
 				XPosition = int.Parse(Console.ReadLine());
-				Console.WriteLine("Add meg az Y koordinátát(1-10):");
+				Console.WriteLine("Y coordinate (1-10):");
 				YPosition = int.Parse(Console.ReadLine());
 				if (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10)
 				{
-					Console.WriteLine("Az értékeknek 1 és 10 között kell lenniük. Próbáld újra.");
+					Console.WriteLine("It has to be between 1-10. Try again.");
 				}
 				else if (buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition))
 				{
-					Console.WriteLine("Ezen a helyen már van egy épület. Válassz másik helyet.");
+					Console.WriteLine("There is already a building in that spot. Choose another one.");
 				}
             }
 			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10 || buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition));
