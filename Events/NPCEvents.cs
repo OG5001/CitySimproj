@@ -17,6 +17,8 @@ namespace CitySimproj
 
 		public void ApplyEffect()
 		{
+			Random random = new Random();
+			int randomPersonIndex = random.Next(0, people.Count);
 
 			Console.WriteLine("Applied effect.");
 
@@ -26,6 +28,7 @@ namespace CitySimproj
 				p.Health =0;
 				Deaths(p);
 			}
+			Lotto(people[randomPersonIndex]);
 		}
 
 		public void RemoveEffect()
@@ -45,9 +48,8 @@ namespace CitySimproj
 
 		public void Lotto(Person p)
 		{
-			//Nincs NPC-nek pénze
+			//p.Job.Salary += 10000;
 		}
-
 
 		/*public override string ToString()
 		{
