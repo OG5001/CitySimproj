@@ -17,6 +17,13 @@ namespace CitySimproj
 				Earthquake earthquake = new Earthquake();
 				earthquake.StartEffect();
 			}
-		}
+
+            int randomChanceTsunami = random.Next(2, 5001);
+            if (randomChanceTsunami == 2)
+            {
+                Tsunami tsunami = new Tsunami();
+                tsunami.StartEffect();
+            }
+        }
 	}
 }

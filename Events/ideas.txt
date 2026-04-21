@@ -1,9 +1,5 @@
 --- Event Types: ---
 - Natural Events
-Earthquake
-Tsunami
-Vulcanic Eruption
-Sinkhole
 Tornado
 Blizzard
 Dust Storm
