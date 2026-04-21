@@ -16,7 +16,7 @@ namespace Buildings
 
             while (running)
 			{
-				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Épület építés\n\t2. Térkép megjelenítés\n\t3. Épületek listázása\n\t4. Kilépés\n\t5. Következő nap");
+				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Build\n\t2. Map\n\t3. List buildings\n\t4. Exit\n\t5. Next Day");
 				int choice = int.Parse(Console.ReadLine());
 
 				switch (choice)
@@ -43,7 +43,7 @@ namespace Buildings
 						break;
 
 					default:
-						Console.WriteLine("Hibás");
+						Console.WriteLine("ERROR");
 						break;
 				}
 			}

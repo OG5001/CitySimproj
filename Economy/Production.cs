@@ -26,7 +26,7 @@ internal class Production
             water = water - building.WaterConsumption;
         }
 
-        Console.WriteLine($"Electricity: {electricity}");
+        Console.WriteLine($"\nElectricity: {electricity}");
         Console.WriteLine($"Water: {water}");
 
 
