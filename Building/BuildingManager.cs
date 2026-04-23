@@ -70,7 +70,7 @@ namespace Buildings
 				XPosition = int.Parse(Console.ReadLine());
 				Console.WriteLine("Y coordinate (1-10):");
 				YPosition = int.Parse(Console.ReadLine());
-				if (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10)
+				if (XPosition <= 0 || XPosition > 10 || YPosition <= 0 || YPosition > 10)
 				{
 					Console.WriteLine("It has to be between 1-10. Try again.");
 				}
@@ -79,7 +79,7 @@ namespace Buildings
 					Console.WriteLine("There is already a building in that spot. Choose another one.");
 				}
             }
-			while (XPosition <= 0 || XPosition >= 10 || YPosition <= 0 || YPosition >= 10 || buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition));
+			while (XPosition <= 0 || XPosition > 10 || YPosition <= 0 || YPosition > 10 || buildingsBuilt.Values.Any(b => b.X == XPosition && b.Y == YPosition));
 			if (type == typeof(Residential))
 			{
 				buildingsBuilt.Add($"Residential_{buildingsBuilt.Count + 1}", new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition));
