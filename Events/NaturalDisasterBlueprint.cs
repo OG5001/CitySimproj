@@ -1,3 +1,4 @@
+using Buildings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,40 @@ namespace CitySimproj
     // The Blueprint class for Natural Disasters.
     abstract class NaturalDisasterBlueprint
     {
-        protected string name;
+        private string name;
+        private int minDamage;
+        private int maxDamage;
 
-        public NaturalDisasterBlueprint(string name)
+        public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage)
         {
             this.name = name;
+            this.minDamage = minDamage;
+            this.maxDamage = maxDamage;
         }
 
-        public abstract void StartEffect();
+        public virtual void StartEffect()
+        {
+            var allBuildings = BuildingManager.GetAllBuildings();
+            Random random = new Random();
+            var shuffledBuildings = allBuildings.OrderBy(_ => random.Next()).ToList(); 
+
+
+            if (shuffledBuildings.Count > 1) 
+            {
+                int numberOfAffectedBuildings = random.Next(1, shuffledBuildings.Count); 
+                for (int i = 0; i < numberOfAffectedBuildings; i++)
+                {
+                    shuffledBuildings[i].CurrentHealth -= random.Next(minDamage, maxDamage); 
+                }
+            }
+        }
+
+        // --- Explanation ---
+        // Inviting all the Buildings as a var. 
+        // Creating a var that is the shuffled list of the buildings.
+        // If there are more than 1 building, we can apply the Natural Disaster effect. (if its 0 or 1, there will be no events.)
+        // Creating a random number of buildings that will be affected by the Natural Disaster.
+        // Looping through the number of affected buildings, and applying the random damage.
     }
 
 }
