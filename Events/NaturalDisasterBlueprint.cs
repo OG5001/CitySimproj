@@ -25,7 +25,7 @@ namespace CitySimproj
 
         public virtual void StartEffect()
         {
-            var allBuildings = BuildingManager.GetAllBuildings();
+            var allBuildings = BuildingManager.GetAllBuildingLocations();
             Random random = new Random();
             var shuffledBuildings = allBuildings.OrderBy(_ => random.Next()).ToList(); 
 
@@ -35,8 +35,8 @@ namespace CitySimproj
                 int numberOfAffectedBuildings = random.Next(1, shuffledBuildings.Count); 
                 for (int i = 0; i < numberOfAffectedBuildings; i++)
                 {
-                    shuffledBuildings[i].CurrentHealth -= random.Next(minDamage, maxDamage);
-                    Console.WriteLine($"{shuffledBuildings[i].Name} current health: {shuffledBuildings[i].CurrentHealth}");
+                    shuffledBuildings[i].Building.CurrentHealth -= random.Next(minDamage, maxDamage);
+                    Console.WriteLine($"{shuffledBuildings[i].Name} current health: {shuffledBuildings[i].Building.CurrentHealth}");
                 }
                 Console.WriteLine();
             }

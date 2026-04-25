@@ -8,7 +8,7 @@ namespace Buildings
 {
 	internal class CommercialBuilding : Building
 	{
-		public CommercialBuilding(string name, Commercial type, int x, int y) : base(name, x, y)
+		public CommercialBuilding(string name, Commercial type, int x, int y) : base()
 		{
 
 			Type = BuildingType.Commercial;
@@ -93,10 +93,6 @@ namespace Buildings
 					WaterConsumption = 25;
 					break;
 			}
-		}
-		public override string ToString()
-		{
-			return $"Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption} ";
 		}
 	}
 }

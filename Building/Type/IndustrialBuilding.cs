@@ -8,7 +8,7 @@ namespace Buildings
 {
 	internal class IndustrialBuilding : Building
 	{
-		public IndustrialBuilding(string name,Industrial type ,int x, int y) : base(name, x, y)
+		public IndustrialBuilding(string name,Industrial type ,int x, int y) : base()
 		{
 			Type = BuildingType.Industrial;
 			MaxHealth = 100;
@@ -93,10 +93,6 @@ namespace Buildings
 					break;
 
 			}
-		}
-		public override string ToString()
-		{
-			return $"Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption} ";
 		}
 	}
 }

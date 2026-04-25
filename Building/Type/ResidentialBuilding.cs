@@ -8,7 +8,7 @@ namespace Buildings
 {
     public class ResidentialBuilding : Building
     {
-        public ResidentialBuilding(string name, Residential type, int x, int y): base(name, x, y)
+        public ResidentialBuilding(string name, Residential type, int x, int y): base()
         {
             Type = BuildingType.Residential;
 			MaxHealth = 100;
@@ -93,10 +93,6 @@ namespace Buildings
 					break;
 
 			}
-		}
-		public override string ToString()
-		{
-			return $"Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption} ";
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Buildings
 {
 	internal class ServiceBuilding : Building
 	{
-		public ServiceBuilding(string name, Service type,int x, int y) : base(name, x, y)
+		public ServiceBuilding(string name, Service type,int x, int y) : base()
 		{
 			Type = BuildingType.Service;
 			MaxHealth = 100;
@@ -16,11 +16,11 @@ namespace Buildings
 			DecideValues(type);
         }
 
-		public void DecideValues(Service type)
-		{
-			switch (type)
-			{
-				case Service.CityHall:
+        public void DecideValues(Service type)
+        {
+            switch (type)
+            {
+                case Service.CityHall:
                     BuildingCost = 50000;
                     MaintenanceCost = 2500;
                     Capacity = 50;
@@ -110,11 +110,6 @@ namespace Buildings
                     WaterConsumption = 80;
                     break;
             }
-        }
-
-        public override string ToString()
-        {
-            return $"Service Building: {Name}, Type: {Type}, Cost: {BuildingCost}, Maintenance: {MaintenanceCost}, Capacity: {Capacity}, Tax Income: {TaxIncome}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption}";
         }
     }
 }

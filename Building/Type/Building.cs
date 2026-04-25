@@ -4,10 +4,6 @@
 	{
 		//Private adattagok
 		private BuildingType type;
-		private string name;
-
-		private int x;
-		private int y;
 
 		private decimal buildingCost;
 		private decimal maintenanceCost;
@@ -30,9 +26,6 @@
 		//Public property-k
 
 		public BuildingType Type { get => type; protected set => type = value; }
-		public string Name { get => name; set => name = value; }
-		public int X { get => x; set => x = value; }
-		public int Y { get => y; set => y = value; }
 		public decimal BuildingCost { get => buildingCost; protected set => buildingCost = value; }
 		public decimal MaintenanceCost { get => maintenanceCost; protected set => maintenanceCost = value; }
 		public int TaxIncome { get => taxIncome; protected set => taxIncome = value; }
@@ -47,28 +40,14 @@
 		public int WaterConsumption { get => waterConsumption; protected set => waterConsumption = value; }
 
         // Konstruktor
-        protected Building(string name, int x, int y)
+        protected Building()
 		{
-			this.Name = name;
-			this.X = x;
-			this.Y = y;
 			this.CurrentHealth = maxHealth;
 		}
 
-        //public static readonly Building CityHall= new("City Hall", 1, 1);
-        //public static readonly Building Court= new("Court", 1, 1);
-        //public static readonly Building FireStation = new("Fire Station", 1, 1);
-        //public static readonly Building Hospital = new("Hospital", 1, 1);
-        //public static readonly Building Library = new("Library", 1, 1);
-        //public static readonly Building PoliceStation = new("Police Station", 1, 1);
-        //public static readonly Building PostOffice= new("PostOffice", 1, 1);
-        //public static readonly Building School = new("School", 1, 1);
-        //public static readonly Building University = new("University", 1, 1);
-        //public static readonly Building Uszoda = new("Uszoda", 1, 1);
-
-        //így kéne példányosítani egy konkrét épületet, de mivel a még van x, y érték, ezért ezt nem használhatjuk, így a konkrét épületeket a származtatott osztályokban hozzuk létre
-
-
-        //akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
-	}
+		public override string ToString()
+		{
+			return $"Health: {CurrentHealth}, Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption} ";
+		}
+    }
 }

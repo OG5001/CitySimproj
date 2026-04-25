@@ -10,18 +10,18 @@ namespace CitySimproj
     internal class Database
     {
         private List<Person> npcS;
-        private Dictionary<string, Building> buildingsBuilt;
+        private Dictionary<string, Buildings.Building> buildingsBuilt;
 
         private Random random;
 
         public Database()
         {
             npcS = new List<Person>();
-            buildingsBuilt = new Dictionary<string, Building>();
+            buildingsBuilt = new Dictionary<string, Buildings.Building>();
         }
 
         internal List<Person> NpcS { get => npcS; set => npcS = value; }
-        public Dictionary<string, Building> BuildingsBuilt { get => buildingsBuilt; set => buildingsBuilt = value; }
+        public Dictionary<string, Buildings.Building> BuildingsBuilt { get => buildingsBuilt; set => buildingsBuilt = value; }
 
 
         // Add 
