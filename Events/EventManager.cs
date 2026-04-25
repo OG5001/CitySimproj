@@ -12,19 +12,21 @@ namespace CitySimproj
 		private static readonly Random random = new Random();
 		private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new()
 		{
-			(new Earthquake(), 5000),
-			(new Tsunami(), 7000)
+			(new Earthquake(), 2),
+			(new Tsunami(), 2),
         };
 
 		public void Chance()
 		{
-			Console.WriteLine("----- Daily Report: -----");
+			Console.WriteLine("==== Daily Report: ====");
 
 			foreach (var (disaster,chance) in disasters)
 			{
 				if (random.Next(1,chance+1) == 1)
 				{
-                    Console.WriteLine($"{disaster} has occurred!");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"{disaster.GetType().Name} has occurred!");
+					Console.ForegroundColor = ConsoleColor.White;
                     disaster.StartEffect();
 				}
 			}

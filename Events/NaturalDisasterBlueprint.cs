@@ -38,6 +38,7 @@ namespace CitySimproj
                     shuffledBuildings[i].CurrentHealth -= random.Next(minDamage, maxDamage);
                     Console.WriteLine($"{shuffledBuildings[i].Name} current health: {shuffledBuildings[i].CurrentHealth}");
                 }
+                Console.WriteLine();
             }
         }
 
