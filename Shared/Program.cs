@@ -16,7 +16,7 @@ namespace Buildings
 
             while (running)
 			{
-				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Build\n\t2. Map\n\t3. List buildings\n\t4. Exit\n\t5. Next Day");
+				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Build\n\t2. Map\n\t3. List buildings\n\t4. Next Day\n\t5. Exit");
 				int choice = int.Parse(Console.ReadLine());
 
 				switch (choice)
@@ -33,10 +33,10 @@ namespace Buildings
 						BuildingManager.Kiiratas();
 						break;
 
-					case 4:
+					case 5:
 						running = false;
 						break;
-					case 5:
+					case 4:
 						eventManager.Chance();
 						product.Calculate();
 						treasury.Balance();
