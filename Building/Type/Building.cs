@@ -3,7 +3,6 @@
 	public class Building
 	{
 		//Private adattagok
-		private static List<Building> buildings = new List<Building>();
 		private BuildingType type;
 		private string name;
 
@@ -14,7 +13,7 @@
 		private decimal maintenanceCost;
 		private int taxIncome;
 
-		private int maxHealth;
+		private int maxHealth = 100;
 		private int currentHealth;
 
 		private bool isPowered;
@@ -53,7 +52,7 @@
 			this.Name = name;
 			this.X = x;
 			this.Y = y;
-			this.CurrentHealth = 100;
+			this.CurrentHealth = maxHealth;
 		}
 
         //public static readonly Building CityHall= new("City Hall", 1, 1);
@@ -71,48 +70,5 @@
 
 
         //akár úgy is megoldahtó lenne ez hogy ez egy template és itt sincs benne a x,y értek, és csinálunk egy PlacedBuilding osztályt, ami tartalmazza a x,y értékeket, és azt használjuk a konkrét épületek létrehozásához, de ez egy kicsit bonyolultabb lenne, és nem látom értelmét, mivel így is megoldható a probléma
-
-
-
-        // ==== Példa virtuális metódus ====
-        public virtual decimal CalculateNetIncome()
-		{
-			return TaxIncome - MaintenanceCost;
-		}
-
-
-		public static bool Add(Building building)
-		{
-			// Ha már van ugyanazon a koordinátán épület → nem adjuk hozzá
-			foreach (var b in buildings)
-			{
-				if (b.X == building.X && b.Y == building.Y)
-				{
-                    Console.WriteLine("There is already a building at this location.");
-					return false;
-				}
-			}
-
-			buildings.Add(building);
-			return true;
-		}
-
-		// Remove metódus
-		public static bool Remove(Building building)
-		{
-			if (building == null)
-				return false;
-
-			for (int i = 0; i < buildings.Count; i++)
-			{
-				if (buildings[i].X == building.X && buildings[i].Y == building.Y)
-				{
-					buildings.RemoveAt(i);
-					return true;
-				}
-			}
-
-			return false;
-		}
 	}
 }
