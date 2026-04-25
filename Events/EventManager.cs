@@ -11,8 +11,9 @@ namespace CitySimproj
 		private static readonly Random random = new Random();
 		private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new()
 		{
-			(new Earthquake(), 5000)
-		};
+			(new Earthquake(), 5000),
+			(new Tsunami(), 7000)
+        };
 
 		public void Chance()
 		{
@@ -24,5 +25,9 @@ namespace CitySimproj
 				}
 			}
 		}
-	}
+
+        // Explanation
+        // Creating random number + a list of disasters, with theit chances. Therefore tuples. Adding the already created disasters to the list.
+		// Chance method, goes through the list of disasters, and if the random number = 1, the effect will be applied.
+    }
 }
