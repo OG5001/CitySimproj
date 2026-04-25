@@ -35,7 +35,8 @@ namespace CitySimproj
                 int numberOfAffectedBuildings = random.Next(1, shuffledBuildings.Count); 
                 for (int i = 0; i < numberOfAffectedBuildings; i++)
                 {
-                    shuffledBuildings[i].CurrentHealth -= random.Next(minDamage, maxDamage); 
+                    shuffledBuildings[i].CurrentHealth -= random.Next(minDamage, maxDamage);
+                    Console.WriteLine($"{shuffledBuildings[i].Name} current health: {shuffledBuildings[i].CurrentHealth}");
                 }
             }
         }

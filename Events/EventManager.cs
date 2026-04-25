@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,14 @@ namespace CitySimproj
 
 		public void Chance()
 		{
+			Console.WriteLine("----- Daily Report: -----");
+
 			foreach (var (disaster,chance) in disasters)
 			{
 				if (random.Next(1,chance+1) == 1)
 				{
-					disaster.StartEffect();
+                    Console.WriteLine($"{disaster} has occurred!");
+                    disaster.StartEffect();
 				}
 			}
 		}
