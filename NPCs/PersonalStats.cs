@@ -18,6 +18,7 @@ namespace CitySimproj
 		private int money_gain;
 		private int karma;
 		private int[] special; //Strength, preception, endurance, charisma, intelligence, agility, luck
+		private int netWorth;//net worth of the npc
 
         public PersonalStats()
         {
@@ -30,6 +31,7 @@ namespace CitySimproj
             this.karma = random.Next(40, 61);
 			this.special = new int[5];
 			generateSpecial();
+			this.netWorth = 0;
         }
 
         public int Productivity { get => productivity; set => productivity = value; }
@@ -40,8 +42,9 @@ namespace CitySimproj
 		public int Money_gain { get => money_gain; set => money_gain = value; }
 		public int Karma { get => karma; set => karma = value; }
         public int[] Special { get => special; set => special = value; }
+        public int NetWorth { get => netWorth; set => netWorth = value; }
 
-		private void generateSpecial()
+        private void generateSpecial()
 		{
 			for (int i = 0; i < special.Length; i++)
 			{

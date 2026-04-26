@@ -9,11 +9,11 @@ namespace CitySimproj
     internal class Job
     {
         private string title;
-        private int salary; //órabér/havibér/éves bér, majd eldől
+        private int salary; //órabér
         private int[] special; //ha a dolgozó npc ezeket az értékeket eléri, akkor produktívabb és boldogabb
-        private int workHours; //munkanap hossza/ heti dolgozott órák, majd később eldől
+        private int workHours; //heti dolgozott órák
 
-        public Job(string title, int[] special, int salary=1000/*minimálnér*/, int workHours=8)
+        public Job(string title, int[] special, int salary=1000/*minimálnér*/, int workHours=40)
         {
             this.title = title;
             this.special = special;
@@ -26,9 +26,9 @@ namespace CitySimproj
         public int[] Special { get => special; set => special = value; }
         public int WorkHours { get => workHours; set => workHours = value; }
 
-        private int OvertimeSalary(int hoursInOvertime)//napi/heti bér értékét adja vissza
+        public int WeeklyIncome()//heti bér értékét adja vissza, adók előtt
         {
-            return salary*workHours+Convert.ToInt32(hoursInOvertime * salary * 1.5);
+            return salary*workHours;
         }
     }
 }

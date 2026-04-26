@@ -182,7 +182,17 @@ namespace CitySimproj
 				}
 			}
         }
-
+		public void Work()
+		{
+			// később bővítve lesz mindennel is, egyelőre csak a heti bruttó bért hozzáadja a netWorth-höz, economyval beszélni kell
+			this.ps.NetWorth += this.job.WeeklyIncome();
+		}
+		public void Expense(int moneySpent)//heti kiadások
+		{
+			//egyelőre csak random lesz
+			moneySpent = random.Next(0, 1000);
+			this.ps.NetWorth -= moneySpent;
+		}
 		public override string ToString()
 		{
 			string t = "";
@@ -190,7 +200,7 @@ namespace CitySimproj
 			{
 				t += Enum.GetName(item) + ", ";
 			}
-			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {t}";
+			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {t}, job:{this.job.Title}";
 		}
 	}
 }
