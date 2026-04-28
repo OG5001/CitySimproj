@@ -9,15 +9,16 @@ namespace Buildings
 			BuildingManager manager = new BuildingManager();
 			EventManager eventManager = new EventManager();
 			Treasury treasury = new Treasury();
-            Production product = new Production(treasury);
+			EconomyManager ecoManager = new EconomyManager(treasury);
+			Production product = new Production(treasury);
             manager.DefaultSetUp();
 
             bool running = true;
 
             while (running)
 			{
-				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Build\n\t2. Map\n\t3. List buildings\n\t4. Next Day\n\t5. Exit");
-				int choice = int.Parse(Console.ReadLine());
+				Console.WriteLine("\n==== CITY BUILDER ====\n\t1. Build\n\t2. Map\n\t3. Trading\n\t4. List buildings\n\t5. Next Day\n\t6. Exit");
+				int choice = int.Parse(Console.ReadLine()!);
 
 				switch (choice)
 				{
@@ -30,16 +31,21 @@ namespace Buildings
 						break;
 
 					case 3:
+						ecoManager.Choice();
+						break;
+
+					case 4:
 						BuildingManager.Kiiratas();
 						break;
 
 					case 5:
-						running = false;
-						break;
-					case 4:
 						eventManager.Chance();
 						product.Calculate();
 						treasury.Balance();
+						break;
+
+					case 6:
+						running = false;
 						break;
 
 					default:

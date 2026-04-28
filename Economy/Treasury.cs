@@ -6,7 +6,7 @@ namespace CitySimproj
 {
     internal class Treasury
     {
-        private int balance;
+        private int balance = 1000;
         private bool iscorrupt;
 
 
@@ -52,6 +52,10 @@ namespace CitySimproj
         public void AddMoney(int amount)
         {
             balance += amount;
+        }
+
+        public override string ToString() {
+            return $"{this.balance}";
         }
     }
 }
