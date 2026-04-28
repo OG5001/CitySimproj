@@ -14,7 +14,6 @@ namespace CitySimproj
     {
         private string name;
 
-       
         public EconomicsEventsBlueprint(string name)
         {
             this.name = name;
