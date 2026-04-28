@@ -25,8 +25,8 @@ namespace Buildings
 					TaxIncome = 2000;
 					Capacity = 50;
 					HappinessImpact = -20;
-					ElectricityConsumption = 30;
-					WaterConsumption = 30;
+					ElectricityConsumption = 15;
+					WaterConsumption = 20;
 					break;
 				case Industrial.PowerPlant:
 					BuildingCost = 10000;
@@ -34,8 +34,8 @@ namespace Buildings
 					TaxIncome = 500;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = -40;
-					WaterConsumption = 50;
+					ElectricityConsumption = -200;
+					WaterConsumption = 20;
 					break;
 				case Industrial.Warehouse:
 					BuildingCost = 10000;
@@ -43,8 +43,8 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 150;
 					HappinessImpact = -20;
-					ElectricityConsumption = 50;
-					WaterConsumption = 20;
+					ElectricityConsumption = 20;
+					WaterConsumption = 10;
 					break;
 				case Industrial.Workshop:
 					BuildingCost = 5000;
@@ -61,8 +61,8 @@ namespace Buildings
 					TaxIncome = 750;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = 40;
-					WaterConsumption = 50;
+					ElectricityConsumption = 20;
+					WaterConsumption = 30;
 					break;
 				case Industrial.LogisticsCenter:
 					BuildingCost = 10000;
@@ -70,8 +70,8 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = 50;
-					WaterConsumption = 30;
+					ElectricityConsumption = 25;
+					WaterConsumption = 15;
 					break;
 				case Industrial.SteelMill:
 					BuildingCost = 10000;
@@ -79,8 +79,8 @@ namespace Buildings
 					TaxIncome = 500;
 					Capacity = 75;
 					HappinessImpact = -20;
-					ElectricityConsumption = 40;
-					WaterConsumption = 20;
+					ElectricityConsumption = 20;
+					WaterConsumption = 10;
 					break;
 				case Industrial.RecyclingPlant:
 					BuildingCost = 5000;
@@ -88,8 +88,8 @@ namespace Buildings
 					TaxIncome = 400;
 					Capacity = 50;
 					HappinessImpact = 15;
-					ElectricityConsumption = 30;
-					WaterConsumption = 70;
+					ElectricityConsumption = 20;
+					WaterConsumption = 40;
 					break;
 
 			}
