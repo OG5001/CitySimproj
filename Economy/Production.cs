@@ -31,16 +31,9 @@ internal class Production
     public void Calculate()
     {
         var buildings = BuildingManager.GetAllBuildings();
-        EventManager eventsManager = new EventManager();
-        int allEProv = 0; // Event Managernek kell
-
 
         foreach (var building in buildings)
         {
-            if (building.ElectricityConsumption < 0)
-            {
-                allEProv += building.ElectricityConsumption;
-            }
             goods["electricity"] =- building.ElectricityConsumption;
             goods["water"] =- building.WaterConsumption;
         }

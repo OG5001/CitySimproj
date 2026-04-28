@@ -20,7 +20,7 @@ namespace CitySimproj
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() // Economics list
 		{
-			(new PPM(), 2),
+			(new PPM(), 2), // Power Plant Malfunctioning
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() // NPC list
 		{
@@ -63,7 +63,6 @@ namespace CitySimproj
             }
         }
     }
-		
 
         // Explanation
         // Creating random number + a list of disasters, with theit chances. Therefore tuples. Adding the already created disasters to the list.

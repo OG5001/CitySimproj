@@ -22,12 +22,7 @@ namespace CitySimproj
         public string Name { get => name; set => name = value; }
 
         public virtual void StartEffect()
-        {
-            foreach (var i in BuildingManager.GetAllBuildings())
-            {
-                Console.WriteLine($"Econsump: {i.ElectricityConsumption}, happinessimp: {i.HappinessImpact}");
-            }
-            
+        {   
         }
 
         // --- Explanation ---
