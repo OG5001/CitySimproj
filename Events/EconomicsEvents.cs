@@ -12,7 +12,10 @@ namespace CitySimproj
 {
     // --- ECONOMICS EVENTS ---
 
-    
+    class PPM : EconomicsEventsBlueprint
+    {
+        public PPM() : base("PowerPlant Malfunctioning") { }
+    }
 
     // Explanation
 

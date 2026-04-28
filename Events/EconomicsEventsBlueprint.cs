@@ -13,15 +13,18 @@ namespace CitySimproj
     abstract class EconomicsEventsBlueprint
     {
         private string name;
+
        
         public EconomicsEventsBlueprint(string name)
         {
             this.name = name;
+
+
         }
 
         public virtual void StartEffect()
         {
-          
+          Console.WriteLine(BuildingManager.GetAllBuildings());
         }
 
         // --- Explanation ---
