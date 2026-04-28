@@ -173,14 +173,14 @@ namespace CitySimproj
 
             }
             //Job stat calculator, ha a job special thresholdjai felett vannak a statok, akkor +1 productivity, happyness
-			for (int i=0; i<this.job.Special.Length; i++)
+			/*for (int i=0; i<this.job.Special.Length; i++)
 			{
 				if (this.job.Special[i] <= this.ps.Special[i])
 				{
 					this.ps.Happiness += 1;
 					this.ps.Productivity += 1;
 				}
-			}
+			}*/
         }
 		public void Work()
 		{
