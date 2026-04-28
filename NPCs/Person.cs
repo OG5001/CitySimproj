@@ -7,6 +7,7 @@ namespace CitySimproj
 	{
 		private static Random random = new Random();
 
+		public List<Person> Friends { get; set; } = new List<Person>();
 		protected string name;
 		protected int id;
 		protected int age;
