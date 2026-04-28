@@ -25,8 +25,8 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 10;
 					HappinessImpact = 35;
-					ElectricityConsumption = 10;
-					WaterConsumption = 10;
+					ElectricityConsumption = 5;
+					WaterConsumption = 5;
 					break;
 				case Residential.ApartmentBlock:
 					BuildingCost = 10000;
@@ -34,8 +34,8 @@ namespace Buildings
 					TaxIncome = 2500;
 					Capacity = 200;
 					HappinessImpact = 20;
-					ElectricityConsumption = 50;
-					WaterConsumption = 50;
+					ElectricityConsumption = 15;
+					WaterConsumption = 15;
 					break;
 				case Residential.Villa:
 					BuildingCost = 20000;
@@ -52,8 +52,8 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 400;
 					HappinessImpact = 70;
-					ElectricityConsumption = 60;
-					WaterConsumption = 60;
+					ElectricityConsumption = 30;
+					WaterConsumption = 30;
 					break;
 				case Residential.RetirementHome:
 					BuildingCost = 2000;
@@ -61,8 +61,8 @@ namespace Buildings
 					TaxIncome = 100;
 					Capacity = 50;
 					HappinessImpact = 75;
-					ElectricityConsumption = 20;
-					WaterConsumption = 20;
+					ElectricityConsumption = 10;
+					WaterConsumption = 10;
 					break;
 				case Residential.Dormitory:
 					BuildingCost = 5000;
@@ -70,8 +70,8 @@ namespace Buildings
 					TaxIncome = 150;
 					Capacity = 100;
 					HappinessImpact = 50;
-					ElectricityConsumption = 25;
-					WaterConsumption = 25;
+					ElectricityConsumption = 15;
+					WaterConsumption = 15;
 					break;
 				case Residential.StudentHousing:
 					BuildingCost = 5000;
@@ -79,8 +79,8 @@ namespace Buildings
 					TaxIncome = 150;
 					Capacity = 100;
 					HappinessImpact = 50;
-					ElectricityConsumption = 25;
-					WaterConsumption = 25;
+					ElectricityConsumption = 15;
+					WaterConsumption = 15;
 					break;
 				case Residential.Townhouse:
 					BuildingCost = 1000;
