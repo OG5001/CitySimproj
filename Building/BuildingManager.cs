@@ -201,6 +201,8 @@ namespace Buildings
 			buildingsBuilt.Add(new BuildingLocation("Apartment 1", 2, 1, new ResidentialBuilding("Apartment 1", Residential.ApartmentBlock, 2, 1)));
             buildingsBuilt.Add(new BuildingLocation("Apartment 2", 2, 2, new ResidentialBuilding("Apartment 2", Residential.ApartmentBlock, 2, 2)));
 			buildingsBuilt.Add(new BuildingLocation("Supermarket", 2, 3, new CommercialBuilding("Supermarket", Commercial.Supermarket, 2, 3)));
+			buildingsBuilt.Add(new BuildingLocation("Solarplant", 3, 1, new UtilityBuilding("Solarplant", Utility.SolarPlant, 3, 1)));
+			buildingsBuilt.Add(new BuildingLocation("Watertreatmentplant", 3, 2, new UtilityBuilding("Watertreatmentplant", Utility.WaterTreatmentPlant , 3, 2)));
         }
 
 

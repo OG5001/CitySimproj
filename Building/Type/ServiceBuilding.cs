@@ -26,16 +26,16 @@ namespace Buildings
                     Capacity = 50;
                     TaxIncome = 0;
                     HappinessImpact = 40;
-                    ElectricityConsumption = 35;
-                    WaterConsumption = 30;
+                    ElectricityConsumption = 15;
+                    WaterConsumption = 10;
                     break;
                 case Service.Court:
                     BuildingCost = 25000;
                     MaintenanceCost = 2000;
                     Capacity = 200;
                     HappinessImpact = 10;
-                    ElectricityConsumption = 40;
-                    WaterConsumption = 30;
+                    ElectricityConsumption = 25;
+                    WaterConsumption = 15;
                     break;
                 case Service.FireStation:
                     BuildingCost = 30000;
@@ -43,8 +43,8 @@ namespace Buildings
                     Capacity = 80;
                     TaxIncome = 0;
                     HappinessImpact = 35;
-                    ElectricityConsumption = 45;
-                    WaterConsumption = 60;
+                    ElectricityConsumption = 25;
+                    WaterConsumption = 25;
                     break;
                 case Service.Hospital:
                     BuildingCost = 50000;
@@ -52,7 +52,7 @@ namespace Buildings
                     Capacity = 250;
                     TaxIncome = 0;
                     HappinessImpact = 40;
-                    ElectricityConsumption = 60;
+                    ElectricityConsumption = 25;
                     WaterConsumption = 50;
                     break;
                 case Service.Library:
@@ -70,7 +70,7 @@ namespace Buildings
                     Capacity = 100;
                     TaxIncome = 0;
                     HappinessImpact = 10;
-                    ElectricityConsumption = 40;
+                    ElectricityConsumption = 20;
                     WaterConsumption = 25;
                     break;
                 case Service.PostOffice:
@@ -88,8 +88,8 @@ namespace Buildings
                     Capacity = 400;
                     TaxIncome = 0;
                     HappinessImpact = 50;
-                    ElectricityConsumption = 45;
-                    WaterConsumption = 30;
+                    ElectricityConsumption = 15;
+                    WaterConsumption = 10;
                     break;
                 case Service.University:
                     BuildingCost = 25000;
@@ -97,8 +97,8 @@ namespace Buildings
                     Capacity = 300;
                     TaxIncome = 0;
                     HappinessImpact = 25;
-                    ElectricityConsumption = 20;
-                    WaterConsumption = 20;
+                    ElectricityConsumption = 10;
+                    WaterConsumption = 10;
                     break;
                 case Service.Uszoda:
                     BuildingCost = 36000;
@@ -106,8 +106,8 @@ namespace Buildings
                     Capacity = 120;
                     TaxIncome = 67;
                     HappinessImpact = 30;
-                    ElectricityConsumption = 35;
-                    WaterConsumption = 80;
+                    ElectricityConsumption = 15;
+                    WaterConsumption = 25;
                     break;
             }
         }
