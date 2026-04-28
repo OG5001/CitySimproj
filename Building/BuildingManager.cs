@@ -79,24 +79,24 @@ namespace Buildings
             while (XPosition <= 0 || XPosition > 10 || YPosition <= 0 || YPosition > 10 || buildingsBuilt.Find(b => b.X == XPosition && b.Y == YPosition) != null);
             if (type == typeof(Residential))
             {
-                buildingsBuilt.Add(new BuildingLocation($"Residential_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
             }
             else if (type == typeof(Commercial))
             {
-                buildingsBuilt.Add(new BuildingLocation($"Commercial_{buildingsBuilt.Count + 1}", XPosition, YPosition, new CommercialBuilding(Enum.GetName(type, input - 1), (Commercial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new CommercialBuilding(Enum.GetName(type, input - 1), (Commercial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
             }
             else if (type == typeof(Industrial))
             {
-                buildingsBuilt.Add(new BuildingLocation($"Industrial_{buildingsBuilt.Count + 1}", XPosition, YPosition, new IndustrialBuilding(Enum.GetName(type, input - 1), (Industrial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new IndustrialBuilding(Enum.GetName(type, input - 1), (Industrial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
             }
             else if (type == typeof(Service))
             {
-                buildingsBuilt.Add(new BuildingLocation($"Service_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ServiceBuilding(Enum.GetName(type, input - 1), (Service)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ServiceBuilding(Enum.GetName(type, input - 1), (Service)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
             }
 
             else if (type == typeof(Utility))
             {
-                buildingsBuilt.Add(new BuildingLocation($"Utility_{buildingsBuilt.Count + 1}", XPosition, YPosition, new UtilityBuilding(Enum.GetName(type, input - 1), (Utility)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new UtilityBuilding(Enum.GetName(type, input - 1), (Utility)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
             }
             Console.WriteLine("Sikerült :D");
         }
