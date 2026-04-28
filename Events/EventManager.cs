@@ -18,7 +18,8 @@ namespace CitySimproj
         };
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new()
 		{
-			(new Plague(), 2)
+			(new Plague(), 2),
+			(new CrimeWave(), 2)
 		};
 
 		public void Chance()
