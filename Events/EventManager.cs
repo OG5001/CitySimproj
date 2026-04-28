@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CitySimproj.Events;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
@@ -15,6 +16,11 @@ namespace CitySimproj
 			(new Earthquake(), 2),
 			(new Tsunami(), 2),
         };
+		private readonly List<(NPCEventsBlueprint events, int chance)> events = new()
+		{
+			(new Plague(), 2),
+			(new CrimeWave(), 2)
+		};
 
 		public void Chance()
 		{
@@ -28,6 +34,17 @@ namespace CitySimproj
                     Console.WriteLine($"{disaster.GetType().Name} has occurred!");
 					Console.ForegroundColor = ConsoleColor.White;
                     disaster.StartEffect();
+				}
+			}
+
+			foreach (var (events, chance) in events)
+			{
+				if (random.Next(1, chance + 1) == 1)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine($"{events.GetType().Name} has occurred!");
+					Console.ForegroundColor = ConsoleColor.White;
+					events.StartEffect();
 				}
 			}
 		}

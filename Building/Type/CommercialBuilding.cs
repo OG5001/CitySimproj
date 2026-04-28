@@ -35,7 +35,7 @@ namespace Buildings
 					TaxIncome = 1200;
 					Capacity = 100;
 					HappinessImpact = 45;
-					ElectricityConsumption = 30;
+					ElectricityConsumption = 20;
 					WaterConsumption = 20;
 					break;
 				case Commercial.ShoppingMall:
@@ -44,8 +44,8 @@ namespace Buildings
 					TaxIncome = 2500;
 					Capacity = 300;
 					HappinessImpact = 100;
-					ElectricityConsumption = 120;
-					WaterConsumption = 90;
+					ElectricityConsumption = 30;
+					WaterConsumption = 25;
 					break;
 				case Commercial.Restaurant:
 					BuildingCost = 7500;
@@ -53,8 +53,8 @@ namespace Buildings
 					TaxIncome = 800;
 					Capacity = 50;
 					HappinessImpact = 90;
-					ElectricityConsumption = 45;
-					WaterConsumption = 50;
+					ElectricityConsumption = 25;
+					WaterConsumption = 25;
 					break;
 				case Commercial.Cafe:
 					BuildingCost = 5000;
@@ -62,8 +62,8 @@ namespace Buildings
 					TaxIncome = 750;
 					Capacity = 30;
 					HappinessImpact = 75;
-					ElectricityConsumption = 30;
-					WaterConsumption = 35;
+					ElectricityConsumption = 20;
+					WaterConsumption = 25;
 					break;
 				case Commercial.OfficeBuilding:
 					BuildingCost = 20000;
@@ -71,8 +71,8 @@ namespace Buildings
 					TaxIncome = 2500;
 					Capacity = 100;
 					HappinessImpact = -10;
-					ElectricityConsumption = 80;
-					WaterConsumption = 70;
+					ElectricityConsumption = 30;
+					WaterConsumption = 20;
 					break;
 				case Commercial.Bank:
 					BuildingCost = 15000;
@@ -80,8 +80,8 @@ namespace Buildings
 					TaxIncome = 2000;
 					Capacity = 80;
 					HappinessImpact = 10;
-					ElectricityConsumption = 30;
-					WaterConsumption = 20;
+					ElectricityConsumption = 20;
+					WaterConsumption = 10;
 					break;
 				case Commercial.Cinema:
 					BuildingCost = 10000;
@@ -89,8 +89,8 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 90;
 					HappinessImpact = 100;
-					ElectricityConsumption = 50;
-					WaterConsumption = 25;
+					ElectricityConsumption = 25;
+					WaterConsumption = 15;
 					break;
 			}
 		}
