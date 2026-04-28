@@ -23,6 +23,7 @@
 		private int electricityConsumption;
 		private int waterConsumption;
 
+
 		//Public property-k
 
 		public BuildingType Type { get => type; protected set => type = value; }

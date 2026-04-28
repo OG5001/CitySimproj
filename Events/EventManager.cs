@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CitySimproj.Events;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace CitySimproj
         private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new()
         {
             (new PPM(), 2),
+		private readonly List<(NPCEventsBlueprint events, int chance)> events = new()
+		{
+			(new Plague(), 2),
+			(new CrimeWave(), 2)
+		};
 
         };
 
@@ -46,6 +52,17 @@ namespace CitySimproj
                 }
             }
         }
+			foreach (var (events, chance) in events)
+			{
+				if (random.Next(1, chance + 1) == 1)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine($"{events.GetType().Name} has occurred!");
+					Console.ForegroundColor = ConsoleColor.White;
+					events.StartEffect();
+				}
+			}
+		}
 
         // Explanation
         // Creating random number + a list of disasters, with theit chances. Therefore tuples. Adding the already created disasters to the list.

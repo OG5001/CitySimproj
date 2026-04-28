@@ -34,8 +34,8 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 50;
 					HappinessImpact = -5;
-					ElectricityConsumption = 60;
-					WaterConsumption = -100;
+					ElectricityConsumption = 20;
+					WaterConsumption = -300;
 					break;
 				case Utility.SolarPlant:
 					BuildingCost = 10000;
@@ -43,7 +43,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 50;
 					HappinessImpact = -5;
-					ElectricityConsumption = -75;
+					ElectricityConsumption = -260;
 					WaterConsumption = 20;
 					break;
 				case Utility.SewagePlant:
@@ -52,8 +52,8 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 100;
 					HappinessImpact = 40;
-					ElectricityConsumption = 40;
-					WaterConsumption = 50;
+					ElectricityConsumption = 20;
+					WaterConsumption = 20;
 					break;
 				case Utility.GasStation:
 					BuildingCost = 2000;
@@ -62,7 +62,7 @@ namespace Buildings
 					Capacity = 15;
 					HappinessImpact = 10;
 					ElectricityConsumption = 20;
-					WaterConsumption = 30;
+					WaterConsumption = 10;
 					break;
 				case Utility.PowerSubstation:
 					BuildingCost = 10000;
@@ -70,8 +70,8 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 75;
 					HappinessImpact = 10;
-					ElectricityConsumption = -40;
-					WaterConsumption = 50;
+					ElectricityConsumption = -250;
+					WaterConsumption = 30;
 					break;
 				case Utility.Landfill:
 					BuildingCost = 2000;
@@ -88,7 +88,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 10;
 					HappinessImpact = 0;
-					ElectricityConsumption = -50;
+					ElectricityConsumption = -250;
 					WaterConsumption = 20;
 					break;
 				case Utility.WasteProcessing:
@@ -97,8 +97,8 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 100;
 					HappinessImpact = 30;
-					ElectricityConsumption = 40;
-					WaterConsumption = 50;
+					ElectricityConsumption = 20;
+					WaterConsumption = 10;
 					break;
 
 
