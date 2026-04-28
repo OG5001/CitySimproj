@@ -10,6 +10,6 @@ Heat/Cold Waves
 Meteor Impact
 
 - Economic Events
-Insect Infestation
+PowerPlant Malfunctioning
 
 - Person Events
