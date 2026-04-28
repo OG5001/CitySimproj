@@ -20,7 +20,7 @@ namespace CitySimproj
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() // Economics list
 		{
-			(new PPM(), 2), // Power Plant Malfunctioning
+			(new PowerPlantMalfunction(), 2), // Power Plant Malfunctioning
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() // NPC list
 		{
@@ -47,6 +47,9 @@ namespace CitySimproj
             {
                 if (random.Next(1, chance + 1) == 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"{ecoevent.GetType().Name} has occurred!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     ecoevent.StartEffect();
                 }
             }

@@ -12,9 +12,9 @@ namespace CitySimproj
 {
     // --- ECONOMICS EVENTS ---
 
-    class PPM : EconomicsEventsBlueprint // Power Plant Malfunctioning
+    class PowerPlantMalfunction : EconomicsEventsBlueprint // Power Plant Malfunctioning
     {
-        public PPM() : base("PowerPlant Malfunctioning") { }
+        public PowerPlantMalfunction() : base("PowerPlant Malfunctioning") { }
         public override void StartEffect()
         {
             int electricityLoss = 0;
