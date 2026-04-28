@@ -18,13 +18,17 @@ namespace CitySimproj
         public EconomicsEventsBlueprint(string name)
         {
             this.name = name;
-
-
         }
+
+        public string Name { get => name; set => name = value; }
 
         public virtual void StartEffect()
         {
-          Console.WriteLine(BuildingManager.GetAllBuildings());
+            foreach (var i in BuildingManager.GetAllBuildings())
+            {
+                Console.WriteLine($"Econsump: {i.ElectricityConsumption}, happinessimp: {i.HappinessImpact}");
+            }
+            
         }
 
         // --- Explanation ---

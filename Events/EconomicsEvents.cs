@@ -15,6 +15,10 @@ namespace CitySimproj
     class PPM : EconomicsEventsBlueprint
     {
         public PPM() : base("PowerPlant Malfunctioning") { }
+        public override void StartEffect()
+        {
+            
+        }
     }
 
     // Explanation
