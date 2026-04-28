@@ -34,8 +34,8 @@ internal class Production
 
         foreach (var building in buildings)
         {
-            goods["electricity"] =- building.ElectricityConsumption;
-            goods["water"] =- building.WaterConsumption;
+            goods["electricity"] -= building.ElectricityConsumption;
+            goods["water"] -= building.WaterConsumption;
         }
 
         Console.WriteLine($"\nElectricity: {goods["electricity"]}");

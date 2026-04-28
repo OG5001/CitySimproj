@@ -20,12 +20,12 @@ namespace CitySimproj
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() // Economics list
 		{
-			(new PowerPlantMalfunction(), 2), // Power Plant Malfunctioning
+			(new PowerPlantMalfunction(), 10000), // Power Plant Malfunctioning
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() // NPC list
 		{
-			(new Plague(), 2),
-			(new CrimeWave(), 2)
+			(new Plague(), 20000),
+			(new CrimeWave(), 20000)
 		};
 
         public void Chance()
