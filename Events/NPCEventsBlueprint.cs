@@ -25,18 +25,18 @@ namespace CitySimproj.Events
 		{
 			var allNPCs = Person.NPC();
 			Random random = new Random();
-			var shuffledNPCs = allNPCs.OrderBy(_ => random.Next()).ToList();
+			allNPCs = allNPCs.OrderBy(_ => random.Next()).ToList();
 
-			if (shuffledNPCs.Count >= 1)
+			if (allNPCs.Count >= 1)
 			{
-				int numberOfAffectedNPCs = random.Next(0, shuffledNPCs.Count);
+				int numberOfAffectedNPCs = random.Next(0, allNPCs.Count);
 				for (int i = 0; i < numberOfAffectedNPCs; i++) {
 					if (this.stealing == true)
 					{
-						shuffledNPCs[i].Job.Salary -= 1000;
+						allNPCs[i].Job.Salary -= 1000;
 					}
-					shuffledNPCs[i].Health -= random.Next(minDamage, maxDamage);
-					Console.WriteLine($"{shuffledNPCs[i].Name} current health: {shuffledNPCs[i].Health}");
+					allNPCs[i].Health -= random.Next(minDamage, maxDamage);
+					Console.WriteLine($"{allNPCs[i].Name} current health: {allNPCs[i].Health}");
 				}
 				Console.WriteLine();
 
