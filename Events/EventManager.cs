@@ -14,13 +14,13 @@ namespace CitySimproj
 		private static readonly Random random = new Random();
 		private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() // Natural list
 		{
-			(new Earthquake(), 2000),
-			(new Tsunami(), 2000),
+			(new Earthquake(), 20000),
+			(new Tsunami(), 20000),
         };
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() // Economics list
 		{
-			(new PowerPlantMalfunction(), 10000), // Power Plant Malfunctioning
+			(new PowerPlantMalfunction(), 20000), // Power Plant Malfunctioning
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() // NPC list
 		{

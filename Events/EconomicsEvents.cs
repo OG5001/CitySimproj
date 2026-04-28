@@ -17,17 +17,12 @@ namespace CitySimproj
         public PowerPlantMalfunction() : base("PowerPlant Malfunctioning") { }
         public override void StartEffect()
         {
-            int electricityLoss = 0;
             // Get this turns electry generation.
-            var allElectricityProvider = BuildingManager.GetAllBuildings().Where(b => b.ElectricityConsumption < 0).ToList();
-            foreach (var b in allElectricityProvider)
-            {
-               electricityLoss += b.ElectricityConsumption;
-            }
+            var electricitySum = BuildingManager.GetAllBuildings()
+                .Where(b => b.ElectricityConsumption < 0).ToList()
+                .Sum(b => b.ElectricityConsumption);
 
-            // Adding extra electricity at the end of the round to simulate the effect.
-            Production.GetAllGoods()["electricity"] += electricityLoss;
-
+            Production.GetAllGoods()["electricity"] += electricitySum;
         }
     }
 
