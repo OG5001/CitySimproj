@@ -68,5 +68,5 @@ namespace CitySimproj
         // Explanation
         // Creating random number + a list of disasters, with theit chances. Therefore tuples. Adding the already created disasters to the list.
 		// Chance method, goes through the list of disasters, and if the random number = 1, the effect will be applied.
-    }
+    
 }
