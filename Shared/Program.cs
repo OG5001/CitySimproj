@@ -44,7 +44,7 @@ namespace Buildings
                     case 4:
                         eventManager.Chance();
                         product.Calculate();
-                        treasury.Balance();
+                        Console.WriteLine(treasury);
                         break;
 
                     case 5:

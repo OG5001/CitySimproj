@@ -8,10 +8,10 @@ internal class Production
     
     public static class MarketRef
     {
-        public static readonly Good Food = new("Food", 10);
-        public static readonly Good Power = new("Power", 25);
-        public static readonly Good Water = new("Water", 5);
-        public static readonly Good Oil = new("Oil", 100);
+        public static readonly Good Food = new("Food", 500);
+        public static readonly Good Power = new("Power", 2500);
+        public static readonly Good Water = new("Water", 1500);
+        public static readonly Good Oil = new("Oil", 4000);
     }
     
     private static Dictionary<Good, int> _inventory = new()
@@ -36,7 +36,7 @@ internal class Production
         Console.WriteLine($"Water: {_inventory[MarketRef.Water]}");
     }
     
-    public int GetAmount(Good item)
+    public static int GetAmount(Good item)
     {
         return _inventory.TryGetValue(item, out int amount) ? amount : 0;
     }

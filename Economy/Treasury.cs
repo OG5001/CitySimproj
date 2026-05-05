@@ -6,7 +6,7 @@ namespace CitySimproj
 {
     internal class Treasury
     {
-        private int balance = 1000;
+        private int balance = 100000;
         private bool iscorrupt;
 
 
@@ -44,18 +44,22 @@ namespace CitySimproj
             }
         }
 
-        public void Balance()
+        public int Balance()
         {
-            Console.WriteLine($"Balance: {balance}");
+            return balance;
         }
 
-        public void AddMoney(int amount)
+        public void AddFunds(int amount)
         {
             balance += amount;
         }
+        public void RemoveFunds(int amount)
+        {
+            balance -= amount;
+        }
 
         public override string ToString() {
-            return $"{this.balance}";
+            return $"Balance: {this.balance} Ft";
         }
     }
 }
