@@ -1,5 +1,4 @@
 ﻿using CitySimproj;
-using CitySimproj.Economy;
 
 namespace Buildings
 {

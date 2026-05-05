@@ -1,4 +1,4 @@
-﻿namespace CitySimproj.Economy;
+﻿namespace CitySimproj;
 internal class EconomyManager(Treasury t)
 {
 	public void Choice()
