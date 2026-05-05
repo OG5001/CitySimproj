@@ -25,7 +25,7 @@ namespace Buildings
 					TaxIncome = 2000;
 					Capacity = 50;
 					HappinessImpact = -20;
-					ElectricityConsumption = 15;
+					PowerConsumption = 15;
 					WaterConsumption = 20;
 					break;
 				case Industrial.PowerPlant:
@@ -34,7 +34,7 @@ namespace Buildings
 					TaxIncome = 500;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = -200;
+					PowerConsumption = -200;
 					WaterConsumption = 20;
 					break;
 				case Industrial.Warehouse:
@@ -43,7 +43,7 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 150;
 					HappinessImpact = -20;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 10;
 					break;
 				case Industrial.Workshop:
@@ -52,7 +52,7 @@ namespace Buildings
 					TaxIncome = 750;
 					Capacity = 20;
 					HappinessImpact = -20;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 15;
 					break;
 				case Industrial.OilRefinery:
@@ -61,7 +61,7 @@ namespace Buildings
 					TaxIncome = 750;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 30;
 					break;
 				case Industrial.LogisticsCenter:
@@ -70,7 +70,7 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 100;
 					HappinessImpact = -20;
-					ElectricityConsumption = 25;
+					PowerConsumption = 25;
 					WaterConsumption = 15;
 					break;
 				case Industrial.SteelMill:
@@ -79,7 +79,7 @@ namespace Buildings
 					TaxIncome = 500;
 					Capacity = 75;
 					HappinessImpact = -20;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 10;
 					break;
 				case Industrial.RecyclingPlant:
@@ -88,7 +88,7 @@ namespace Buildings
 					TaxIncome = 400;
 					Capacity = 50;
 					HappinessImpact = 15;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 40;
 					break;
 

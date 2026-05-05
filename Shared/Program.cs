@@ -12,7 +12,7 @@ namespace Buildings
             EventManager eventManager = new EventManager();
             Treasury treasury = new Treasury();
             EconomyManager ecoManager = new EconomyManager(treasury);
-            Production product = new Production(treasury);
+            Production product = new Production();
             manager.DefaultSetUp();
 
             bool running = true;

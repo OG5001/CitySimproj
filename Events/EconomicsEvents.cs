@@ -19,10 +19,10 @@ namespace CitySimproj
         {
             // Get this turns electry generation.
             var electricitySum = BuildingManager.GetAllBuildings()
-                .Where(b => b.ElectricityConsumption < 0).ToList()
-                .Sum(b => b.ElectricityConsumption);
+                .Where(b => b.PowerConsumption < 0).ToList()
+                .Sum(b => b.PowerConsumption);
 
-            Production.GetAllGoods()["electricity"] += electricitySum;
+            Production.GetAllGoods()[Production.MarketRef.Power] += electricitySum;
         }
     }
 

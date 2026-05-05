@@ -25,7 +25,7 @@ namespace Buildings
 					TaxIncome = 100;
 					Capacity = 20;
 					HappinessImpact = 10;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 0;
 					break;
 				case Utility.WaterTreatmentPlant:
@@ -34,7 +34,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 50;
 					HappinessImpact = -5;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = -300;
 					break;
 				case Utility.SolarPlant:
@@ -43,7 +43,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 50;
 					HappinessImpact = -5;
-					ElectricityConsumption = -260;
+					PowerConsumption = -260;
 					WaterConsumption = 20;
 					break;
 				case Utility.SewagePlant:
@@ -52,7 +52,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 100;
 					HappinessImpact = 40;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 20;
 					break;
 				case Utility.GasStation:
@@ -61,7 +61,7 @@ namespace Buildings
 					TaxIncome = 300;
 					Capacity = 15;
 					HappinessImpact = 10;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 10;
 					break;
 				case Utility.PowerSubstation:
@@ -70,7 +70,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 75;
 					HappinessImpact = 10;
-					ElectricityConsumption = -250;
+					PowerConsumption = -250;
 					WaterConsumption = 30;
 					break;
 				case Utility.Landfill:
@@ -79,7 +79,7 @@ namespace Buildings
 					TaxIncome = 100;
 					Capacity = 40;
 					HappinessImpact = -50;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 20;
 					break;
 				case Utility.WindTurbine:
@@ -88,7 +88,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 10;
 					HappinessImpact = 0;
-					ElectricityConsumption = -250;
+					PowerConsumption = -250;
 					WaterConsumption = 20;
 					break;
 				case Utility.WasteProcessing:
@@ -97,7 +97,7 @@ namespace Buildings
 					TaxIncome = 250;
 					Capacity = 100;
 					HappinessImpact = 30;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 10;
 					break;
 

@@ -20,7 +20,7 @@
 
 		private int happinessImpact;
 
-		private int electricityConsumption;
+		private int powerConsumption;
 		private int waterConsumption;
 
 
@@ -37,7 +37,7 @@
 		public int Capacity { get => capacity; protected set => capacity = value; }
 		public int CurrentOccupancy { get => currentOccupancy; set => currentOccupancy = value; }
 		public int HappinessImpact { get => happinessImpact; protected set => happinessImpact = value; }
-		public int ElectricityConsumption { get => electricityConsumption; protected set => electricityConsumption = value; }
+		public int PowerConsumption { get => powerConsumption; protected set => powerConsumption = value; }
 		public int WaterConsumption { get => waterConsumption; protected set => waterConsumption = value; }
 
         // Konstruktor
@@ -48,7 +48,7 @@
 
 		public override string ToString()
 		{
-			return $"Health: {CurrentHealth}, Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {ElectricityConsumption}, Water Consumption: {WaterConsumption} ";
+			return $"Health: {CurrentHealth}, Building Cost: {BuildingCost}, Maintenance Cost: {MaintenanceCost}, Tax Income: {TaxIncome}, Capacity: {Capacity}, Happiness Impact: {HappinessImpact}, Electricity Consumption: {PowerConsumption}, Water Consumption: {WaterConsumption} ";
 		}
     }
 }

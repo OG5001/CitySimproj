@@ -26,7 +26,7 @@ namespace Buildings
 					TaxIncome = 300;
 					Capacity = 10;
 					HappinessImpact = 25;
-					ElectricityConsumption = 10;
+					PowerConsumption = 10;
 					WaterConsumption = 10;
 					break;
 				case Commercial.Supermarket:
@@ -35,7 +35,7 @@ namespace Buildings
 					TaxIncome = 1200;
 					Capacity = 100;
 					HappinessImpact = 45;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 20;
 					break;
 				case Commercial.ShoppingMall:
@@ -44,7 +44,7 @@ namespace Buildings
 					TaxIncome = 2500;
 					Capacity = 300;
 					HappinessImpact = 100;
-					ElectricityConsumption = 30;
+					PowerConsumption = 30;
 					WaterConsumption = 25;
 					break;
 				case Commercial.Restaurant:
@@ -53,7 +53,7 @@ namespace Buildings
 					TaxIncome = 800;
 					Capacity = 50;
 					HappinessImpact = 90;
-					ElectricityConsumption = 25;
+					PowerConsumption = 25;
 					WaterConsumption = 25;
 					break;
 				case Commercial.Cafe:
@@ -62,7 +62,7 @@ namespace Buildings
 					TaxIncome = 750;
 					Capacity = 30;
 					HappinessImpact = 75;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 25;
 					break;
 				case Commercial.OfficeBuilding:
@@ -71,7 +71,7 @@ namespace Buildings
 					TaxIncome = 2500;
 					Capacity = 100;
 					HappinessImpact = -10;
-					ElectricityConsumption = 30;
+					PowerConsumption = 30;
 					WaterConsumption = 20;
 					break;
 				case Commercial.Bank:
@@ -80,7 +80,7 @@ namespace Buildings
 					TaxIncome = 2000;
 					Capacity = 80;
 					HappinessImpact = 10;
-					ElectricityConsumption = 20;
+					PowerConsumption = 20;
 					WaterConsumption = 10;
 					break;
 				case Commercial.Cinema:
@@ -89,7 +89,7 @@ namespace Buildings
 					TaxIncome = 1000;
 					Capacity = 90;
 					HappinessImpact = 100;
-					ElectricityConsumption = 25;
+					PowerConsumption = 25;
 					WaterConsumption = 15;
 					break;
 			}

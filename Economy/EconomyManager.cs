@@ -1,13 +1,4 @@
 ﻿using CitySimproj;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-
 namespace Buildings
 {
 	internal class EconomyManager
@@ -33,13 +24,13 @@ namespace Buildings
 			}
 			while (buyorsell < 0 || buyorsell > 2);
 			
-			Console.WriteLine("\n-- What would you like to trade? --\n");
+			Console.WriteLine("\n------- Market -------\n");
 			var goods = Production.GetAllGoods();
 			int num = 0;
 
 			foreach (var good in goods) {
 				num++;
-				Console.WriteLine($"{num}. {good.Key} ({good.Value})");
+				Console.WriteLine($"{num}. {good.Key.Name} - Amount: {good.Value} (Price: {good.Key.Price} Ft)");
 			}
 
 			do
