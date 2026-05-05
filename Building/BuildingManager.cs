@@ -144,10 +144,9 @@ namespace Buildings
             // Kirajzolás - 1-től kezd
             for (int y = 1; y <= maxY; y++)
             {
-                
-                ColorBuildings();
                 for (int x = 1; x <= maxX; x++)
                 {
+                    ColorBuildings(matrix[x, y]);
                     Console.Write($" |{"----------",10}| ");
                 }
                 Console.WriteLine();
@@ -155,7 +154,7 @@ namespace Buildings
                 {
                     if (matrix[x, y] != null)
                     {
-                        
+                        ColorBuildings(matrix[x, y]);
                         string elsoHat = matrix[x, y].Name.Length >= 6 ? matrix[x, y].Name.Substring(0, 6) : matrix[x, y].Name;
                         Console.Write($" |{elsoHat,10}| ");
                     }
@@ -168,6 +167,7 @@ namespace Buildings
                 Console.WriteLine();
                 for (int x = 1; x <= maxX; x++)
                 {
+                    ColorBuildings(matrix[x, y]);
                     Console.Write($" |{"----------",10}| ");
                 }
                 Console.WriteLine();
@@ -219,23 +219,31 @@ namespace Buildings
             return buildingsBuilt;
         }
 
-        public static void ColorBuildings()
+        private static void ColorBuildings(BuildingLocation location)
         {
-            foreach (BuildingLocation b in buildingsBuilt)
+            if (location == null || location.Building == null)
             {
-                if (b.Building != null && b.Building.CurrentHealth < 20)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                }
-                else if (b.Building != null && b.Building.CurrentHealth < 50)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                }
-                else if (b.Building != null && b.Building.CurrentHealth < 60)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                }
+                Console.ResetColor();
+                return;
             }
+
+            double health = location.Building.CurrentHealth;
+
+            if (health <= 20)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+            }
+
+            else if (health <= 50)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            else if (health <= 75)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+
         }
     }
 }
