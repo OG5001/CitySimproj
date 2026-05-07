@@ -109,7 +109,7 @@ namespace Buildings
 
                 for (int i = 0; i < menu.Length; i++)
                 {
-                    string text = $"{i + 1}. {menu[i]}";
+                    string text = $"{menu[i]}";
                     int x = (windowWidth - text.Length) / 2;
                     int y = startY + title.Length + 2 + i;
 
