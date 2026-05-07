@@ -14,6 +14,6 @@ namespace CitySimproj.Events
 
 	class CrimeWave : NPCEventsBlueprint
 	{
-		public CrimeWave() : base("Crime Wave", 10, 30, true, "A surge in criminal activity has swept through the city, impacting the safety and security of its residents.") { }
+		public CrimeWave() : base("Crime Wave", 10, 30, true, "A surge in criminal activity has swept through the city, impacting the security of its residents.") { }
 	}
 }
