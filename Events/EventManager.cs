@@ -56,16 +56,10 @@ namespace CitySimproj
             foreach (var n in occuredNPCEvents) n.StartEffect();
 
             PrintSection("NATURAL DISASTERS",occuredDisasters,
-                e => e.Name,
-                e => e.Description,
                 ConsoleColor.Red);
             PrintSection("ECONOMIC EVENTS", occuredEcoEvents,
-                e => e.Name,
-                e => e.Description,
                 ConsoleColor.Yellow);
             PrintSection("NPC EVENTS", occuredNPCEvents,
-                e => e.Name,
-                e => e.Description,
                 ConsoleColor.Green);
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -74,9 +68,10 @@ namespace CitySimproj
             Console.ReadLine();
         }
 
-        private static List<T> RollEvents<T>(List<(T item, int chance)> pool)
+        private static List<IEvent> RollEvents<T>(List<(T item, int chance)> pool) 
+            where T : IEvent
         {
-            var result = new List<T>();
+            var result = new List<IEvent>();
             foreach (var (item, chance) in pool)
                 if (random.Next(1, chance + 1) == 1)
                     result.Add(item);
@@ -99,7 +94,7 @@ namespace CitySimproj
             int pad = (Console.WindowWidth - text.Length) / 2;
             Console.WriteLine(new string(' ', Math.Max(0, pad)) + text);
         }
-        private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
+        private static void PrintSection<T>(string title, List<T> occureds, ConsoleColor color, int width = 100) where T : IEvent
         {
             int margin = (Console.WindowWidth - width) / 2;
             string pad = new string(' ', Math.Max(0, margin));
@@ -149,8 +144,8 @@ namespace CitySimproj
 
             foreach (var item in occureds)
             {
-                string headlineText = headline(item);
-                string detailText = detail(item);
+                string headlineText = item.Name;
+                string detailText = item.Description;
 
                 int headlinePad = (width - headlineText.Length) / 2;
                 int detailPad = (width - detailText.Length) / 2;

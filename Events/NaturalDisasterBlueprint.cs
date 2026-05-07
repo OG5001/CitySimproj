@@ -1,4 +1,5 @@
 using Buildings;
+using CitySimproj.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CitySimproj
 {
-    abstract class NaturalDisasterBlueprint
+    abstract class NaturalDisasterBlueprint : IEvent
     {
         private string name;
         private int minDamage;

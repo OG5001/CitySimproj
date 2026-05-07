@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CitySimproj.Events
 {
-	abstract class NPCEventsBlueprint
-	{
+	abstract class NPCEventsBlueprint : IEvent
+    {
 		private string name;
 		private int minDamage;
 		private int maxDamage;

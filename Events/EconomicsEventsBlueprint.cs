@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using CitySimproj.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CitySimproj
 {
 
     // The Blueprint class for Natural Disasters.
-    abstract class EconomicsEventsBlueprint
+    abstract class EconomicsEventsBlueprint : IEvent
     {
         private string name;
         private string description;
