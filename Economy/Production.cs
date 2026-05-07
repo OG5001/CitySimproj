@@ -16,9 +16,9 @@ internal class Production
     
     private static Dictionary<Good, int> _inventory = new()
     {
-        { MarketRef.Food, 0 },
-        { MarketRef.Power, 0 },
-        { MarketRef.Water, 0 },
+        { MarketRef.Food, 500 },
+        { MarketRef.Power, 500 },
+        { MarketRef.Water, 500 },
         { MarketRef.Oil, 0 }
     };
     
@@ -32,7 +32,7 @@ internal class Production
             _inventory[MarketRef.Water] -= building.WaterConsumption;
         }
 
-        Console.WriteLine($"\nPower: {_inventory[MarketRef.Power]}");
+        Console.WriteLine($"Power: {_inventory[MarketRef.Power]}");
         Console.WriteLine($"Water: {_inventory[MarketRef.Water]}");
     }
     
