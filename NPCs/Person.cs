@@ -61,7 +61,7 @@ namespace CitySimproj
 			for (int i = 0; i < 10; i++)
 			{
 				Person p = new Person(i);
-				Console.WriteLine(p);
+				//Console.WriteLine(p);
 				plist.Add(p);
 			}
 			return plist;
