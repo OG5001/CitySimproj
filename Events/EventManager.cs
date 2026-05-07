@@ -45,7 +45,7 @@ namespace CitySimproj
         public void Print()
 		{
             Console.Clear();
-            //PrintTitle();
+            PrintTitle();
 
             var occuredDisasters = RollEvents(disasters);
             var occuredEcoEvents = RollEvents(economicsEvents);
@@ -87,14 +87,18 @@ namespace CitySimproj
         private static void PrintTitle()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            foreach (string line in titleArt) ;
-                
+            foreach (string line in titleArt)
+            {
+                PrintCentered(line);
+
+            }
+            Console.ResetColor();
+            Console.WriteLine();
         }
-        private static void PrintCentered(string text, ConsoleColor color = ConsoleColor.White)
+        private static void PrintCentered(string text)
         {
             int pad = (Console.WindowWidth - text.Length) / 2;
-            Console.ForegroundColor = color;
-            Console.WriteLine(new string(' ', pad) + text);
+            Console.WriteLine(new string(' ', Math.Max(0, pad)) + text);
         }
         private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
         {
