@@ -42,7 +42,7 @@ namespace Buildings
                         break;
 
                     case 4:
-                        eventManager.Chance();
+                        eventManager.Print();
                         product.Calculate();
                         Console.WriteLine(treasury);
                         break;

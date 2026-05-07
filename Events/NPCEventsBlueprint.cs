@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,18 @@ namespace CitySimproj.Events
 		private int minDamage;
 		private int maxDamage;
 		private bool stealing;
+		private string description;
 
-		public NPCEventsBlueprint(string name, int minDamage, int maxDamage, bool stealing)
+		public string Name => name;	
+        public string Description => description;
+
+        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, bool stealing, string description)
 		{
 			this.name = name;
 			this.minDamage = minDamage;
 			this.maxDamage = maxDamage;
 			this.stealing = stealing;
+			this.description = description;
 		}
 
 		public virtual void StartEffect()
@@ -36,10 +42,7 @@ namespace CitySimproj.Events
 						allNPCs[i].Job.Salary -= 1000;
 					}
 					allNPCs[i].Health -= random.Next(minDamage, maxDamage);
-					Console.WriteLine($"{allNPCs[i].Name} current health: {allNPCs[i].Health}");
 				}
-				Console.WriteLine();
-
 			}
 		}
 	}

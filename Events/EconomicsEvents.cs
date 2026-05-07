@@ -10,14 +10,12 @@ using Buildings;
 
 namespace CitySimproj
 {
-    // --- ECONOMICS EVENTS ---
 
-    class PowerPlantMalfunction : EconomicsEventsBlueprint // Power Plant Malfunctioning
+    class PowerPlantMalfunction : EconomicsEventsBlueprint 
     {
-        public PowerPlantMalfunction() : base("PowerPlant Malfunctioning") { }
+        public PowerPlantMalfunction() : base("PowerPlant Malfunctioning", "A malfunction in the power plant has stopped electricity generation.") { }
         public override void StartEffect()
         {
-            // Get this turns electry generation.
             var electricitySum = BuildingManager.GetAllBuildings()
                 .Where(b => b.PowerConsumption < 0).ToList()
                 .Sum(b => b.PowerConsumption);
@@ -25,8 +23,4 @@ namespace CitySimproj
             Production.GetAllGoods()[Production.MarketRef.Power] += electricitySum;
         }
     }
-
-    // Explanation
-
-
 }

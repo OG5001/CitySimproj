@@ -10,19 +10,12 @@ using Buildings;
 
 namespace CitySimproj
 {
-    // --- NATURAL DISASTERS ---
-
     class Earthquake : NaturalDisasterBlueprint
     {
-        public Earthquake() : base("Earthquake", 20, 50) { }
+        public Earthquake() : base("Earthquake", 20, 50,"The city was shaken by a massive earthquake.") { }
     }
     class Tsunami : NaturalDisasterBlueprint
     {
-        public Tsunami() : base("Tsunami", 30, 60) { }
+        public Tsunami() : base("Tsunami", 30, 60,"A devastating tsunami has struck the city.") { }
     }
-
-    // Explanation
-    // Constructor of the Disaster class, which inherits from the NaturalDisasterBlueprint class. 
-    // The effect is not called, but with the parameters given here, the Effects will use different parameters.
-
 }

@@ -13,19 +13,20 @@ namespace CitySimproj
     abstract class EconomicsEventsBlueprint
     {
         private string name;
+        private string description;
 
-        public EconomicsEventsBlueprint(string name)
+        public string Name => name;
+        public string Description => description;
+
+        public EconomicsEventsBlueprint(string name, string description)
         {
             this.name = name;
+            this.description = description; 
         }
-
-        public string Name { get => name; set => name = value; }
 
         public virtual void StartEffect()
         {   
         }
-
-        // --- Explanation ---
       
     }
 

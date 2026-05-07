@@ -12,63 +12,127 @@ namespace CitySimproj
 	internal class EventManager
 	{
 		private static readonly Random random = new Random();
-		private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() // Natural list
+
+		private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() 
 		{
-			(new Earthquake(), 20000),
-			(new Tsunami(), 20000),
+			(new Earthquake(), 1),
+			(new Tsunami(), 1),
         };
 
-		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() // Economics list
+		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() 
 		{
-			(new PowerPlantMalfunction(), 20000), // Power Plant Malfunctioning
+			(new PowerPlantMalfunction(), 1), 
 		};
-		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() // NPC list
+		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
 		{
-			(new Plague(), 20000),
-			(new CrimeWave(), 20000)
+			(new Plague(), 1),
+			(new CrimeWave(), 1)
 		};
 
-        public void Chance()
+        public void Print()
 		{
-			Console.WriteLine("==== Daily Report: ====");
+           var occuredDisasters = new List<NaturalDisasterBlueprint>();
+           var occuredEcoEvents = new List<EconomicsEventsBlueprint>();
+           var occuredNPCEvents = new List<NPCEventsBlueprint>();
 
-			foreach (var (disaster,chance) in disasters) // Chance for disasters
+
+            foreach (var (disaster,chance) in disasters) 
             {
 				if (random.Next(1,chance+1) == 1)
 				{
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{disaster.GetType().Name} has occurred!");
-					Console.ForegroundColor = ConsoleColor.White;
                     disaster.StartEffect();
-				}
+                    occuredDisasters.Add(disaster);
+                }
 			}
 
-            foreach (var (ecoevent, chance) in economicsEvents) // Chance for economics events
+            foreach (var (ecoevent, chance) in economicsEvents) 
             {
                 if (random.Next(1, chance + 1) == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{ecoevent.GetType().Name} has occurred!");
-                    Console.ForegroundColor = ConsoleColor.White;
                     ecoevent.StartEffect();
+                    occuredEcoEvents.Add(ecoevent);
                 }
             }
 
-            foreach (var (events, chance) in events) // Chance for NPC events
+            foreach (var (events, chance) in events) 
             {
                 if (random.Next(1, chance + 1) == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"{events.GetType().Name} has occurred!");
-                    Console.ForegroundColor = ConsoleColor.White;
                     events.StartEffect();
+                    occuredNPCEvents.Add(events);
                 }
             }
+
+            PrintSection("NATURAL DISASTERS",occuredDisasters,
+                e => e.Name,
+                e => e.Description,
+                ConsoleColor.Red);
+            PrintSection("ECONOMIC EVENTS", occuredEcoEvents,
+                e => e.Name,
+                e => e.Description,
+                ConsoleColor.Yellow);
+            PrintSection("NPC EVENTS", occuredNPCEvents,
+                e => e.Name,
+                e => e.Description,
+                ConsoleColor.Green);
+
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("\n  Press [ENTER] to continue...");
+            Console.ResetColor();
+            Console.ReadLine();
+
+        }
+        private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 80)
+        {
+            if (occureds.Count == 0)
+            {
+                Border('┌', '┐');
+                Console.Write($"| No {title} occurred today.".PadRight(width + 1));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("|");
+                Border('└', '┘');   
+                return;
+            }
+            
+            void Border(char left, char right)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine(left + new string('-', width) + right);
+                Console.ResetColor();
+            }
+
+            Border('┌', '┐');
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("| ");
+            Console.ForegroundColor = color;
+            Console.Write(title);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(new string(' ', width - title.Length - 1) + "|");
+
+            Border('├', '┤');
+
+            foreach (var item in occureds)
+            {
+                string headlineText = headline(item);
+                string detailText = detail(item);
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write("| ");
+                Console.ResetColor();
+                Console.Write(headlineText.PadRight(width - 1));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("|");
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine($"| {detailText.PadRight(width - 1)}|");
+                Console.WriteLine("|" + new string(' ', width) + "|");
+                Console.ResetColor();
+            }
+
+            Border('└', '┘');
+            Console.WriteLine();
         }
     }
-
-        // Explanation
-        // Creating random number + a list of disasters, with theit chances. Therefore tuples. Adding the already created disasters to the list.
-		// Chance method, goes through the list of disasters, and if the random number = 1, the effect will be applied.
     
 }
