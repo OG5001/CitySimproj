@@ -45,7 +45,7 @@ namespace CitySimproj
         public void Print()
 		{
             Console.Clear();
-            //PrintTitle();
+            PrintTitle();
 
             var occuredDisasters = RollEvents(disasters);
             var occuredEcoEvents = RollEvents(economicsEvents);
@@ -68,11 +68,10 @@ namespace CitySimproj
                 e => e.Description,
                 ConsoleColor.Green);
 
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(new string(' ', (Console.WindowWidth - "Press [ENTER] to continue...".Length) / 2) + "Press [ENTER] to continue...");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            PrintCentered("Press [ENTER] to continue...");
             Console.ResetColor();
             Console.ReadLine();
-
         }
 
         private static List<T> RollEvents<T>(List<(T item, int chance)> pool)
@@ -87,19 +86,25 @@ namespace CitySimproj
         private static void PrintTitle()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            foreach (string line in titleArt) ;
-                
+            foreach (string line in titleArt)
+            {
+                PrintCentered(line);
+
+            }
+            Console.ResetColor();
+            Console.WriteLine();
         }
-        private static void PrintCentered(string text, ConsoleColor color = ConsoleColor.White)
+        private static void PrintCentered(string text)
         {
             int pad = (Console.WindowWidth - text.Length) / 2;
-            Console.ForegroundColor = color;
-            Console.WriteLine(new string(' ', pad) + text);
+            Console.WriteLine(new string(' ', Math.Max(0, pad)) + text);
         }
         private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
         {
             int margin = (Console.WindowWidth - width) / 2;
-            string pad = new string(' ', margin);
+            string pad = new string(' ', Math.Max(0, margin));
+
+            int titlePad = (width - title.Length) / 2;
 
             void Border(char left, char right)
             {
@@ -110,24 +115,36 @@ namespace CitySimproj
 
             if (occureds.Count == 0)
             {
+                string msg = $"No {title} occurred today.";
+                int msgPad = (width - msg.Length) / 2;
+
                 Border('┌', '┐');
-                Console.Write($"| No {title} occurred today.".PadRight(width + 1));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(pad + "|");
+                Console.ResetColor();
+                Console.Write(new string(' ', msgPad) + msg + new string(' ', width - msg.Length - msgPad));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("|");
-                Border('└', '┘');   
+                Border('└', '┘');
                 return;
+            }   
+
+            string Center(string text)
+            {
+                int left = (width - text.Length) / 2;
+                int right = width - text.Length - left;
+                return new string(' ', left) + text + new string(' ', right);
             }
 
             Border('┌', '┐');
 
-            int titlePad = (width - title.Length) / 2;
-
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(pad + "| " + new string(' ', titlePad - 1));
+            Console.Write(pad + "|");
             Console.ForegroundColor = color;
-            Console.Write(title);
+            Console.Write(Center(title));
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(new string(' ', width - title.Length - titlePad) + "|");
+            Console.WriteLine("|");
+
             Border('├', '┤');
 
             foreach (var item in occureds)
@@ -140,14 +157,17 @@ namespace CitySimproj
 
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write(pad + "| ");
+                Console.Write(pad + "|");
                 Console.ResetColor();
-                Console.Write(new string(' ', headlinePad) + headlineText + new string(' ', width - headlineText.Length - headlinePad - 1));
+                Console.Write(Center(headlineText));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("|");
 
+
+                Console.Write(pad + "|" + Center(detailText));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine(pad + $"| {new string(' ', detailPad) + detailText + new string(' ', width - detailText.Length - detailPad - 1)}|");
+                Console.WriteLine("|");
+
                 Console.WriteLine(pad + "|" + new string(' ', width) + "|");
                 Console.ResetColor();
             }
