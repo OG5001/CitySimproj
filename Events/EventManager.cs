@@ -28,18 +28,18 @@ namespace CitySimproj
 
         private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() 
 		{
-			(new Earthquake(), 1),
-			(new Tsunami(), 1),
+			(new Earthquake(), 100000),
+			(new Tsunami(), 100000),
         };
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() 
 		{
-			(new PowerPlantMalfunction(), 1), 
+			(new PowerPlantMalfunction(), 100000), 
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
 		{
-			(new Plague(), 1),
-			(new CrimeWave(), 1)
+			(new Plague(), 100000),
+			(new CrimeWave(), 100000)
 		};
 
         public void Print()
@@ -103,7 +103,7 @@ namespace CitySimproj
         private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
         {
             int margin = (Console.WindowWidth - width) / 2;
-            string pad = new string(' ', margin);
+            string pad = new string(' ', Math.Max(0, margin));
 
             void Border(char left, char right)
             {
@@ -114,17 +114,23 @@ namespace CitySimproj
 
             if (occureds.Count == 0)
             {
+                string msg = $"No {title} occurred today.";
+                int msgPad = (width - msg.Length) / 2;
+
                 Border('┌', '┐');
-                Console.Write($"| No {title} occurred today.".PadRight(width + 1));
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(pad + "|");
+                Console.ResetColor();
+                Console.Write(new string(' ', msgPad) + msg + new string(' ', width - msg.Length - msgPad));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("|");
-                Border('└', '┘');   
+                Border('└', '┘');
                 return;
             }
 
-            Border('┌', '┐');
-
             int titlePad = (width - title.Length) / 2;
+
+            Border('┌', '┐');
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(pad + "| " + new string(' ', titlePad - 1));
