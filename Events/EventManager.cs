@@ -28,18 +28,18 @@ namespace CitySimproj
 
         private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() 
 		{
-			(new Earthquake(), 100000),
-			(new Tsunami(), 100000),
+			(new Earthquake(), 1),
+			(new Tsunami(), 1),
         };
 
 		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() 
 		{
-			(new PowerPlantMalfunction(), 100000), 
+			(new PowerPlantMalfunction(), 1), 
 		};
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
 		{
-			(new Plague(), 100000),
-			(new CrimeWave(), 100000)
+			(new Plague(), 1),
+			(new CrimeWave(), 1)
 		};
 
         public void Print()
@@ -68,11 +68,10 @@ namespace CitySimproj
                 e => e.Description,
                 ConsoleColor.Green);
 
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(new string(' ', (Console.WindowWidth - "Press [ENTER] to continue...".Length) / 2) + "Press [ENTER] to continue...");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            PrintCentered("Press [ENTER] to continue...");
             Console.ResetColor();
             Console.ReadLine();
-
         }
 
         private static List<T> RollEvents<T>(List<(T item, int chance)> pool)
@@ -105,6 +104,8 @@ namespace CitySimproj
             int margin = (Console.WindowWidth - width) / 2;
             string pad = new string(' ', Math.Max(0, margin));
 
+            int titlePad = (width - title.Length) / 2;
+
             void Border(char left, char right)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -126,18 +127,24 @@ namespace CitySimproj
                 Console.WriteLine("|");
                 Border('└', '┘');
                 return;
-            }
+            }   
 
-            int titlePad = (width - title.Length) / 2;
+            string Center(string text)
+            {
+                int left = (width - text.Length) / 2;
+                int right = width - text.Length - left;
+                return new string(' ', left) + text + new string(' ', right);
+            }
 
             Border('┌', '┐');
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(pad + "| " + new string(' ', titlePad - 1));
+            Console.Write(pad + "|");
             Console.ForegroundColor = color;
-            Console.Write(title);
+            Console.Write(Center(title));
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(new string(' ', width - title.Length - titlePad) + "|");
+            Console.WriteLine("|");
+
             Border('├', '┤');
 
             foreach (var item in occureds)
@@ -150,14 +157,17 @@ namespace CitySimproj
 
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write(pad + "| ");
+                Console.Write(pad + "|");
                 Console.ResetColor();
-                Console.Write(new string(' ', headlinePad) + headlineText + new string(' ', width - headlineText.Length - headlinePad - 1));
+                Console.Write(Center(headlineText));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("|");
 
+
+                Console.Write(pad + "|" + Center(detailText));
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine(pad + $"| {new string(' ', detailPad) + detailText + new string(' ', width - detailText.Length - detailPad - 1)}|");
+                Console.WriteLine("|");
+
                 Console.WriteLine(pad + "|" + new string(' ', width) + "|");
                 Console.ResetColor();
             }
