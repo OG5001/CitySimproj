@@ -84,6 +84,18 @@ namespace CitySimproj
             return result;
 
         }
+        private static void PrintTitle()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (string line in titleArt) ;
+                
+        }
+        private static void PrintCentered(string text, ConsoleColor color = ConsoleColor.White)
+        {
+            int pad = (Console.WindowWidth - text.Length) / 2;
+            Console.ForegroundColor = color;
+            Console.WriteLine(new string(' ', pad) + text);
+        }
         private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
         {
             int margin = (Console.WindowWidth - width) / 2;
