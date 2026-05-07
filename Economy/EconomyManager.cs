@@ -112,10 +112,9 @@ internal class EconomyManager(Treasury t)
 			go = false;
 		}
 
-		// runs on buy, only runs on sell if player has smth to sell
+		// runs if prerequisites go through
 		if (go)
 		{
-            int num = 0;
 			int item = 0;
             
 			// Select goods
@@ -199,11 +198,11 @@ internal class EconomyManager(Treasury t)
 			}
             Console.Clear();
 		}
-		else
-		{
+        else
+        {
             Console.Clear();
-			if (!check)
-			{
+            if (!check)
+            {
                 string text = (buyorsell == 1
                 ? "\nYou don't have enough money!"
                 : "\nYou don't have any goods to sell!");
