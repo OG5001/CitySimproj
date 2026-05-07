@@ -1,33 +1,35 @@
-﻿namespace CitySimproj;
+﻿using CitySimproj.Shared;
+
+namespace CitySimproj;
 internal class EconomyManager(Treasury t)
 {
 	public void Choice()
 	{
-        string[] MainTitle =
-		{
-			@" _______            _ _             ",
-			@"|__   __|          | (_)            ",
-			@"   | |_ __ __ _  __| |_ _ __   __ _ ",
-			@"   | | '__/ _` |/ _` | | '_ \ / _` |",
-			@"   | | | | (_| | (_| | | | | | (_| |",
-			@"   |_|_|  \__,_|\__,_|_|_| |_|\__, |",
-			@"                               __/ |",
-			@"                              |___/"
-		};
+        Menu MainTitle = new Menu(new[]
+        {
+            @" _______            _ _             ",
+            @"|__   __|          | (_)            ",
+            @"   | |_ __ __ _  __| |_ _ __   __ _ ",
+            @"   | | '__/ _` |/ _` | | '_ \ / _` |",
+            @"   | | | | (_| | (_| | | | | | (_| |",
+            @"   |_|_|  \__,_|\__,_|_|_| |_|\__, |",
+            @"                               __/ |",
+            @"                              |___/"
+        });
 
-		string[] BuyTitle =
-		{
+        Menu BuyTitle= new Menu(new[]
+        {
 			@" ____              ",
-			@"|  _ \             ",
+            @"|  _ \             ",
 			@"| |_) |_   _ _   _ ",
 			@"|  _ <| | | | | | |",
 			@"| |_) | |_| | |_| |",
 			@"|____/ \__,_|\__, |",
 			@"              __/ |",
 			@"             |___/"
-		};
+		});
 
-		string[] SellTitle =
+		Menu SellTitle = new Menu(new[]
 		{
             @"  _____      _ _ ",
 			@" / ____|    | | |",
@@ -35,9 +37,9 @@ internal class EconomyManager(Treasury t)
 			@" \___ \ / _ \ | |",
 			@" ____) |  __/ | |",
 			@"|_____/ \___|_|_|"
-        };
+        });
 
-        string[] AmountTitle =
+        Menu AmountTitle = new Menu(new[]
         {
             @"                                      _   ",
             @"    /\                               | |  ",
@@ -45,9 +47,9 @@ internal class EconomyManager(Treasury t)
             @"  / /\ \ | '_ ` _ \ / _ \| | | | '_ \| __|",
             @" / ____ \| | | | | | (_) | |_| | | | | |_ ",
             @"/_/    \_\_| |_| |_|\___/ \__,_|_| |_|\__|"
-        };
+        });
 
-        string[] DoubleCheckTitle =
+        Menu DoubleCheckTitle = new Menu(new[]
         {
             @"                                                           ___  ",
             @"    /\                                                    |__ \ ",
@@ -57,7 +59,7 @@ internal class EconomyManager(Treasury t)
             @"/_/    \_\_|  \___|  \__, |\___/ \__,_| |___/\__,_|_|  \___(_)",
             @"                      __/ |",                                 
             @"                     |___/",
-        };
+        });
     
 		string[] BuyOrSell =
 		{
@@ -71,7 +73,7 @@ internal class EconomyManager(Treasury t)
         List<string> buyMenu = new();
         List<string> sellMenu = new();
 
-        int buyorsell = DrawMenu(MainTitle, BuyOrSell);
+        int buyorsell = MainTitle.DrawMenu(BuyOrSell);
 		var go = true;
 		var check = true;
 		var goods = Production.GetAllGoods();
@@ -120,11 +122,11 @@ internal class EconomyManager(Treasury t)
 			// Select goods
             if (buyorsell == 0)
             {
-				item = DrawMenu(BuyTitle, buyMenu.ToArray());
+				item = BuyTitle.DrawMenu(buyMenu.ToArray());
             }
             else
             {
-                item = DrawMenu(SellTitle, sellMenu.ToArray());
+                item = SellTitle.DrawMenu(sellMenu.ToArray());
             }
 		
 			// get selected item
@@ -138,7 +140,7 @@ internal class EconomyManager(Treasury t)
 			{
                 int canAfford = (int)(t.Balance() / selectedGood.Price);
 
-                amount = SelectAmount(1,canAfford, AmountTitle);
+                amount = AmountTitle.SelectAmount(1,canAfford);
                 final = (int)selectedGood.Price * amount;
 			
 				// double check
@@ -148,7 +150,7 @@ internal class EconomyManager(Treasury t)
 
                 while (confirm == 0)
                 {
-                    confirm = DrawMenu(DoubleCheckTitle, checkMenu.ToArray());
+                    confirm = DoubleCheckTitle.DrawMenu(checkMenu.ToArray());
                 }
 
                 if (confirm == 1)
@@ -160,7 +162,7 @@ internal class EconomyManager(Treasury t)
 					t.RemoveFunds(final); 
 
                     Console.Clear();
-					WriteCentered($"Bought {amount} {selectedGood.Name} for {final} Ft.", ConsoleColor.Green);
+					Menu.WriteCentered($"Bought {amount} {selectedGood.Name} for {final} Ft.", ConsoleColor.Green);
                     Console.ReadKey(true);
                 }
 			}
@@ -170,7 +172,7 @@ internal class EconomyManager(Treasury t)
 			{
                 int canSell = Production.GetAllGoods()[selectedGood];
 
-                amount = SelectAmount(1,canSell, AmountTitle);
+                amount = AmountTitle.SelectAmount(1,canSell);
                 final = (int)(selectedGood.Price - 200) * amount; // a lil bit less cuz selling
 
                 // double check
@@ -180,7 +182,7 @@ internal class EconomyManager(Treasury t)
 
                 while (confirm == 0)
                 {
-                   confirm = DrawMenu(DoubleCheckTitle, checkMenu.ToArray());
+                   confirm = DoubleCheckTitle.DrawMenu(checkMenu.ToArray());
                 }
                
                 if (confirm == 1)
@@ -192,7 +194,7 @@ internal class EconomyManager(Treasury t)
 					t.AddFunds(final);
 
                     Console.Clear();
-                    WriteCentered($"Sold {amount} {selectedGood.Name} for {final} Ft.", ConsoleColor.Green);
+                    Menu.WriteCentered($"Sold {amount} {selectedGood.Name} for {final} Ft.", ConsoleColor.Green);
                     Console.ReadKey(true);
                 }
 			}
@@ -207,156 +209,12 @@ internal class EconomyManager(Treasury t)
                 ? "\nYou don't have enough money!"
                 : "\nYou don't have any goods to sell!");
 
-                WriteCentered(text, ConsoleColor.Red);
+                Menu.WriteCentered(text, ConsoleColor.Red);
                 Console.ReadKey(true);
             }
         }
         Console.Clear();
     }
 
-    static int DrawMenu(string[] title, string[] choice)
-    {
-        
-
-        int selected = 0;
-
-        while (true)
-        {
-            Console.Clear();
-
-            int windowWidth = Console.WindowWidth;
-            int windowHeight = Console.WindowHeight;
-
-            int contentHeight = title.Length + choice.Length + 6;
-            int startY = (windowHeight - contentHeight) / 2;
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-
-            for (int i = 0; i < title.Length; i++)
-            {
-                int x = (windowWidth - title[i].Length) / 2;
-                Console.SetCursorPosition(x, startY + i);
-                Console.Write(title[i]);
-            }
-
-            Console.ResetColor();
-
-            for (int i = 0; i < choice.Length; i++)
-            {
-                string text = $"{choice[i]}";
-                int x = (windowWidth - text.Length) / 2;
-                int y = startY + title.Length + 2 + i;
-
-                Console.SetCursorPosition(x, y);
-
-                if (i == selected)
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkYellow;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(text);
-                    Console.ResetColor();
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(text);
-                    Console.ResetColor();
-                }
-            }
-
-
-            WriteCentered("Use up and down arrows and Enter", ConsoleColor.DarkGray);
-
-
-            var key = Console.ReadKey(true).Key;
-
-            if (key == ConsoleKey.UpArrow)
-            {
-                selected = (selected - 1 + choice.Length) % choice.Length;
-            }
-            else if (key == ConsoleKey.DownArrow)
-            {
-                selected = (selected + 1) % choice.Length;
-            }
-            else if (key == ConsoleKey.Enter)
-            {
-                return selected;
-            }
-        }
-    }
-
-
-    static int SelectAmount(int min, int max, string[] title)
-    {
-        int amount = min;
-
-        Console.Clear();
-
-        int windowWidth = Console.WindowWidth;
-        int startY = 3;
-
-        // Draw title only
-        Console.ForegroundColor = ConsoleColor.Cyan;
-
-        for (int i = 0; i < title.Length; i++)
-        {
-            int x = (windowWidth - title[i].Length) / 2;
-
-            Console.SetCursorPosition(x, startY + i);
-            Console.Write(title[i]);
-        }
-
-        Console.ResetColor();
-
-        int y2 = startY + title.Length + 3;
-
-        WriteCentered("< > to change | Enter to confirm", ConsoleColor.DarkGray);
-
-        while (true)
-        {
-            string text = $"< {amount} >";
-
-            int x2 = (windowWidth - text.Length) / 2;
-
-            // Clear only the old amount line
-            Console.SetCursorPosition(0, y2);
-            Console.Write(new string(' ', windowWidth));
-
-            // Draw updated amount
-            Console.SetCursorPosition(x2, y2);
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write(text);
-            Console.ResetColor();
-
-            var key = Console.ReadKey(true).Key;
-
-            if (key == ConsoleKey.LeftArrow)
-            {
-                if (amount > min)
-                    amount--;
-            }
-            else if (key == ConsoleKey.RightArrow)
-            {
-                if (amount < max)
-                    amount++;
-            }
-            else if (key == ConsoleKey.Enter)
-            {
-                return amount;
-            }
-        }
-    }
-
-
-    static void WriteCentered(string text, ConsoleColor color)
-    {
-        int x = (Console.WindowWidth - text.Length) / 2;
-        int y = Console.WindowHeight - 2;
-
-        Console.ForegroundColor = color;
-        Console.SetCursorPosition(x, y);
-        Console.Write(text);
-        Console.ResetColor();
-    }
+   
 }
