@@ -9,26 +9,28 @@ namespace CitySimproj.Events
 {
 	abstract class NPCEventsBlueprint
 	{
+		protected static readonly Random rand = new Random();
 		private string name;
-		private int minDamage;
-		private int maxDamage;
-		private bool stealing;
+		protected int minDamage;
+		protected int maxDamage;
+		//private bool stealing;
 		private string description;
 
 		public string Name => name;	
         public string Description => description;
 
-        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, bool stealing, string description)
+        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, /*bool stealing,*/ string description)
 		{
 			this.name = name;
 			this.minDamage = minDamage;
 			this.maxDamage = maxDamage;
-			this.stealing = stealing;
+			//this.stealing = stealing;
 			this.description = description;
 		}
 
 		public virtual void StartEffect()
 		{
+			/*
 			var allNPCs = Person.NPC();
 			Random random = new Random();
 			allNPCs = allNPCs.OrderBy(_ => random.Next()).ToList();
@@ -39,11 +41,12 @@ namespace CitySimproj.Events
 				for (int i = 0; i < numberOfAffectedNPCs; i++) {
 					if (this.stealing == true)
 					{
-						allNPCs[i].Job.Salary -= 1000;
+						allNPCs[i].Ps.NetWorth -= 1000;
 					}
 					allNPCs[i].Health -= random.Next(minDamage, maxDamage);
 				}
 			}
+			*/
 		}
 	}
 }

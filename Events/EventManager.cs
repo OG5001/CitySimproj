@@ -39,7 +39,15 @@ namespace CitySimproj
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
 		{
 			(new Plague(), 1),
-			(new CrimeWave(), 1)
+			(new CrimeWave(), 1),
+            (new Festival(), 1),
+            (new CharityDonation(), 1),
+            (new LotteryWin(), 1),
+            (new FreeHoliday(), 1),
+            (new MoneyRain(), 1),
+            (new ClownParade(), 1),
+            (new Promotion(), 1),
+            (new UnemploymentSpike(), 1)
 		};
 
         public void Print()
