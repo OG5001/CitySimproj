@@ -1,12 +1,4 @@
 ﻿using CitySimproj.Events;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CitySimproj
 {
@@ -36,6 +28,7 @@ namespace CitySimproj
 		{
 			(new PowerPlantMalfunction(), 1), 
 		};
+
 		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
 		{
 			(new Plague(), 1),
@@ -82,22 +75,21 @@ namespace CitySimproj
             Console.ReadLine();
         }
 
-        private static List<T> RollEvents<T>(List<(T item, int chance)> pool)
+        private static List<IEvent> RollEvents<T>(List<(T item, int chance)> pool) where T : IEvent
         {
-            var result = new List<T>();
+            var result = new List<IEvent>();
             foreach (var (item, chance) in pool)
                 if (random.Next(1, chance + 1) == 1)
                     result.Add(item);
             return result;
-
         }
+
         private static void PrintTitle()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (string line in titleArt)
             {
                 PrintCentered(line);
-
             }
             Console.ResetColor();
             Console.WriteLine();

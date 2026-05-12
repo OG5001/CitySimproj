@@ -1,46 +1,36 @@
 using Buildings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CitySimproj
+namespace CitySimproj.Events
 {
-    abstract class NaturalDisasterBlueprint
+    abstract class NaturalDisasterBlueprint : IEvent
     {
-        private string name;
-        private int minDamage;
-        private int maxDamage;
-        private string description;
+        private static readonly Random random = new Random();
 
-        public string Description => description;
-        public string Name => name;
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int MinDamage { get; set; }
+        public int MaxDamage { get; set; }
 
-        public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage, string description)
+        public NaturalDisasterBlueprint(string name, string description, int minDamage, int maxDamage)
         {
-            this.name = name;
-            this.minDamage = minDamage;
-            this.maxDamage = maxDamage;
-            this.description = description;
+            Name = name;
+            Description = description;
+            MinDamage = minDamage;
+            MaxDamage = maxDamage;
         }
 
         public virtual void StartEffect()
         {
-            Random random = new Random();
-
             var allBuildings = BuildingManager.GetAllBuildingLocations();
             var shuffledBuildings = allBuildings.OrderBy(_ => random.Next()).ToList(); 
 
 
             if (shuffledBuildings.Count > 1) 
             {
-                int numberOfAffectedBuildings = random.Next(1, shuffledBuildings.Count); 
-                for (int i = 0; i < numberOfAffectedBuildings; i++)
+                int affected = random.Next(1, shuffledBuildings.Count); 
+                for (int i = 0; i < affected; i++)
                 {
-                    shuffledBuildings[i].Building.CurrentHealth -= random.Next(minDamage, maxDamage);
+                    shuffledBuildings[i].Building.CurrentHealth -= random.Next(MinDamage, MaxDamage);
                 }
             }
         }

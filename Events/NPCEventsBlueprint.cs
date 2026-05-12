@@ -1,52 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CitySimproj.Events
+﻿namespace CitySimproj.Events
 {
-	abstract class NPCEventsBlueprint
-	{
-		protected static readonly Random rand = new Random();
-		private string name;
-		protected int minDamage;
-		protected int maxDamage;
-		//private bool stealing;
-		private string description;
+	abstract class NPCEventsBlueprint : IEvent
+    {
+		protected static readonly Random random = new Random();
 
-		public string Name => name;	
-        public string Description => description;
+        public string Name { get; set; }
+		public string Description { get; set; }
+		public int MinDamage { get; set; }
+		public int MaxDamage { get; set; }
 
-        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, /*bool stealing,*/ string description)
+		public NPCEventsBlueprint(string name, string description, int minDamage, int maxDamage)
 		{
-			this.name = name;
-			this.minDamage = minDamage;
-			this.maxDamage = maxDamage;
-			//this.stealing = stealing;
-			this.description = description;
-		}
+			Name = name;
+			Description = description;
+			MinDamage = minDamage;
+			MaxDamage = maxDamage;
+        }
 
-		public virtual void StartEffect()
+        public virtual void StartEffect() 
 		{
-			/*
-			var allNPCs = Person.NPC();
-			Random random = new Random();
-			allNPCs = allNPCs.OrderBy(_ => random.Next()).ToList();
+			var AllNPCs = Person.NPC();
+			if (AllNPCs.Count < 1) return;
 
-			if (allNPCs.Count >= 1)
+			int affected = random.Next(0, AllNPCs.Count);
+			for (int i = 0; i < affected; i++)
 			{
-				int numberOfAffectedNPCs = random.Next(0, allNPCs.Count);
-				for (int i = 0; i < numberOfAffectedNPCs; i++) {
-					if (this.stealing == true)
-					{
-						allNPCs[i].Ps.NetWorth -= 1000;
-					}
-					allNPCs[i].Health -= random.Next(minDamage, maxDamage);
-				}
+				ApplyToNPC(AllNPCs[i]);
 			}
-			*/
-		}
-	}
+        }
+
+		protected abstract void ApplyToNPC(Person npc);
+    }
 }
