@@ -18,18 +18,17 @@ namespace CitySimproj
                 @"                                                                              "
             };
 
-        private readonly List<(NaturalDisasterBlueprint disaster, int chance)> disasters = new() 
+        private readonly List<(EventBlueprint disaster, int chance)> disasters = new() 
 		{
 			(new Earthquake(), 1),
 			(new Tsunami(), 1),
         };
 
-		private readonly List<(EconomicsEventsBlueprint ecoevent, int chance)> economicsEvents = new() 
+		private readonly List<(EventBlueprint ecoevent, int chance)> economicsEvents = new() 
 		{
-			(new PowerPlantMalfunction(), 1), 
+			(new PowerPlantMalfunction(), 1),
 		};
-
-		private readonly List<(NPCEventsBlueprint events, int chance)> events = new() 
+		private readonly List<(EventBlueprint events, int chance)> events = new() 
 		{
 			(new Plague(), 1),
 			(new CrimeWave(), 1),
@@ -56,18 +55,9 @@ namespace CitySimproj
             foreach (var e in occuredEcoEvents) e.StartEffect();
             foreach (var n in occuredNPCEvents) n.StartEffect();
 
-            PrintSection("NATURAL DISASTERS",occuredDisasters,
-                e => e.Name,
-                e => e.Description,
-                ConsoleColor.Red);
-            PrintSection("ECONOMIC EVENTS", occuredEcoEvents,
-                e => e.Name,
-                e => e.Description,
-                ConsoleColor.Yellow);
-            PrintSection("NPC EVENTS", occuredNPCEvents,
-                e => e.Name,
-                e => e.Description,
-                ConsoleColor.Green);
+            PrintSection("NATURAL DISASTERS", occuredDisasters, ConsoleColor.Red);
+            PrintSection("ECONOMIC EVENTS", occuredEcoEvents, ConsoleColor.Yellow);
+            PrintSection("NPC EVENTS", occuredNPCEvents, ConsoleColor.Green);
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
             PrintCentered("Press [ENTER] to continue...");
@@ -75,9 +65,9 @@ namespace CitySimproj
             Console.ReadLine();
         }
 
-        private static List<IEvent> RollEvents<T>(List<(T item, int chance)> pool) where T : IEvent
+        private static List<EventBlueprint> RollEvents(List<(EventBlueprint item, int chance)> pool)
         {
-            var result = new List<IEvent>();
+            var result = new List<EventBlueprint>();
             foreach (var (item, chance) in pool)
                 if (random.Next(1, chance + 1) == 1)
                     result.Add(item);
@@ -99,7 +89,8 @@ namespace CitySimproj
             int pad = (Console.WindowWidth - text.Length) / 2;
             Console.WriteLine(new string(' ', Math.Max(0, pad)) + text);
         }
-        private static void PrintSection<T>(string title, List<T> occureds, Func<T, string> headline, Func<T, string> detail, ConsoleColor color, int width = 100)
+        private static void PrintSection<T>(string title, List<T> occureds, ConsoleColor color, int width = 110)
+    where T : EventBlueprint
         {
             int margin = (Console.WindowWidth - width) / 2;
             string pad = new string(' ', Math.Max(0, margin));
@@ -149,8 +140,8 @@ namespace CitySimproj
 
             foreach (var item in occureds)
             {
-                string headlineText = headline(item);
-                string detailText = detail(item);
+                string headlineText = item.Name;
+                string detailText = item.Description;
 
                 int headlinePad = (width - headlineText.Length) / 2;
                 int detailPad = (width - detailText.Length) / 2;
@@ -171,12 +162,8 @@ namespace CitySimproj
                 Console.WriteLine(pad + "|" + new string(' ', width) + "|");
                 Console.ResetColor();
             }
-
             Border('└', '┘');
             Console.WriteLine();
-
-
-        
         }
     }
     

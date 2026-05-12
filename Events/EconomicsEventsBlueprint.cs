@@ -1,18 +1,23 @@
-﻿namespace CitySimproj.Events
+﻿using Buildings;
+using CitySimproj.Events;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CitySimproj
 {
-    abstract class EconomicsEventsBlueprint : IEvent
+    // The Blueprint class for Natural Disasters.
+    abstract class EconomicsEventsBlueprint : EventBlueprint
     {
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        public EconomicsEventsBlueprint(string name, string description)
+        public EconomicsEventsBlueprint(string name, string description) : base(name, description)
         {
-            Name = name;
-            Description = description;
+        
         }
-
-        public virtual void StartEffect() { }
+          public override void StartEffect()
+        {   
+        }
     }
-
 }

@@ -1,25 +1,31 @@
 using Buildings;
+using CitySimproj.Events;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CitySimproj.Events
 {
-    abstract class NaturalDisasterBlueprint : IEvent
+    abstract class NaturalDisasterBlueprint : EventBlueprint
     {
         private static readonly Random random = new Random();
+        private int minDamage;
+        private int maxDamage;
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int MinDamage { get; set; }
-        public int MaxDamage { get; set; }
-
-        public NaturalDisasterBlueprint(string name, string description, int minDamage, int maxDamage)
+        public NaturalDisasterBlueprint(string name, string description, int minDamage, int maxDamage) : base(name, description)
         {
-            Name = name;
-            Description = description;
-            MinDamage = minDamage;
-            MaxDamage = maxDamage;
+            this.MinDamage = minDamage;
+            this.MaxDamage = maxDamage;
         }
 
-        public virtual void StartEffect()
+        public int MinDamage { get => minDamage; set => minDamage = value; }
+        public int MaxDamage { get => maxDamage; set => maxDamage = value; }
+
+        public override void StartEffect()
         {
             var allBuildings = BuildingManager.GetAllBuildingLocations();
             var shuffledBuildings = allBuildings.OrderBy(_ => random.Next()).ToList(); 
