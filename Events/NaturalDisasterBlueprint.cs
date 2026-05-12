@@ -10,25 +10,18 @@ using System.Threading.Tasks;
 
 namespace CitySimproj
 {
-    abstract class NaturalDisasterBlueprint : IEvent
+    abstract class NaturalDisasterBlueprint : EventBlueprint
     {
-        private string name;
         private int minDamage;
         private int maxDamage;
-        private string description;
 
-        public string Description => description;
-        public string Name => name;
-
-        public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage, string description)
+        public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage, string description) : base(name, description)
         {
-            this.name = name;
             this.minDamage = minDamage;
             this.maxDamage = maxDamage;
-            this.description = description;
         }
 
-        public virtual void StartEffect()
+        public override void StartEffect()
         {
             Random random = new Random();
 

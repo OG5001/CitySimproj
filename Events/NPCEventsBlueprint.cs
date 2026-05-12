@@ -7,27 +7,20 @@ using System.Threading.Tasks;
 
 namespace CitySimproj.Events
 {
-	abstract class NPCEventsBlueprint : IEvent
+	abstract class NPCEventsBlueprint : EventBlueprint
     {
-		private string name;
 		private int minDamage;
 		private int maxDamage;
 		private bool stealing;
-		private string description;
 
-		public string Name => name;	
-        public string Description => description;
-
-        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, bool stealing, string description)
+        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, bool stealing, string description) : base(name, description)
 		{
-			this.name = name;
 			this.minDamage = minDamage;
 			this.maxDamage = maxDamage;
 			this.stealing = stealing;
-			this.description = description;
 		}
 
-		public virtual void StartEffect()
+		public override void StartEffect()
 		{
 			var allNPCs = Person.NPC();
 			Random random = new Random();

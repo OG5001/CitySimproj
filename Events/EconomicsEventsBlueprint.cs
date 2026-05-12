@@ -9,26 +9,16 @@ using System.Threading.Tasks;
 
 namespace CitySimproj
 {
-
     // The Blueprint class for Natural Disasters.
-    abstract class EconomicsEventsBlueprint : IEvent
+    abstract class EconomicsEventsBlueprint : EventBlueprint
     {
-        private string name;
-        private string description;
-
-        public string Name => name;
-        public string Description => description;
-
-        public EconomicsEventsBlueprint(string name, string description)
+        public EconomicsEventsBlueprint(string name, string description) : base(name, description)
         {
-            this.name = name;
-            this.description = description; 
+        
         }
 
-        public virtual void StartEffect()
-        {   
+        public override void StartEffect()
+        {
         }
-      
     }
-
 }
