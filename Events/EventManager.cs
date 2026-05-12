@@ -89,7 +89,7 @@ namespace CitySimproj
             int pad = (Console.WindowWidth - text.Length) / 2;
             Console.WriteLine(new string(' ', Math.Max(0, pad)) + text);
         }
-        private static void PrintSection<T>(string title, List<T> occureds, ConsoleColor color, int width = 100)
+        private static void PrintSection<T>(string title, List<T> occureds, ConsoleColor color, int width = 110)
     where T : EventBlueprint
         {
             int margin = (Console.WindowWidth - width) / 2;

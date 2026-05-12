@@ -10,16 +10,18 @@ namespace CitySimproj.Events
 	abstract class NPCEventsBlueprint : EventBlueprint
     {
         protected static readonly Random random = new Random();
-        public int MinDamage { get; set; }
-        public int MaxDamage { get; set; }
+        private int minDamage;
+        private int maxDamage;
 
-        public NPCEventsBlueprint(string name, int minDamage, int maxDamage, string description) : base(name, description)
+        public NPCEventsBlueprint(string name, string description, int minDamage, int maxDamage) : base(name, description)
 		{
 			this.minDamage = minDamage;
 			this.maxDamage = maxDamage;
 		}
+        public int MinDamage { get; set; }
+        public int MaxDamage { get; set; }
 
-		public override void StartEffect()
+        public override void StartEffect()
 		{
 			var AllNPCs = Person.NPC();
 			if (AllNPCs.Count < 1) return;

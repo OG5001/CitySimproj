@@ -13,12 +13,17 @@ namespace CitySimproj.Events
     abstract class NaturalDisasterBlueprint : EventBlueprint
     {
         private static readonly Random random = new Random();
+        private int minDamage;
+        private int maxDamage;
 
-        public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage, string description) : base(name, description)
+        public NaturalDisasterBlueprint(string name, string description, int minDamage, int maxDamage) : base(name, description)
         {
-            this.minDamage = minDamage;
-            this.maxDamage = maxDamage;
+            this.MinDamage = minDamage;
+            this.MaxDamage = maxDamage;
         }
+
+        public int MinDamage { get => minDamage; set => minDamage = value; }
+        public int MaxDamage { get => maxDamage; set => maxDamage = value; }
 
         public override void StartEffect()
         {
