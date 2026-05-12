@@ -19,6 +19,14 @@ namespace CitySimproj
 
         public override void StartEffect()
         {
+        public EconomicsEventsBlueprint(string name, string description)
+            this.name = name;
+            this.description = description; 
         }
+
+        public virtual void StartEffect()
+        {   
+        }
+      
     }
 }

@@ -8,12 +8,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitySimproj
+namespace CitySimproj.Events
 {
     abstract class NaturalDisasterBlueprint : EventBlueprint
     {
-        private int minDamage;
-        private int maxDamage;
+        private static readonly Random random = new Random();
 
         public NaturalDisasterBlueprint(string name, int minDamage, int maxDamage, string description) : base(name, description)
         {
@@ -23,18 +22,16 @@ namespace CitySimproj
 
         public override void StartEffect()
         {
-            Random random = new Random();
-
             var allBuildings = BuildingManager.GetAllBuildingLocations();
             var shuffledBuildings = allBuildings.OrderBy(_ => random.Next()).ToList(); 
 
 
             if (shuffledBuildings.Count > 1) 
             {
-                int numberOfAffectedBuildings = random.Next(1, shuffledBuildings.Count); 
-                for (int i = 0; i < numberOfAffectedBuildings; i++)
+                int affected = random.Next(1, shuffledBuildings.Count); 
+                for (int i = 0; i < affected; i++)
                 {
-                    shuffledBuildings[i].Building.CurrentHealth -= random.Next(minDamage, maxDamage);
+                    shuffledBuildings[i].Building.CurrentHealth -= random.Next(MinDamage, MaxDamage);
                 }
             }
         }

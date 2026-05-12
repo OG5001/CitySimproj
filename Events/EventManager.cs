@@ -1,12 +1,4 @@
 ﻿using CitySimproj.Events;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CitySimproj
 {
@@ -40,6 +32,14 @@ namespace CitySimproj
 		{
 			(new Plague(), 1),
 			(new CrimeWave(), 1),
+            (new Festival(), 1),
+            (new CharityDonation(), 1),
+            (new LotteryWin(), 1),
+            (new FreeHoliday(), 1),
+            (new MoneyRain(), 1),
+            (new ClownParade(), 1),
+            (new Promotion(), 1),
+            (new UnemploymentSpike(), 1)
 		};
 
         public void Print()
@@ -73,13 +73,13 @@ namespace CitySimproj
                     result.Add(item);
             return result;
         }
+
         private static void PrintTitle()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (string line in titleArt)
             {
                 PrintCentered(line);
-
             }
             Console.ResetColor();
             Console.WriteLine();

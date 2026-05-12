@@ -12,31 +12,33 @@ namespace CitySimproj.Shared
 
         public int DrawMenu(string[] choice)
         {
-
-
+            Console.Clear(); // clear it when title or footnote changes
+            Console.SetCursorPosition(0, 0);
+            
             int selected = 0;
 
+            int windowWidth = Console.WindowWidth;
+            int windowHeight = Console.WindowHeight;
+
+            int contentHeight = title.Length + choice.Length + 6;
+            int startY = (windowHeight - contentHeight) / 2;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            // moved title outside the loop
+            for (int i = 0; i < title.Length; i++)
+            {
+                int x = (windowWidth - title[i].Length) / 2;
+                Console.SetCursorPosition(x, startY + i);
+                Console.Write(title[i]);
+            }
+
+            Console.ResetColor();
+            
+            WriteCentered("Use up and down arrows and Enter", ConsoleColor.DarkGray);
+            
             while (true)
             {
-                Console.Clear();
-
-                int windowWidth = Console.WindowWidth;
-                int windowHeight = Console.WindowHeight;
-
-                int contentHeight = title.Length + choice.Length + 6;
-                int startY = (windowHeight - contentHeight) / 2;
-
-                Console.ForegroundColor = ConsoleColor.Cyan;
-
-                for (int i = 0; i < title.Length; i++)
-                {
-                    int x = (windowWidth - title[i].Length) / 2;
-                    Console.SetCursorPosition(x, startY + i);
-                    Console.Write(title[i]);
-                }
-
-                Console.ResetColor();
-
                 for (int i = 0; i < choice.Length; i++)
                 {
                     string text = $"{choice[i]}";
@@ -59,10 +61,8 @@ namespace CitySimproj.Shared
                         Console.ResetColor();
                     }
                 }
-
-
-                WriteCentered("Use up and down arrows and Enter", ConsoleColor.DarkGray);
-
+                
+                
 
                 var key = Console.ReadKey(true).Key;
 
@@ -90,7 +90,7 @@ namespace CitySimproj.Shared
             int windowWidth = Console.WindowWidth;
             int startY = 3;
 
-            // Draw title only
+            // Draw title only first
             Console.ForegroundColor = ConsoleColor.Cyan;
 
             for (int i = 0; i < title.Length; i++)

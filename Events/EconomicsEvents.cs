@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Buildings;
+﻿using Buildings;
 
-
-namespace CitySimproj
+namespace CitySimproj.Events
 {
-
     class PowerPlantMalfunction : EconomicsEventsBlueprint 
     {
         public PowerPlantMalfunction() : base("PowerPlant Malfunctioning", "A malfunction in the power plant has stopped electricity generation.") { }

@@ -1,21 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Buildings;
-
-
-namespace CitySimproj
+namespace CitySimproj.Events
 {
     class Earthquake : NaturalDisasterBlueprint
     {
-        public Earthquake() : base("Earthquake", 20, 50,"The city was shaken by a massive earthquake.") { }
+        public Earthquake() : base("Earthquake", "The city was shaken by a massive earthquake.", 20, 50) { }
     }
     class Tsunami : NaturalDisasterBlueprint
     {
-        public Tsunami() : base("Tsunami", 30, 60,"A devastating tsunami has struck the city.") { }
+        public Tsunami() : base("Tsunami", "A devastating tsunami has struck the city.", 30, 60) { }
     }
 }
