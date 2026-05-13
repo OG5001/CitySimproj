@@ -23,16 +23,17 @@ internal class Production(Treasury t)
         { MarketRef.Oil, 0 }
     };
     
-    public static void Calculate(List<string> endMenu)
+    public void Calculate(List<string> endMenu)
     {
         var buildings = BuildingManager.GetAllBuildings();
 
         foreach (var building in buildings)
         {
-            Inventory[MarketRef.Power] -= building.PowerConsumption;
-            Inventory[MarketRef.Water] -= building.WaterConsumption;
+            Inventory[MarketRef.Power] -= building.PowerConsumption; // power prod
+            Inventory[MarketRef.Water] -= building.WaterConsumption; // water prod
+            t.AddFunds(building.TaxIncome); // adds TaxIncome from buildings to balance
         }
-        foreach (var (good, amount) in Inventory)
+        foreach (var (good, amount) in Inventory) // lists goods
         {
             endMenu.Add($"{good.Name}: {amount}");
         }
@@ -62,9 +63,9 @@ internal class Production(Treasury t)
         
         List<string> endMenu = [];
         Calculate(endMenu);
-        t.AddFunds(20000);
+        t.AddFunds(10000); // EU money
         endMenu.Add($"Balance: {t.Balance()} Ft");
-        endMenu.Add("");
+        endMenu.Add("----");
         endMenu.Add("Done");
 
         while (done != endMenu.Count - 1)
