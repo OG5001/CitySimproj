@@ -24,7 +24,7 @@ namespace Buildings
                 "Build",
                 "Map",
                 "Trading",
-                "List buildings",
+                "List",
                 "Next Day",
                 "Exit"
         };
@@ -63,6 +63,13 @@ namespace Buildings
 
                     case 3:
                         BuildingManager.Kiiratas();
+                        Console.WriteLine();
+                        // list people (temp)
+                        var allNpc = Person.NPC();
+                        foreach (var p in allNpc)
+                        {
+                            Console.WriteLine(p);
+                        }
                         break;
 
                     case 4:
