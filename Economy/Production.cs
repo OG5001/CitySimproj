@@ -51,7 +51,14 @@ internal class Production(Treasury t)
     public void EndTurn()
     {
         var done = 0;
-        var endTurn = new Menu([""]);
+        var endTurn = new Menu([
+            @"  _____ _        _       ",
+            @" / ____| |      | |      ",
+            @"| (___ | |_ __ _| |_ ___ ",
+            @" \___ \| __/ _` | __/ __|",
+            @" ____) | || (_| | |_\__ \",
+            @"|_____/ \__\__,_|\__|___/"
+        ]);
         
         List<string> endMenu = [];
         Calculate(endMenu);
