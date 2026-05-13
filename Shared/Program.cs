@@ -51,6 +51,7 @@ namespace Buildings
                 {
                     case 0:
                         manager.Menu();
+                        Console.Clear();    
                         break;
 
                     case 1:

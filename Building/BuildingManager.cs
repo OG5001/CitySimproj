@@ -7,60 +7,58 @@ namespace Buildings
     {
 
         static List<BuildingLocation> buildingsBuilt = new List<BuildingLocation>();
+        BuildingMenu buildingMenu = new BuildingMenu();
+        SubBuildingMenu subMenu = new SubBuildingMenu();
 
         public void Menu()
         {
             int x;
             do
             {
-                Console.WriteLine("\nChoose building type\n\t1. Residential Building\n\t2. Commercial Building\n\t3. Industrial Building\n\t4. Service\n\t5. Utility\n\t6. Exit");
-                x = int.Parse(Console.ReadLine());
-                Console.WriteLine("-------------------------------------------");
+                x = buildingMenu.DrawBuildingMenu();
 
                 switch (x)
                 {
-                    case 1:
-                        WriteSubtypes(typeof(Residential));
+                    case 0:
                         zetenyMiatt(typeof(Residential));
                         break;
-                    case 2:
-                        WriteSubtypes(typeof(Commercial));
+                    case 1:
                         zetenyMiatt(typeof(Commercial));
                         break;
-                    case 3:
-                        WriteSubtypes(typeof(Industrial));
+                    case 2:
                         zetenyMiatt(typeof(Industrial));
                         break;
-                    case 4:
-                        WriteSubtypes(typeof(Service));
+                    case 3:
                         zetenyMiatt(typeof(Service));
                         break;
-                    case 5:
-                        WriteSubtypes(typeof(Utility));
+                    case 4:
                         zetenyMiatt(typeof(Utility));
                         break;
-                    case 6:
+                    case 5:
                         break;
                 }
-            } while (x != 6);
+            } while (x != 5);
         }
 
-        private void WriteSubtypes(Type type)
+        private string[] GenerateSubMenuItems(Type type)
         {
+            string[] items = new string[Enum.GetValues(type).Length];
             for (int i = 0; i < Enum.GetValues(type).Length; i++)
             {
-                Console.WriteLine($"{i + 1}. {Enum.GetName(type, i)}");
+                items[i] = $"{Enum.GetName(type, i)}";
             }
+            return items;
         }
 
         public void zetenyMiatt(Type type)
 
         {
-            Console.WriteLine("-------------------------------------------");
+            Console.Clear();
             int XPosition = 0;
             int YPosition = 0;
-            int input = int.Parse(Console.ReadLine());
-            Console.WriteLine($"\nYou chose the {Enum.GetName(type, input - 1)} building.");
+            int input = subMenu.DrawMenu(GenerateSubMenuItems(type));
+            Console.Clear();
+            Console.WriteLine($"\nYou chose the {Enum.GetName(type, input)} building.");
             do
             {
                 Console.WriteLine("X coordinate (1-10):");
@@ -79,24 +77,24 @@ namespace Buildings
             while (XPosition <= 0 || XPosition > 10 || YPosition <= 0 || YPosition > 10 || buildingsBuilt.Find(b => b.X == XPosition && b.Y == YPosition) != null);
             if (type == typeof(Residential))
             {
-                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ResidentialBuilding(Enum.GetName(type, input - 1), (Residential)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ResidentialBuilding(Enum.GetName(type, input), (Residential)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
             else if (type == typeof(Commercial))
             {
-                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new CommercialBuilding(Enum.GetName(type, input - 1), (Commercial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new CommercialBuilding(Enum.GetName(type, input), (Commercial)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
             else if (type == typeof(Industrial))
             {
-                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new IndustrialBuilding(Enum.GetName(type, input - 1), (Industrial)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new IndustrialBuilding(Enum.GetName(type, input), (Industrial)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
             else if (type == typeof(Service))
             {
-                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ServiceBuilding(Enum.GetName(type, input - 1), (Service)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new ServiceBuilding(Enum.GetName(type, input), (Service)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
 
             else if (type == typeof(Utility))
             {
-                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input - 1)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new UtilityBuilding(Enum.GetName(type, input - 1), (Utility)Enum.Parse(type, Enum.GetName(type, input - 1)), XPosition, YPosition)));
+                buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new UtilityBuilding(Enum.GetName(type, input), (Utility)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
             Console.WriteLine("Sikerült :D");
         }
