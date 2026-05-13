@@ -1,4 +1,4 @@
-namespace CitySimproj;
+namespace CitySimproj.Economy;
 
 internal class EnergySystem
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CitySimproj
+﻿namespace CitySimproj.Economy
 {
     internal class Treasury
     {
@@ -57,7 +53,7 @@ namespace CitySimproj
         {
             balance -= amount;
         }
-
+        
         public override string ToString() {
             return $"Balance: {this.balance} Ft";
         }

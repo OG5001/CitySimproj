@@ -1,8 +1,9 @@
 using Buildings;
+using CitySimproj.Shared;
 
-namespace CitySimproj; 
+namespace CitySimproj.Economy; 
 
-internal class Production
+internal class Production(Treasury t)
 {
     public record Good(string Name, decimal Price);
     
@@ -14,7 +15,7 @@ internal class Production
         public static readonly Good Oil = new("Oil", 4000);
     }
     
-    private static Dictionary<Good, int> _inventory = new()
+    private static readonly Dictionary<Good, int> Inventory = new()
     {
         { MarketRef.Food, 500 },
         { MarketRef.Power, 500 },
@@ -22,27 +23,48 @@ internal class Production
         { MarketRef.Oil, 0 }
     };
     
-    public void Calculate()
+    public static void Calculate(List<string> endMenu)
     {
         var buildings = BuildingManager.GetAllBuildings();
 
         foreach (var building in buildings)
         {
-            _inventory[MarketRef.Power] -= building.PowerConsumption;
-            _inventory[MarketRef.Water] -= building.WaterConsumption;
+            Inventory[MarketRef.Power] -= building.PowerConsumption;
+            Inventory[MarketRef.Water] -= building.WaterConsumption;
         }
-
-        Console.WriteLine($"Power: {_inventory[MarketRef.Power]}");
-        Console.WriteLine($"Water: {_inventory[MarketRef.Water]}");
+        foreach (var (good, amount) in Inventory)
+        {
+            endMenu.Add($"{good.Name}: {amount}");
+        }
     }
     
     public static int GetAmount(Good item)
     {
-        return _inventory.TryGetValue(item, out int amount) ? amount : 0;
+        return Inventory.GetValueOrDefault(item, 0);
     }
 
     public static Dictionary<Good, int> GetAllGoods()
     {
-        return _inventory;
+        return Inventory;
+    }
+    
+    public void EndTurn()
+    {
+        var done = 0;
+        var endTurn = new Menu([""]);
+        
+        List<string> endMenu = [];
+        Calculate(endMenu);
+        t.AddFunds(20000);
+        endMenu.Add($"Balance: {t.Balance()} Ft");
+        endMenu.Add("");
+        endMenu.Add("Done");
+
+        while (done != endMenu.Count - 1)
+        {
+            done = endTurn.DrawMenu(endMenu.ToArray());
+        }
+        
+        Console.Clear();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Buildings;
+using CitySimproj.Economy;
 
 namespace CitySimproj.Events
 {

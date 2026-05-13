@@ -69,7 +69,7 @@ internal class EconomyManager(Treasury t)
 		};
 
 
-        List<string> checkMenu = new();
+		List<string> checkMenu = new();
         List<string> buyMenu = new();
         List<string> sellMenu = new();
 
