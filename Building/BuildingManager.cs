@@ -39,17 +39,53 @@ namespace Buildings
                 }
             } while (x != 5);
         }
+        //épulet választó menü, ami a típus alapján generálja a submenu itemeket, amikben benne van az ár is
 
         private string[] GenerateSubMenuItems(Type type)
         {
-            string[] items = new string[Enum.GetValues(type).Length];
-            for (int i = 0; i < Enum.GetValues(type).Length; i++)
+            var values = Enum.GetValues(type);
+            string[] items = new string[values.Length];
+
+            for (int i = 0; i < values.Length; i++)
             {
-                items[i] = $"{Enum.GetName(type, i)}";
+                string name = Enum.GetName(type, i);
+                object enumValue = Enum.Parse(type, name);
+
+                Building prototype = null;
+                if (type == typeof(Residential))
+                {
+                    prototype = new ResidentialBuilding(name, (Residential)enumValue, 0, 0);
+                }
+                else if (type == typeof(Commercial))
+                {
+                    prototype = new CommercialBuilding(name, (Commercial)enumValue, 0, 0);
+                }
+                else if (type == typeof(Industrial))
+                {
+                    prototype = new IndustrialBuilding(name, (Industrial)enumValue, 0, 0);
+                }
+                else if (type == typeof(Service))
+                {
+                    prototype = new ServiceBuilding(name, (Service)enumValue, 0, 0);
+                }
+                else if (type == typeof(Utility))
+                {
+                    prototype = new UtilityBuilding(name, (Utility)enumValue, 0, 0);
+                }
+
+                if (prototype != null)
+                {
+                    items[i] = $"{name} - Cost: {prototype.BuildingCost:0} Ft";
+                }
+                else
+                {
+                    items[i] = name;
+                }
             }
+
             return items;
         }
-
+        // Ez a metódus kezeli az épület elhelyezését a pályán, ellenőrzi a koordinátákat és hogy van-e már épület a helyen, majd hozzáadja az új épületet a listához
         public void zetenyMiatt(Type type)
 
         {
