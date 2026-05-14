@@ -20,7 +20,7 @@ namespace Buildings
 			switch (type)
 			{
 				case Utility.WaterTower:
-					BuildingCost = 5000;
+					BuildingCost = 8000;
 					MaintenanceCost = 750;
 					TaxIncome = 100;
 					Capacity = 20;
@@ -29,7 +29,7 @@ namespace Buildings
 					WaterConsumption = 0;
 					break;
 				case Utility.WaterTreatmentPlant:
-					BuildingCost = 15000;
+					BuildingCost = 35000;
 					MaintenanceCost = 1500;
 					TaxIncome = 250;
 					Capacity = 50;
@@ -38,7 +38,7 @@ namespace Buildings
 					WaterConsumption = -300;
 					break;
 				case Utility.SolarPlant:
-					BuildingCost = 10000;
+					BuildingCost = 40000;
 					MaintenanceCost = 2000;
 					TaxIncome = 250;
 					Capacity = 50;
@@ -47,7 +47,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Utility.SewagePlant:
-					BuildingCost = 15000;
+					BuildingCost = 22000;
 					MaintenanceCost = 2500;
 					TaxIncome = 250;
 					Capacity = 100;
@@ -56,7 +56,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Utility.GasStation:
-					BuildingCost = 2000;
+					BuildingCost = 7000;
 					MaintenanceCost = 500;
 					TaxIncome = 300;
 					Capacity = 15;
@@ -65,7 +65,7 @@ namespace Buildings
 					WaterConsumption = 10;
 					break;
 				case Utility.PowerSubstation:
-					BuildingCost = 10000;
+					BuildingCost = 30000;
 					MaintenanceCost = 2500;
 					TaxIncome = 250;
 					Capacity = 75;
@@ -74,7 +74,7 @@ namespace Buildings
 					WaterConsumption = 30;
 					break;
 				case Utility.Landfill:
-					BuildingCost = 2000;
+					BuildingCost = 6000;
 					MaintenanceCost = 500;
 					TaxIncome = 100;
 					Capacity = 40;
@@ -83,7 +83,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Utility.WindTurbine:
-					BuildingCost = 5000;
+					BuildingCost = 28000;
 					MaintenanceCost = 500;
 					TaxIncome = 250;
 					Capacity = 10;
@@ -92,7 +92,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Utility.WasteProcessing:
-					BuildingCost = 15000;
+					BuildingCost = 26000;
 					MaintenanceCost = 2000;
 					TaxIncome = 250;
 					Capacity = 100;

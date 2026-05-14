@@ -21,7 +21,7 @@ namespace Buildings
             switch (type)
             {
                 case Service.CityHall:
-                    BuildingCost = 50000;
+                    BuildingCost = 60000;
                     MaintenanceCost = 2500;
                     Capacity = 50;
                     TaxIncome = 0;
@@ -30,7 +30,7 @@ namespace Buildings
                     WaterConsumption = 10;
                     break;
                 case Service.Court:
-                    BuildingCost = 25000;
+                    BuildingCost = 40000;
                     MaintenanceCost = 2000;
                     Capacity = 200;
                     HappinessImpact = 10;
@@ -38,7 +38,7 @@ namespace Buildings
                     WaterConsumption = 15;
                     break;
                 case Service.FireStation:
-                    BuildingCost = 30000;
+                    BuildingCost = 45000;
                     MaintenanceCost = 3000;
                     Capacity = 80;
                     TaxIncome = 0;
@@ -47,7 +47,7 @@ namespace Buildings
                     WaterConsumption = 25;
                     break;
                 case Service.Hospital:
-                    BuildingCost = 50000;
+                    BuildingCost = 70000;
                     MaintenanceCost = 4000;
                     Capacity = 250;
                     TaxIncome = 0;
@@ -56,7 +56,7 @@ namespace Buildings
                     WaterConsumption = 50;
                     break;
                 case Service.Library:
-                    BuildingCost = 15000;
+                    BuildingCost = 22000;
                     MaintenanceCost = 1000;
                     Capacity = 75;
                     TaxIncome = 0;
@@ -65,7 +65,7 @@ namespace Buildings
                     WaterConsumption = 10;
                     break;
                 case Service.PoliceStation:
-                    BuildingCost = 20000;
+                    BuildingCost = 32000;
                     MaintenanceCost = 1500;
                     Capacity = 100;
                     TaxIncome = 0;
@@ -74,7 +74,7 @@ namespace Buildings
                     WaterConsumption = 25;
                     break;
                 case Service.PostOffice:
-                    BuildingCost = 10000;
+                    BuildingCost = 12000;
                     MaintenanceCost = 900;
                     Capacity = 60;
                     TaxIncome = 0;
@@ -83,7 +83,7 @@ namespace Buildings
                     WaterConsumption = 10;
                     break;
                 case Service.School:
-                    BuildingCost = 35000;
+                    BuildingCost = 50000;
                     MaintenanceCost = 1500;
                     Capacity = 400;
                     TaxIncome = 0;
@@ -92,7 +92,7 @@ namespace Buildings
                     WaterConsumption = 10;
                     break;
                 case Service.University:
-                    BuildingCost = 25000;
+                    BuildingCost = 65000;
                     MaintenanceCost = 3000;
                     Capacity = 300;
                     TaxIncome = 0;
@@ -101,7 +101,7 @@ namespace Buildings
                     WaterConsumption = 10;
                     break;
                 case Service.Uszoda:
-                    BuildingCost = 36000;
+                    BuildingCost = 42000;
                     MaintenanceCost = 3000;
                     Capacity = 120;
                     TaxIncome = 67;

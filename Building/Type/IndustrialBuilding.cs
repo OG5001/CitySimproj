@@ -20,7 +20,7 @@ namespace Buildings
 			switch (type)
 			{
 				case Industrial.Factory:
-					BuildingCost = 10000;
+					BuildingCost = 22000;
 					MaintenanceCost = 1000;
 					TaxIncome = 2000;
 					Capacity = 50;
@@ -29,7 +29,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Industrial.PowerPlant:
-					BuildingCost = 10000;
+					BuildingCost = 45000;
 					MaintenanceCost = 1000;
 					TaxIncome = 500;
 					Capacity = 100;
@@ -38,7 +38,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Industrial.Warehouse:
-					BuildingCost = 10000;
+					BuildingCost = 24000;
 					MaintenanceCost = 1500;
 					TaxIncome = 1000;
 					Capacity = 150;
@@ -47,7 +47,7 @@ namespace Buildings
 					WaterConsumption = 10;
 					break;
 				case Industrial.Workshop:
-					BuildingCost = 5000;
+					BuildingCost = 8000;
 					MaintenanceCost = 500;
 					TaxIncome = 750;
 					Capacity = 20;
@@ -56,7 +56,7 @@ namespace Buildings
 					WaterConsumption = 15;
 					break;
 				case Industrial.OilRefinery:
-					BuildingCost = 10000;
+					BuildingCost = 35000;
 					MaintenanceCost = 1000;
 					TaxIncome = 750;
 					Capacity = 100;
@@ -65,7 +65,7 @@ namespace Buildings
 					WaterConsumption = 30;
 					break;
 				case Industrial.LogisticsCenter:
-					BuildingCost = 10000;
+					BuildingCost = 30000;
 					MaintenanceCost = 1500;
 					TaxIncome = 1000;
 					Capacity = 100;
@@ -74,7 +74,7 @@ namespace Buildings
 					WaterConsumption = 15;
 					break;
 				case Industrial.SteelMill:
-					BuildingCost = 10000;
+					BuildingCost = 32000;
 					MaintenanceCost = 1000;
 					TaxIncome = 500;
 					Capacity = 75;
@@ -83,7 +83,7 @@ namespace Buildings
 					WaterConsumption = 10;
 					break;
 				case Industrial.RecyclingPlant:
-					BuildingCost = 5000;
+					BuildingCost = 18000;
 					MaintenanceCost = 500;
 					TaxIncome = 400;
 					Capacity = 50;

@@ -20,7 +20,7 @@ namespace Buildings
 			switch (type)
 			{
 				case Residential.House:
-					BuildingCost = 1000;
+					BuildingCost = 2500;
 					MaintenanceCost = 100;
 					TaxIncome = 250;
 					Capacity = 10;
@@ -29,7 +29,7 @@ namespace Buildings
 					WaterConsumption = 5;
 					break;
 				case Residential.ApartmentBlock:
-					BuildingCost = 10000;
+					BuildingCost = 22000;
 					MaintenanceCost = 500;
 					TaxIncome = 2500;
 					Capacity = 200;
@@ -38,7 +38,7 @@ namespace Buildings
 					WaterConsumption = 15;
 					break;
 				case Residential.Villa:
-					BuildingCost = 20000;
+					BuildingCost = 30000;
 					MaintenanceCost = 500;
 					TaxIncome = 1000;
 					Capacity = 15;
@@ -47,7 +47,7 @@ namespace Buildings
 					WaterConsumption = 20;
 					break;
 				case Residential.Hotel:
-					BuildingCost = 15000;
+					BuildingCost = 45000;
 					MaintenanceCost = 500;
 					TaxIncome = 1000;
 					Capacity = 400;
@@ -56,7 +56,7 @@ namespace Buildings
 					WaterConsumption = 30;
 					break;
 				case Residential.RetirementHome:
-					BuildingCost = 2000;
+					BuildingCost = 9000;
 					MaintenanceCost = 200;
 					TaxIncome = 100;
 					Capacity = 50;
@@ -65,7 +65,7 @@ namespace Buildings
 					WaterConsumption = 10;
 					break;
 				case Residential.Dormitory:
-					BuildingCost = 5000;
+					BuildingCost = 12000;
 					MaintenanceCost = 500;
 					TaxIncome = 150;
 					Capacity = 100;
@@ -74,7 +74,7 @@ namespace Buildings
 					WaterConsumption = 15;
 					break;
 				case Residential.StudentHousing:
-					BuildingCost = 5000;
+					BuildingCost = 12000;
 					MaintenanceCost = 500;
 					TaxIncome = 150;
 					Capacity = 100;
@@ -83,7 +83,7 @@ namespace Buildings
 					WaterConsumption = 15;
 					break;
 				case Residential.Townhouse:
-					BuildingCost = 1000;
+					BuildingCost = 3500;
 					MaintenanceCost = 75;
 					TaxIncome = 200;
 					Capacity = 10;
