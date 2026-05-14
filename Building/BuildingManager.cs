@@ -151,6 +151,7 @@ namespace Buildings
 
         public static void Draw()
         {
+            Console.Clear();
             List<BuildingLocation> buildings = new List<BuildingLocation>();
             foreach (BuildingLocation b in buildingsBuilt)
             {
@@ -224,6 +225,7 @@ namespace Buildings
         }
         public static void Kiiratas()
         {
+            Console.Clear();
             foreach (BuildingLocation b in buildingsBuilt)
             {
                 Console.WriteLine(b.ToString());
@@ -275,19 +277,20 @@ namespace Buildings
 
             double health = location.Building.CurrentHealth;
 
-            if (health <= 20)
+            switch (health)
             {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-            }
-
-            else if (health <= 50)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-
-            else if (health <= 75)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                case <= 0:
+                    buildingsBuilt.Remove(location);
+                    break;
+                case <= 20:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+                case <= 50:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case <= 75:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
             }
 
         }
