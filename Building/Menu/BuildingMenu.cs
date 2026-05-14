@@ -28,6 +28,7 @@ namespace CitySimproj.Building
             "Industrial Building",
             "Service Building",
             "Utility Building",
+            "Fix buildings",
             "Return to main menu"
         };
 

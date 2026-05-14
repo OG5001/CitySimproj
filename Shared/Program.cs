@@ -65,6 +65,7 @@ namespace Buildings
                         break;
 
                     case 3:
+                        Console.Clear();    
                         BuildingManager.Kiiratas();
                         Console.WriteLine();
                         // list people (temp)

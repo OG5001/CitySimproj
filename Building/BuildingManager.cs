@@ -4,10 +4,11 @@ using CitySimproj.Economy;
 
 namespace Buildings
 {
-    internal class BuildingManager (Treasury t)
+    internal class BuildingManager(Treasury t)
     {
 
         static List<BuildingLocation> buildingsBuilt = new List<BuildingLocation>();
+        static List<BuildingLocation> isDamaged = new List<BuildingLocation>();
         BuildingMenu buildingMenu = new BuildingMenu();
         SubBuildingMenu subMenu = new SubBuildingMenu();
 
@@ -36,9 +37,12 @@ namespace Buildings
                         zetenyMiatt(typeof(Utility));
                         break;
                     case 5:
+                        Fix ();
+                        break;
+                    case 6:
                         break;
                 }
-            } while (x != 5);
+            } while (x != 6);
         }
         //épulet választó menü, ami a típus alapján generálja a submenu itemeket, amikben benne van az ár is
 
@@ -95,7 +99,7 @@ namespace Buildings
             int YPosition = 0;
             int input = subMenu.DrawMenu(GenerateSubMenuItems(type));
             Console.Clear();
-            
+
             string selectedName = Enum.GetName(type, input);
             object enumValue = Enum.Parse(type, selectedName);
             Building prototype = null;
@@ -104,7 +108,7 @@ namespace Buildings
             else if (type == typeof(Industrial)) prototype = new IndustrialBuilding(selectedName, (Industrial)enumValue, 0, 0);
             else if (type == typeof(Service)) prototype = new ServiceBuilding(selectedName, (Service)enumValue, 0, 0);
             else if (type == typeof(Utility)) prototype = new UtilityBuilding(selectedName, (Utility)enumValue, 0, 0);
- 
+
             decimal cost = prototype?.BuildingCost ?? 0m;
             Console.WriteLine($"\nYou chose the {selectedName} building. Cost: {cost:C0} Ft");
             do
@@ -202,6 +206,7 @@ namespace Buildings
                     if (matrix[x, y] != null)
                     {
                         ColorBuildings(matrix[x, y]);
+                        
                         string elsoHat = matrix[x, y].Name.Length >= 6 ? matrix[x, y].Name.Substring(0, 6) : matrix[x, y].Name;
                         Console.Write($" |{elsoHat,10}| ");
                     }
@@ -277,22 +282,132 @@ namespace Buildings
 
             double health = location.Building.CurrentHealth;
 
-            switch (health)
+            if (health <= 0)
             {
-                case <= 0:
-                    buildingsBuilt.Remove(location);
-                    break;
-                case <= 20:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                case <= 50:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case <= 75:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
+                buildingsBuilt.Remove(location);
+            }
+            else if (health <= 20)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
             }
 
+            else if (health <= 50)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            else if (health <= 75)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else
+            {
+                Console.ResetColor();
+            }
+
+        }
+        public static void UpdateDamagedList()
+        {
+            // Check all built buildings
+            foreach (var loc in buildingsBuilt)
+            {
+                var b = loc.Building;
+
+                
+                if (b.CurrentHealth < b.MaxHealth && b.CurrentHealth > 0)
+                {
+                    if (!isDamaged.Contains(loc))
+                    {
+                        isDamaged.Add(loc);
+                    }
+                }
+                else
+                {
+                    isDamaged.Remove(loc);
+                }
+            }
+            buildingsBuilt.RemoveAll(loc => loc.Building.CurrentHealth <= 0);
+        }
+        public void Fix()
+        {
+            UpdateDamagedList();
+            Console.Clear();
+            int fixCost = 0;
+            int allCost = 0;
+            if (isDamaged == null || isDamaged.Count == 0)
+            {
+                Console.WriteLine("No damaged buildings.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+                return;
+            }
+
+            while (isDamaged != null && isDamaged.Count > 0)
+            {
+                // Build menu: each damaged building + repair all + return
+                string[] items = new string[isDamaged.Count + 2];
+                for (int i = 0; i < isDamaged.Count; i++)
+                {
+                    var loc = isDamaged[i];
+                    var b = loc.Building;
+                    fixCost = (int)((b.BuildingCost * (b.MaxHealth - b.CurrentHealth)) / 100);
+                    items[i] = $"{loc.Name} - X:{loc.X} Y:{loc.Y} - HP: {b.CurrentHealth}/{b.MaxHealth} - Cost: {fixCost}";
+                }
+
+                items[isDamaged.Count] = "Repair all damaged buildings";
+                items[isDamaged.Count + 1] = "Back";
+
+                int choice = subMenu.DrawMenu(items);
+                Console.Clear();
+
+                if (choice < 0 || choice > isDamaged.Count + 1)
+                {
+                    // defensive: return to main menu on unexpected value
+                    return;
+                }
+
+                if (choice < isDamaged.Count)
+                {
+                    // Repair selected building
+                    var loc = isDamaged[choice];
+                    loc.Building.CurrentHealth = loc.Building.MaxHealth;
+                    Console.WriteLine($"Repaired: {loc.Name} (X:{loc.X} Y:{loc.Y}).");
+                    isDamaged.RemoveAt(choice);
+                    t.RemoveFunds(fixCost);
+
+                    if (isDamaged.Count == 0)
+                    {
+                        Console.WriteLine("All damaged buildings repaired.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                        return;
+                    }
+
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    continue;
+                }
+
+                if (choice == isDamaged.Count)
+                {
+                    // Repair all
+                    foreach (var loc in isDamaged.ToList())
+                    {
+                        allCost += (int)((loc.Building.BuildingCost * (loc.Building.MaxHealth - loc.Building.CurrentHealth)) / 100);
+                        loc.Building.CurrentHealth = loc.Building.MaxHealth;
+                    }
+                    isDamaged.Clear();
+                    t.RemoveFunds(allCost);
+                    Console.WriteLine("All damaged buildings repaired.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey(true);
+                    return;
+                }
+
+                // Return to main menu
+                return;
+            }
         }
     }
 }
