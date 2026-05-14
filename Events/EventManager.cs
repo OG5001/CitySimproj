@@ -21,7 +21,15 @@ namespace CitySimproj
         private readonly List<(EventBlueprint disaster, int chance)> disasters = new() 
 		{
 			(new Earthquake(), 1),
-			(new Tsunami(), 1),
+			(new Tsunami(), 1),   
+            //(new Tornado(), 1),
+            //(new Hurricane(), 1),
+            //(new VolcanicEruption(), 1),
+            //(new Wildfire(), 1),
+            //(new MeteorImpact(), 1),
+            (new Sinkhole(), 1),
+            //(new Landslide(), 1),
+            //(new FlashFlood(), 1),
         };
 
 		private readonly List<(EventBlueprint ecoevent, int chance)> economicsEvents = new() 
