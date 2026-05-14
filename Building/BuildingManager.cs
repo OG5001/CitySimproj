@@ -1,9 +1,10 @@
 ﻿using CitySimproj.Building;
 using System.Security.Cryptography.X509Certificates;
+using CitySimproj.Economy;
 
 namespace Buildings
 {
-    internal class BuildingManager
+    internal class BuildingManager (Treasury t)
     {
 
         static List<BuildingLocation> buildingsBuilt = new List<BuildingLocation>();
@@ -94,7 +95,18 @@ namespace Buildings
             int YPosition = 0;
             int input = subMenu.DrawMenu(GenerateSubMenuItems(type));
             Console.Clear();
-            Console.WriteLine($"\nYou chose the {Enum.GetName(type, input)} building.");
+            
+            string selectedName = Enum.GetName(type, input);
+            object enumValue = Enum.Parse(type, selectedName);
+            Building prototype = null;
+            if (type == typeof(Residential)) prototype = new ResidentialBuilding(selectedName, (Residential)enumValue, 0, 0);
+            else if (type == typeof(Commercial)) prototype = new CommercialBuilding(selectedName, (Commercial)enumValue, 0, 0);
+            else if (type == typeof(Industrial)) prototype = new IndustrialBuilding(selectedName, (Industrial)enumValue, 0, 0);
+            else if (type == typeof(Service)) prototype = new ServiceBuilding(selectedName, (Service)enumValue, 0, 0);
+            else if (type == typeof(Utility)) prototype = new UtilityBuilding(selectedName, (Utility)enumValue, 0, 0);
+ 
+            decimal cost = prototype?.BuildingCost ?? 0m;
+            Console.WriteLine($"\nYou chose the {selectedName} building. Cost: {cost:C0} Ft");
             do
             {
                 Console.WriteLine("X coordinate (1-10):");
@@ -133,8 +145,8 @@ namespace Buildings
                 buildingsBuilt.Add(new BuildingLocation($"{Enum.GetName(type, input)}_{buildingsBuilt.Count + 1}", XPosition, YPosition, new UtilityBuilding(Enum.GetName(type, input), (Utility)Enum.Parse(type, Enum.GetName(type, input)), XPosition, YPosition)));
             }
             Console.WriteLine("Sikerült :D");
+            t.RemoveFunds((int)cost);
         }
-
 
 
         public static void Draw()

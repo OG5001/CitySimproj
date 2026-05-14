@@ -31,12 +31,12 @@ namespace Buildings
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-
-            BuildingManager manager = new BuildingManager();
+            
             EventManager eventManager = new EventManager();
             Treasury treasury = new Treasury();
             EconomyManager ecoManager = new EconomyManager(treasury);
             Production product = new Production(treasury);
+            BuildingManager manager = new BuildingManager(treasury);
             manager.DefaultSetUp();
 
             bool running = true;
@@ -73,7 +73,8 @@ namespace Buildings
                         {
                             Console.WriteLine(p);
                         }
-                        
+
+                        Console.WriteLine(treasury);
                         Menu.WriteCentered("Press any key to continue...", ConsoleColor.DarkGray);
                         Console.ReadKey(true);
                         break;
