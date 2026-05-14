@@ -56,6 +56,8 @@ namespace Buildings
 
                     case 1:
                         BuildingManager.Draw();
+                        Menu.WriteCentered("Press any key to continue...", ConsoleColor.DarkGray);
+                        Console.ReadKey(true);
                         break;
 
                     case 2:
@@ -71,6 +73,9 @@ namespace Buildings
                         {
                             Console.WriteLine(p);
                         }
+                        
+                        Menu.WriteCentered("Press any key to continue...", ConsoleColor.DarkGray);
+                        Console.ReadKey(true);
                         break;
 
                     case 4:
@@ -81,12 +86,6 @@ namespace Buildings
                     case 5:
                         running = false;
                         break;
-                }
-
-                if (running)
-                {
-                    Menu.WriteCentered("Press any key to continue...", ConsoleColor.DarkGray);
-                    Console.ReadKey(true);
                 }
             }
         }
