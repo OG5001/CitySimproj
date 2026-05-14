@@ -63,6 +63,7 @@ namespace CitySimproj
             PrintCentered("Press [ENTER] to continue...");
             Console.ResetColor();
             Console.ReadLine();
+            Console.Clear();
         }
 
         private static List<EventBlueprint> RollEvents(List<(EventBlueprint item, int chance)> pool)
