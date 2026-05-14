@@ -52,6 +52,15 @@ namespace CitySimproj
 			Judaism
 		}
 
+		public enum MoodState
+        {
+            Miserable, // 0-20
+            Annoyed,   // 21-40
+            Neutral,   // 41-60
+            Content,   // 61-80
+            Ecstatic   // 81-100
+        }
+
 		public Job[] jobs = {
 			new Job("Unemployed",new int[]{ 0, 0, 0, 0, 0, 0, 0 },0,0),
 			new Job("Police",new int[]{ 5, 5, 5, 0, 0, 0, 0 }),
