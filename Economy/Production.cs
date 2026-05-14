@@ -1,5 +1,6 @@
 using Buildings;
 using CitySimproj.Shared;
+using System.Linq;
 
 namespace CitySimproj.Economy; 
 
@@ -26,7 +27,10 @@ internal class Production(Treasury t)
     public void Calculate(List<string> endMenu)
     {
         var buildings = BuildingManager.GetAllBuildings();
-
+        
+        Inventory[MarketRef.Oil] += BuildingManager.GetAllBuildingLocations()
+            .Count(b => b.Name.StartsWith("OilRefinery")) * 10; // oil production
+        
         foreach (var building in buildings)
         {
             Inventory[MarketRef.Power] -= building.PowerConsumption; // power prod
