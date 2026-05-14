@@ -196,12 +196,14 @@ namespace CitySimproj
 		}
 		public override string ToString()
 		{
+			MoodSystem moodSys = new MoodSystem();
+    		string moodText = moodSys.GetMoodDescription(this);
 			string t = "";
 			foreach (var item in this.traits)
 			{
 				t += Enum.GetName(item) + ", ";
 			}
-			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {t}, job:{this.job.Title}";
+			return $"Name: {this.name}, Age: {this.age}, ID: {this.id} {(this.sex ? "male" : "female")}, Race: {this.race}, Health: {this.health}, Traits: {t}, job:{this.job.Title}, Mood: {moodText}";
 		}
 	}
 }
