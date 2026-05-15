@@ -62,24 +62,24 @@ namespace CitySimproj
         }
 
 		public Job[] jobs = {
-			new Job("Unemployed",new int[]{ 0, 0, 0, 0, 0, 0, 0 },0,0),
-			new Job("Police",new int[]{ 5, 5, 5, 0, 0, 0, 0 }),
-			new Job("Firefighter",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
-			new Job("Doctor",new int[]{ 10, 10, 5, 0, 0, 0, 0 }),
-			new Job("Nurse",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
-			new Job("Factory Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Teacher",new int[]{ 5, 5, 5, 0, 0, 0, 0 }),
-			new Job("Engineer",new int[]{ 5, 5, 0, 0, 0, 0, 0 }),
-			new Job("Construction Worker",new int[]{ 5, 0, 0, 0, 0, 0, 0 }),
-			new Job("Office Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Garbage Collector",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Clerk",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Waiter",new int[]{ 0, 0, 5, 0, 0, 0, 0 }),
-			new Job("Chef",new int[]{ 5, 0, 5, 0, 0, 0, 0 }),
-			new Job("Transportation Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Artist",new int[]{ 0, 5, 10, 0, 0, 0, 0 }),
-			new Job("Cleaner",new int[]{ 0, 0, 0, 0, 0, 0, 0 }),
-			new Job("Banker",new int[]{ 0, 0, 0, 0, 0, 5, 0 })
+			new Job("Unemployed",new int[]{ 0, 0, 0, 0, 0, 0, 0 },0),
+			new Job("Police",new int[]{ 5, 5, 5, 0, 0, 0, 0 },3000),
+			new Job("Firefighter",new int[]{ 5, 5, 0, 0, 0, 0, 0 },3000),
+			new Job("Doctor",new int[]{ 10, 10, 5, 0, 0, 0, 0 },10000),
+			new Job("Nurse",new int[]{ 5, 5, 0, 0, 0, 0, 0 }, 3000),
+			new Job("Factory Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 },2000),
+			new Job("Teacher",new int[]{ 5, 5, 5, 0, 0, 0, 0 }, 3000),
+			new Job("Engineer",new int[]{ 5, 5, 0, 0, 0, 0, 0 }, 7000),
+			new Job("Construction Worker",new int[]{ 5, 0, 0, 0, 0, 0, 0 },2000),
+			new Job("Office Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 },4000),
+			new Job("Garbage Collector",new int[]{ 0, 0, 0, 0, 0, 0, 0 },3000),
+			new Job("Clerk",new int[]{ 0, 0, 0, 0, 0, 0, 0 }, 3000),
+			new Job("Waiter",new int[]{ 0, 0, 5, 0, 0, 0, 0 }, 3000),
+			new Job("Chef",new int[]{ 5, 0, 5, 0, 0, 0, 0 }, 3000),
+			new Job("Transportation Worker",new int[]{ 0, 0, 0, 0, 0, 0, 0 }, 3000),
+			new Job("Artist",new int[]{ 0, 5, 10, 0, 0, 0, 0 }, 2000),
+			new Job("Cleaner",new int[]{ 0, 0, 0, 0, 0, 0, 0 }, 2000),
+			new Job("Banker",new int[]{ 0, 0, 0, 0, 0, 5, 0 },7000)
 		};
 
 		public enum Race

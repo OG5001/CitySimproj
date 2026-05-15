@@ -173,26 +173,23 @@ namespace CitySimproj
 				}
 
             }
-            //Job stat calculator, ha a job special thresholdjai felett vannak a statok, akkor +1 productivity, happyness
-			/*for (int i=0; i<this.job.Special.Length; i++)
-			{
-				if (this.job.Special[i] <= this.ps.Special[i])
-				{
-					this.ps.Happiness += 1;
-					this.ps.Productivity += 1;
-				}
-			}*/
+            
         }
-		public void Work()
-		{
-			// később bővítve lesz mindennel is, egyelőre csak a heti bruttó bért hozzáadja a netWorth-höz, economyval beszélni kell
-			this.ps.NetWorth += this.job.WeeklyIncome();
-		}
-		public void Expense(int moneySpent)//heti kiadások
+		public int Work()//visszaadja az npc munkájából jövő adót
+        {
+			this.ps.NetWorth += Convert.ToInt32(this.job.Salary*0.8);
+			return Convert.ToInt32(this.job.Salary * 0.2);
+        }
+		public int Expense()//visszaadja a pénzt amit az npc költ, bele kell rakni treasurybe
 		{
 			//egyelőre csak random lesz
-			moneySpent = random.Next(0, 1000);
+			int moneySpent = 0;
+			if (this.ps.NetWorth > 1000)
+			{
+				moneySpent = random.Next(0, 1000);
+			}
 			this.ps.NetWorth -= moneySpent;
+			return moneySpent;
 		}
 		public override string ToString()
 		{

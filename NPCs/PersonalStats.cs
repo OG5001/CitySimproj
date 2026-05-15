@@ -15,7 +15,6 @@ namespace CitySimproj
 		private int social;
 		private int health_th; //treshold
 		private int basic_needs_th;
-		private int money_gain;
 		private int karma;
 		private int[] special; //Strength, preception, endurance, charisma, intelligence, agility, luck
 		private int netWorth;//net worth of the npc
@@ -27,9 +26,8 @@ namespace CitySimproj
             this.social = random.Next(40, 61);
             this.health_th = random.Next(5, 16);
             this.basic_needs_th = random.Next(5, 16);
-            this.money_gain = random.Next(40, 61);
             this.karma = random.Next(40, 61);
-			this.special = new int[5];
+			this.special = new int[7];
 			generateSpecial();
 			this.netWorth = 0;
         }
@@ -39,7 +37,6 @@ namespace CitySimproj
 		public int Social { get => social; set => social = value; }
 		public int Health_th { get => health_th; set => health_th = value; }
 		public int Basic_needs_th { get => basic_needs_th; set => basic_needs_th = value; }
-		public int Money_gain { get => money_gain; set => money_gain = value; }
 		public int Karma { get => karma; set => karma = value; }
         public int[] Special { get => special; set => special = value; }
         public int NetWorth { get => netWorth; set => netWorth = value; }

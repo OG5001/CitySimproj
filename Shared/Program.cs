@@ -1,6 +1,7 @@
 ﻿using CitySimproj;
 using CitySimproj.Economy;
 using CitySimproj.Shared;
+using System.Runtime.CompilerServices;
 
 namespace Buildings
 {
@@ -39,12 +40,12 @@ namespace Buildings
             BuildingManager manager = new BuildingManager(treasury);
             manager.DefaultSetUp();
 
+            var allNpc = Person.NPC();
             bool running = true;
 
             while (running)
             {
                 int choice = title.DrawMenu(menu);
-
                 Console.Clear();
 
                 switch (choice)
@@ -69,7 +70,6 @@ namespace Buildings
                         BuildingManager.Kiiratas();
                         Console.WriteLine();
                         // list people (temp)
-                        var allNpc = Person.NPC();
                         foreach (var p in allNpc)
                         {
                             Console.WriteLine(p);
@@ -83,6 +83,15 @@ namespace Buildings
                     case 4:
                         eventManager.Print();
                         product.EndTurn();
+
+                        //Szabi kódja, ha rossz helyre raktam pls rakjátok jobb helyre :)
+                        int taxIncome = 0;
+                        foreach (var p in allNpc)
+                        {
+                            taxIncome += p.Work();
+                            taxIncome += p.Expense();
+                        }
+                        treasury.AddFunds(taxIncome);
                         break;
 
                     case 5:
