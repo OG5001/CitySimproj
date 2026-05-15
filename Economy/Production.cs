@@ -27,7 +27,8 @@ internal class Production(Treasury t)
     public void Calculate(List<string> endMenu)
     {
         var buildings = BuildingManager.GetAllBuildings();
-        
+        var allNpc = Person.NPC();
+
         Inventory[MarketRef.Oil] += BuildingManager.GetAllBuildingLocations()
             .Count(b => b.Name.StartsWith("OilRefinery")) * 10; // oil production
         
@@ -41,6 +42,14 @@ internal class Production(Treasury t)
         {
             endMenu.Add($"{good.Name}: {amount}");
         }
+        //NPC adó, költés jövedelem
+        int taxIncome = 0;
+        foreach (var p in allNpc)
+        {
+            taxIncome += p.Work();
+            taxIncome += p.Expense();
+        }
+        t.AddFunds(taxIncome);
     }
     
     public static int GetAmount(Good item)

@@ -40,7 +40,6 @@ namespace Buildings
             BuildingManager manager = new BuildingManager(treasury);
             manager.DefaultSetUp();
 
-            var allNpc = Person.NPC();
             bool running = true;
 
             while (running)
@@ -69,6 +68,7 @@ namespace Buildings
                         Console.Clear();    
                         BuildingManager.Kiiratas();
                         Console.WriteLine();
+                        var allNpc = Person.NPC();
                         // list people (temp)
                         foreach (var p in allNpc)
                         {
@@ -83,15 +83,6 @@ namespace Buildings
                     case 4:
                         eventManager.Print();
                         product.EndTurn();
-
-                        //Szabi kódja, ha rossz helyre raktam pls rakjátok jobb helyre :)
-                        int taxIncome = 0;
-                        foreach (var p in allNpc)
-                        {
-                            taxIncome += p.Work();
-                            taxIncome += p.Expense();
-                        }
-                        treasury.AddFunds(taxIncome);
                         break;
 
                     case 5:
